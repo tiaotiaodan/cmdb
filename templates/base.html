@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+        <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+        <link rel="shortcut icon" href="../static/img/bitbug_favicon.ico">    <!--引入标签页ico图标文件-->
+    {% block head %}
+    {% endblock %}
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">仪表盘</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/views/servers">服务器管理</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">批量发布</a>
+            </li>
+
+        </ul>
+        <ul class="navbar-nav  ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/auth/logout" >退出登录</a>
+                </li>
+        </ul>
+    </nav>
+
+{% block body %}
+    {% endblock %}
+</body>
+</html>

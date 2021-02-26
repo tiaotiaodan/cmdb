@@ -1,0 +1,369 @@
+{% extends "base.html" %}
+{% block head %}
+    <title>服务器管理</title>
+    <script type="text/javascript">
+        function update_show(id) {
+            $.ajax({
+                url: '/servers/get_by_id',
+                type: 'get',
+                cache: false,
+                data: {
+                    id: id,
+                },
+                success: function (data) {
+                    tmpone = JSON.parse(data)[0];
+                    $("#id").val(id);
+                    $("#server_name").val(tmpone['server_name']);
+                    $("#server_ip").val(tmpone['server_ip']);
+                    $("#server_port").val(tmpone['server_port']);
+                    $("#server_user").val(tmpone['server_user']);
+                    $("#server_passwd").val(tmpone['server_passwd']);
+                    $("#updateshow").modal('show');
+
+                }
+            });
+        }
+
+        // 分页设置pagenow 代表第几页，pagesize：代表展示多少行数据， search：代表展示搜索功能
+        function get_page(pagenow, pagesize, search) {
+
+            //把数据返回给后端 pagenow：代表第几页，pagesize：代表展示多少行数据， search：代表展示搜索功能
+            info = {"pagenow": pagenow, "pagesize": pagesize, search: search}
+
+
+            // ajax 返回数据
+            $.ajax({
+                url: '/servers/get_by_page',   // 与后端获取的数据
+                type: 'post',              // 请求格式使用post提交
+                cache: false,
+                // data 返回分页数据
+                data: JSON.stringify(info),
+                success: function (data) {
+                    allresult = JSON.parse(data);
+                    $("#tbodycontent").html("");
+                    for (i = 0; i < allresult.length; i++) {
+                        tmpone = '<tr>'
+                        tmpone = tmpone + '<td><input name="selectid" type="checkbox" value="' + allresult[i]['id'] + '"></td>'
+                        tmpone = tmpone + '<td>' + allresult[i]['id'] + '</td>'
+                        tmpone = tmpone + '<td>' + allresult[i]['server_name'] + '</td>'
+                        tmpone = tmpone + '<td>' + allresult[i]['server_ip'] + '</td>'
+                        tmpone = tmpone + '<td>' + allresult[i]['server_port'] + '</td>'
+                        tmpone = tmpone + '<td>' + allresult[i]['server_user'] + '</td>'
+                        tmpone = tmpone + '<td>' + allresult[i]['server_passwd'] + '</td>'
+                        tmpone = tmpone + '<td>'
+                        tmpone = tmpone + '<button class="btn btn-sm btn-success" onClick="update_show(' + allresult[i]['id'] + ')">更新</button>'
+                        tmpone = tmpone + ' <button class="btn btn-sm btn-danger" onClick="delete_by_id(' + allresult[i]['id'] + ')">删除</button>'
+                        tmpone = tmpone + '</td>'
+                        tmpone = tmpone + '</tr>'
+                        $("#tbodycontent").append(tmpone);
+                    }
+                }
+            });
+            pagedown = '<button type="button" onclick="get_page(' + (pagenow - 1) + ',' + pagesize + ',\'' + search + '\')" class="btn btn-sm btn-success" style="margin:5px">上一页</button>'
+            pageup = '<button type="button" onclick="get_page(' + (pagenow + 1) + ',' + pagesize + ',\'' + search + '\')" class="btn btn-sm btn-success" style="margin:5px">下一页</button>'
+            $("#pageinfo").html("当前页：<p style='display: inline;' id='pagenow' >" + pagenow + "</p>");
+            $("#pageinfo").append("   " + pagedown);
+            $("#pageinfo").append(" " + pageup);
+        }
+
+        // 返回第几页 1为第一页， 15 代表多少条
+        $(document).ready(function () {
+            get_page(1, 15, '')
+            $('#bt_search').click(function () {
+                text_search = $('#text_search').val();
+                get_page(1, 15, text_search)
+
+            });
+            $('#bt_update').click(function () {
+                id = $('#id').val();
+                server_name = $('#server_name').val();
+                server_ip = $('#server_ip').val();
+                server_port = $('#server_port').val();
+                server_user = $('#server_user').val();
+                server_passwd = $('#server_passwd').val();
+                info = {
+                    id: id,
+                    server_name: server_name,
+                    server_ip: server_ip,
+                    server_port: server_port,
+                    server_user: server_user,
+                    server_passwd: server_passwd,
+                }
+                $.ajax({
+                    url: '/servers/update',
+                    type: 'POST',
+                    cache: false,
+                    data: JSON.stringify(info),
+                    success: function (data) {
+                        $("#updateshow").modal('hide');
+                        text_search = $('#text_search').val();
+                        pagenow = parseInt($('#pagenow').html());
+                        get_page(pagenow, 15, text_search);
+                    }
+                });
+            });
+            $('#bt_add').click(function () {
+                server_name = $('#add_name').val();
+                server_ip = $('#add_ip').val();
+                server_port = $('#add_port').val();
+                server_user = $('#add_user').val();
+                server_passwd = $('#add_passwd').val();
+                info = {
+                    server_name: server_name,
+                    server_ip: server_ip,
+                    server_port: server_port,
+                    server_user: server_user,
+                    server_passwd: server_passwd,
+                };
+                $.ajax({
+                    url: '/servers/insert',
+                    type: 'POST',
+                    cache: false,
+                    data: JSON.stringify(info),
+                    success: function (data) {
+                        $("#addshow").modal('hide');
+                        text_search = $('#text_search').val();
+                        pagenow = parseInt($('#pagenow').html());
+                        get_page(pagenow, 15, text_search);
+                    }
+                });
+            });
+            // 批量删除
+            $('#bt_mutidelete').click(function () {
+                var msg = "确认批量删除?";
+                if (confirm(msg) == false) {
+                    return false;
+                }
+                selectids = [];
+                $("input[name='selectid']:checked").each(function () {
+                    selectids.push($(this).val());
+                });
+                if (selectids.length == 0) {
+                    alert("先选择需要删除的信息？");
+                    return false;
+                }
+                $.ajax({
+                    url: '/servers/mutidelete',
+                    type: 'POST',
+                    cache: false,
+                    data: JSON.stringify(selectids),
+                    success: function (data) {
+                        text_search = $('#text_search').val();
+                        pagenow = parseInt($('#pagenow').html());
+                        get_page(pagenow, 15, text_search);
+                    }
+                });
+            });
+            // 全选或反选
+            $('#selectall').click(function () {
+                if (this.checked == true) {
+                    $("input[name='selectid']").each(function () {
+                        this.checked = true;
+                    });
+                } else {
+                    $("input[name='selectid']").each(function () {
+                        this.checked = false;
+                    });
+                }
+            });
+
+        });
+
+        function delete_by_id(id) {
+            var msg = "确认删除?";
+            if (confirm(msg) == false) {
+                return false;
+            }
+
+            $.ajax({
+                url: '/servers/delete_by_id',
+                type: 'GET',
+                cache: false,
+                data: {
+                    id: id,
+                },
+                success: function (data) {
+                    text_search = $('#text_search').val();
+                    pagenow = parseInt($('#pagenow').html());
+                    get_page(pagenow, 15, text_search);
+                }
+            });
+        }
+    </script>
+{% endblock %}
+
+{% block body %}
+
+    <!--服务器搜索的模态框-->
+    <div class="container">
+        <br/>
+        <div class="row">
+            <div class="col">
+                <form class="form-inline">
+                    <input type="text" class="form-control" id="text_search">
+                    <button type="button" class="btn btn-success" id="bt_search">搜索</button>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addshow"
+                            style="margin-left: 2px;">服务器添加
+                    </button>
+                    <button type="button" class="btn btn-success" id="bt_mutidelete" style="margin-left: 2px;">批量删除
+                    </button>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#excelshow"
+                            style="margin-left: 485px">服务器信息导入
+                    </button>
+                </form>
+
+                <table class="table table-bordered table-hover" style="margin-top: 5px">
+                    <thead>
+                    <th><input id="selectall" type="checkbox"></th>
+                    <th>序号</th>
+                    <th>服务器名</th>
+                    <th>服务器ip</th>
+                    <th>服务器端口</th>
+                    <th>服务器用户</th>
+                    <th>服务器密码</th>
+                    <th>操作</th>
+                    </thead>
+                    <tbody id="tbodycontent">
+
+                    </tbody>
+                </table>
+
+                <p id="pageinfo" class="pagination">
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!--服务器信息更新的模态框-->
+    <div class="modal fade" id="updateshow">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">服务器信息更新</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">序号</span>
+                            </div>
+                            <input type="text" readonly="readonly" class="form-control" id="id">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">服务器名</span>
+                            </div>
+                            <input type="text" class="form-control" id="server_name">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">服务器IP</span>
+                            </div>
+                            <input type="text" class="form-control" id="server_ip">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">服务器端口</span>
+                            </div>
+                            <input type="text" class="form-control" id="server_port">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">服务器用户</span>
+                            </div>
+                            <input type="text" class="form-control" id="server_user">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">服务器密码</span>
+                            </div>
+                            <input type="text" class="form-control" id="server_passwd">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="bt_update">更新</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--服务器添加的模态框-->
+    <div class="modal fade" id="addshow">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">服务器添加</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">服务器名称</span>
+                            </div>
+                            <input type="text" class="form-control" id="add_name" placeholder="server_name">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">服务器IP</span>
+                            </div>
+                            <input type="text" class="form-control" id="add_ip" placeholder="server_ip">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">服务器端口</span>
+                            </div>
+                            <input type="text" class="form-control" id="add_port" placeholder="server_port">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">服务器用户</span>
+                            </div>
+                            <input type="text" class="form-control" id="add_user" placeholder="server_user">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">服务器密码</span>
+                            </div>
+                            <input type="text" class="form-control" id="add_passwd" placeholder="server_passwd">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="bt_add">添加</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--服务器导入模态框-->
+    <div class="modal fade" id="excelshow">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Excel导入服务器</h4>
+                </div>
+                <div class="modal-body">
+                    <p>模板下载：<a href="/servers/getexcel">点击下载Excel模板</a></p>
+                    <form action="/servers/insert_from_excel" enctype='multipart/form-data' method='POST'>
+                        <div class="form-group">
+                            <input type="file" name="servers">
+                            <button type="submit" class="btn btn-primary">上传并导入</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
