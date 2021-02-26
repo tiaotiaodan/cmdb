@@ -9,9 +9,9 @@ import pymysql
 def getConnect():
     try:
         connection = pymysql.connect(
-            host="121.4.77.138",
+            host="127.0.0.1",
             user="cmdb",
-            password="Aa@963852",
+            password="Aa123456",
             database="cmdb",
             port=3306)
         return connection
