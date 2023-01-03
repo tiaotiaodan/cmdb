@@ -3,7 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="30e90a8f-f783-4627-b5b6-4fe5351821f4" name="默认更改列表" comment="">
       <change beforePath="$PROJECT_DIR$/cmdb/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/cmdb/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmdb/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/cmdb/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmdb_fe/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../cmdb_fe/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmdb_fe/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../cmdb_fe/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmdb_fe/src/layout/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../cmdb_fe/src/layout/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmdb_fe/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../cmdb_fe/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmdb_fe/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../cmdb_fe/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmdb_fe/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../cmdb_fe/src/store/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmdb_fe/src/views/A.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmdb_fe/src/views/B.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmdb_fe/src/views/C.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmdb_fe/src/views/Dashboard.vue" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,8 +37,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cmdb/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+            <state relative-caret-position="338">
+              <caret line="116" column="84" lean-forward="true" selection-start-line="116" selection-start-column="84" selection-end-line="116" selection-end-column="84" />
               <folding>
                 <element signature="e#1#29#0" expanded="true" />
               </folding>
@@ -38,13 +47,34 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/libs/token_auth.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="705">
+              <caret line="47" column="28" selection-start-line="47" selection-start-column="28" selection-end-line="47" selection-end-column="28" />
+              <folding>
+                <element signature="e#58#138#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cmdb/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="75" lean-forward="true" selection-start-line="12" selection-start-column="75" selection-end-line="12" selection-end-column="75" />
+            <state relative-caret-position="300">
+              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cmdb/apps.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
             </state>
           </provider>
         </entry>
@@ -64,33 +94,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/libs/cloud_host_collect_linux.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" selection-start-line="23" selection-end-line="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cmdb_BE/settings.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="551">
               <caret line="163" column="29" lean-forward="true" selection-start-line="163" selection-start-column="29" selection-end-line="163" selection-end-column="29" />
               <folding>
                 <element signature="e#308#332#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cmdb_BE/wsgi.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
-              <folding>
-                <element signature="e#223#232#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -152,16 +161,15 @@
         <option value="$PROJECT_DIR$/libs/local_host_collect_linux.py" />
         <option value="$PROJECT_DIR$/cmdb/file/local_host_collect_linux.py" />
         <option value="$PROJECT_DIR$/cmdb_BE/settings.py" />
-        <option value="$PROJECT_DIR$/cmdb/models.py" />
         <option value="$PROJECT_DIR$/cmdb/serializers.py" />
         <option value="$PROJECT_DIR$/cmdb/views.py" />
         <option value="$PROJECT_DIR$/cmdb/urls.py" />
+        <option value="$PROJECT_DIR$/cmdb/models.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1757" />
-    <option name="y" value="-3" />
+    <option name="y" value="25" />
     <option name="width" value="1440" />
     <option name="height" value="813" />
   </component>
@@ -190,6 +198,11 @@
               <item name="cmdb_BE" type="b2602c69:ProjectViewProjectNode" />
               <item name="cmdb_BE" type="462c0819:PsiDirectoryNode" />
               <item name="cmdb_BE" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cmdb_BE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cmdb_BE" type="462c0819:PsiDirectoryNode" />
+              <item name="libs" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -321,27 +334,27 @@
       <updated>1672303457114</updated>
       <workItem from="1672303460228" duration="21198000" />
       <workItem from="1672709254154" duration="1105000" />
-      <workItem from="1672710902749" duration="1992000" />
+      <workItem from="1672710902749" duration="5315000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24295000" />
+    <option name="totallyTimeSpent" value="27618000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1440" y="-64" width="1920" height="1055" extended-state="6" />
+    <frame x="0" y="25" width="1440" height="813" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14802982" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19027181" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="manage.py@cmdb_BE" weight="0.3291536" />
+      <window_info anchor="bottom" id="manage.py@cmdb_BE" weight="0.32867134" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.29467085" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.2937063" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.32867134" />
       <window_info anchor="bottom" id="Python Console" order="4" weight="0.3291536" />
-      <window_info anchor="bottom" id="Terminal" order="5" visible="true" weight="0.23406479" />
+      <window_info anchor="bottom" id="Terminal" order="5" weight="0.23916084" />
       <window_info anchor="bottom" id="Event Log" order="6" side_tool="true" />
       <window_info anchor="bottom" id="调试" order="7" />
       <window_info anchor="bottom" id="Message" order="8" />
@@ -393,16 +406,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libs/token_auth.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="47" column="28" selection-start-line="47" selection-start-column="28" selection-end-line="47" selection-end-column="28" />
-          <folding>
-            <element signature="e#58#138#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -510,16 +513,6 @@
     <entry file="file://$PROJECT_DIR$/cmdb/tests.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/cmdb/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
-          <folding>
-            <element signature="e#1#29#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cmdb/serializers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -534,12 +527,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/cmdb/migrations/0004_auto_20230103_1001.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/cmdb/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="75" lean-forward="true" selection-start-line="12" selection-start-column="75" selection-end-line="12" selection-end-column="75" />
+        <state relative-caret-position="300">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmdb/apps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmdb/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="116" column="84" lean-forward="true" selection-start-line="116" selection-start-column="84" selection-end-line="116" selection-end-column="84" />
+          <folding>
+            <element signature="e#1#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/token_auth.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="705">
+          <caret line="47" column="28" selection-start-line="47" selection-start-column="28" selection-end-line="47" selection-end-column="28" />
+          <folding>
+            <element signature="e#58#138#0" expanded="true" />
           </folding>
         </state>
       </provider>
