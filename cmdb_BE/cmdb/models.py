@@ -30,18 +30,6 @@ class ServerGroup(models.Model):
 
     def __str__(self):
         return self.name
-class MachineType(models.Model):
-    name = models.CharField(max_length=30, unique=True, verbose_name="机器类型名称")
-    note = models.TextField(blank=True, null=True, verbose_name="备注")
-    create_time = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")
-
-    class Meta:
-        db_table = "cmdb_machine_type"
-        verbose_name_plural = "机器类型"
-        ordering = ('-id',)
-
-    def __str__(self):
-        return self.name
 
 class Cloud_Server(models.Model):
     idc = models.ForeignKey(Idc, on_delete=models.PROTECT, verbose_name="IDC机房")            # 一对多
@@ -52,7 +40,7 @@ class Cloud_Server(models.Model):
     ssh_ip = models.GenericIPAddressField(verbose_name="SSH IP")
     ssh_port = models.IntegerField(verbose_name="SSH端口")
     note = models.TextField(blank=True, null=True, verbose_name="备注")
-    machine_type = models.ForeignKey(MachineType, on_delete=models.PROTECT, verbose_name="机房类型")            # 一对多
+    machine_type = models.CharField(max_length=30, blank=True, choices=(('windows','windows'),('linux','linux')), verbose_name="机器类型")
     os_version = models.CharField(max_length=50, blank=True, null=True, verbose_name="系统版本")
     public_ip = models.CharField(max_length=100, blank=True, null=True, verbose_name="公网IP")
     private_ip = models.CharField(max_length=100, blank=True, null=True, verbose_name="内网IP")
@@ -85,7 +73,7 @@ class Physics_Server(models.Model):
     ssh_ip = models.GenericIPAddressField(verbose_name="SSH IP")
     ssh_port = models.IntegerField(verbose_name="SSH端口")
     note = models.TextField(blank=True, null=True, verbose_name="备注")
-    machine_type = models.ForeignKey(MachineType, on_delete=models.PROTECT, verbose_name="机房类型")            # 一对多
+    machine_type = models.CharField(max_length=30, blank=True, choices=(('windows','windows'),('linux','linux')), verbose_name="机器类型")
     os_version = models.CharField(max_length=50, blank=True, null=True, verbose_name="系统版本")
     asset_code = models.CharField(max_length=50, blank=True, null=True, verbose_name="资产编码")
     public_ip = models.CharField(max_length=100, blank=True, null=True, verbose_name="公网IP")
@@ -119,7 +107,7 @@ class Vm_Server(models.Model):
     ssh_ip = models.GenericIPAddressField(verbose_name="SSH IP")
     ssh_port = models.IntegerField(verbose_name="SSH端口")
     note = models.TextField(blank=True, null=True, verbose_name="备注")
-    machine_type = models.ForeignKey(MachineType, on_delete=models.PROTECT, verbose_name="机房类型")            # 一对多
+    machine_type = models.CharField(max_length=30, blank=True, choices=(('windows','windows'),('linux','linux')), verbose_name="机器类型")
     os_version = models.CharField(max_length=50, blank=True, null=True, verbose_name="系统版本")
     public_ip = models.CharField(max_length=100, blank=True, null=True, verbose_name="公网IP")
     private_ip = models.CharField(max_length=100, blank=True, null=True, verbose_name="内网IP")

@@ -1,7 +1,7 @@
 from django.urls import path, include
 
 # 导入视图集
-from cmdb.views import IdcViewSet, ServerGroupViewSet, CloudServerViewSet, PhysicsServerViewSet, VmServerViewSet,PhysicsServerSshConnView
+from cmdb.views import IdcViewSet, ServerGroupViewSet, CloudServerViewSet, PhysicsServerViewSet, VmServerViewSet, PhysicsServerSshConnView
 
 # 导入drf路由
 from rest_framework import routers
