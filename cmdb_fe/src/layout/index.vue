@@ -3,7 +3,14 @@
     <el-container>
       <!--为了实现头部折叠菜单，我们需要把原来导航栏的固定宽度width="200px"修改width="auto"自适应-->
       <el-aside width="auto">
-        <el-menu active-text-color="#ffd04b" background-color="#545c64" class="el-menu-vertical-demo" default-active="2" text-color="#fff" router :collapse="isCollapse">
+        <!--
+        :default-active="this.$route.path"  绑定菜单栏index索引
+        router    开启路由导航
+        :collapse="isCollapse"   导航栏显示与隐藏
+        unique-opened   开启导航栏同时只显示一个菜单
+        :collapse-transition='false'  关闭折叠动画
+        -->
+        <el-menu active-text-color="#ffd04b" background-color="#545c64" class="el-menu-vertical-demo" default-active="this.$route.path" text-color="#fff" router unique-opened :collapse="isCollapse" :collapse-transition="false">
           <!-- 给页面添加logo -->
           <div class="logo-title">
             <img src="../assets/touxiang.jpeg" />
@@ -181,7 +188,7 @@ export default {
             }
           })
         } else {
-          this.$message.error('修改密码格式输出效验错误')
+          this.$message.warning('修改密码格式输出效验错误')
         }
       })
     },
