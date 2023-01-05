@@ -41,6 +41,8 @@ class IdcViewSet(ModelViewSet):
     # 注意 filter_backends多了一个filters.OrderingFilter
     ordering_fields = ["id", "name"]
 
+
+
 # 主机分组视图
 class ServerGroupViewSet(ModelViewSet):
     queryset = ServerGroup.objects.all()      # 导入模型类所有数据

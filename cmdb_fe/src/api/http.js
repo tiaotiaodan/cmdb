@@ -14,7 +14,7 @@ instance.interceptors.request.use(
     const token = window.sessionStorage.getItem('token')
     if (token) {
       config.headers = {
-        Authorization: 'token' + token
+        Authorization: 'token  ' + token
       }
     }
     return config
@@ -29,7 +29,29 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
   response => {
     // console.log('响应拦截处理');
-    if (response.data.code != 200) {
+    if (response.data.code == 400) {
+      ElMessage.warning('错误请求')
+    } else if (response.data.code == 401) {
+      ElMessage.warning('未授权，请重新登录')
+    } else if (response.data.code == 403) {
+      ElMessage.warning('拒绝访问')
+    } else if (response.data.code == 404) {
+      ElMessage.warning('请求错误,未找到该资源')
+    } else if (response.data.code == 405) {
+      ElMessage.warning('请求方法未允许')
+    } else if (response.data.code == 408) {
+      ElMessage.warning('请求超时')
+    } else if (response.data.code == 500) {
+      ElMessage.warning('服务器端出错')
+    } else if (response.data.code == 501) {
+      ElMessage.warning('网络未实现')
+    } else if (response.data.code == 502) {
+      ElMessage.warning('网络错误')
+    } else if (response.data.code == 503) {
+      ElMessage.warning('服务不可用')
+    } else if (response.data.code == 504) {
+      ElMessage.warning('网络超时')
+    } else if (response.data.code != 200) {
       ElMessage.warning(response.data.msg) // 这里应根据后端返回消息显示
     }
     return response
