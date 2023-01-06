@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30e90a8f-f783-4627-b5b6-4fe5351821f4" name="默认更改列表" comment="">
-      <change beforePath="$PROJECT_DIR$/cmdb/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/cmdb/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../cmdb_fe/src/views/idc/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../cmdb_fe/src/views/idc/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmdb_fe/vue.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../cmdb_fe/vue.config.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -316,12 +316,12 @@
       <updated>1672303457114</updated>
       <workItem from="1672303460228" duration="21198000" />
       <workItem from="1672709254154" duration="1105000" />
-      <workItem from="1672710902749" duration="7824000" />
+      <workItem from="1672710902749" duration="8406000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30127000" />
+    <option name="totallyTimeSpent" value="30709000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1440" height="813" extended-state="6" />

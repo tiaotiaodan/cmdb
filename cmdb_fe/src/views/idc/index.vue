@@ -7,7 +7,7 @@
           <el-col :span="22">
             <el-input v-model="urlParams.search" placeholder="请输入关键字" @keyup.enter="onSearch" clearable @clear="onSearch" class="search" />
           </el-col>
-          <el-col :span="2">
+          <el-col :span="1" style="margin-left: 5px">
             <el-button type="primary" @click="onSearch">
               <el-icon><search /></el-icon>
               &nbsp;搜索
@@ -28,7 +28,20 @@
         <el-table-column prop="provider" label="运营商" />
         <el-table-column prop="note" label="备注" />
         <el-table-column prop="create_time" label="创建时间" />
-        <el-table-column label="操作" width="180" />
+        <!--操作栏-->
+        <el-table-column label="操作栏" fixed="right" width="180">
+          <!--定义获取行内数据参数-->
+          <template #default="scope">
+            <!--通过回调函数获取行内数据-->
+            <!-- 编辑按钮 -->
+            <el-button type="primary" size="small" circle @click="handelIdcEdit(scope.$index, scope.row)">
+              <el-icon><Edit /></el-icon>
+            </el-button>
+            <el-button type="danger" size="small" circle @click="handelIdcDelete(scope.$index, scope.row)">
+              <el-icon><Delete /></el-icon>
+            </el-button>
+          </template>
+        </el-table-column>
       </el-table>
 
       <!--分页-->
@@ -37,11 +50,20 @@
       </div>
     </div>
   </el-card>
+
+  <!--使用子组件-->
+  <idcEdit v-model:visible="dialogIdcEdit" :row="row"></idcEdit>
 </template>
 
 <script>
+// 导入子组件idc编辑
+import idcEdit from './IdcEdit.vue'
 export default {
   name: 'idc',
+  // 引用子组件
+  components: {
+    idcEdit
+  },
   data() {
     return {
       IdcData: [], // 存放数据表格列表
@@ -55,7 +77,11 @@ export default {
         page_num: 1,
         page_size: 10,
         search: ''
-      }
+      },
+
+      // =============================== 编辑配置 ===============
+      dialogIdcEdit: false,
+      row: ''
     }
   },
   // 页面渲染完后挂载
@@ -82,6 +108,12 @@ export default {
     onSearch() {
       // 获取搜索后的数据
       this.getallIdc()
+    },
+    // 编辑进行数据重新赋值
+    handelIdcEdit(index, row) {
+      // 重新赋值允许打开编辑弹出框
+      this.dialogIdcEdit = true
+      this.row = row
     },
     // 分页：监听【选择每页数量】的事件
     handleSizeChange(pageSize) {
