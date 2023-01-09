@@ -66,7 +66,7 @@ export default {
           this.$http.put('cmdb/idc/' + this.row.id + '/', this.row).then(res => {
             if (res.data.code == 200) {
               // 反馈请求接口情况
-              this.$message.success('修改数据成功')
+              this.$message.success('修改IDC机房数据成功')
               // 关闭弹出窗口
               this.dialogClose()
             }

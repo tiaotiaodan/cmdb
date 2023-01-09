@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 # 导入modelviewset视图模型
-from rest_framework.viewsets import ModelViewSet
+from libs.custom_model_view_set import CustomModelViewSet
 
 # 导入模型
 from cmdb.models import Idc, ServerGroup, Cloud_Server, Physics_Server, Vm_Server
@@ -27,7 +27,7 @@ from django.conf import settings
 import os, json
 
 # 机房管理视图
-class IdcViewSet(ModelViewSet):
+class IdcViewSet(CustomModelViewSet):
     queryset = Idc.objects.all()      # 导入模型类所有数据
     serializer_class =  IdcSerializer   # 序列化数据
 
@@ -44,7 +44,7 @@ class IdcViewSet(ModelViewSet):
 
 
 # 主机分组视图
-class ServerGroupViewSet(ModelViewSet):
+class ServerGroupViewSet(CustomModelViewSet):
     queryset = ServerGroup.objects.all()      # 导入模型类所有数据
     serializer_class =  ServerGroupSerializer   # 序列化数据
 
@@ -59,7 +59,7 @@ class ServerGroupViewSet(ModelViewSet):
     ordering_fields = ["id", "name"]
 
 # 云主机视图
-class CloudServerViewSet(ModelViewSet):
+class CloudServerViewSet(CustomModelViewSet):
     queryset = Cloud_Server.objects.all()      # 导入模型类所有数据
     serializer_class =  CloudServerSerializer   # 序列化数据
 
@@ -74,7 +74,7 @@ class CloudServerViewSet(ModelViewSet):
     ordering_fields = ["id", "name"]
 
 # 物理机视图
-class PhysicsServerViewSet(ModelViewSet):
+class PhysicsServerViewSet(CustomModelViewSet):
     queryset = Physics_Server.objects.all()      # 导入模型类所有数据
     serializer_class =  PhysicsServerSerializer   # 序列化数据
 
@@ -89,7 +89,7 @@ class PhysicsServerViewSet(ModelViewSet):
     ordering_fields = ["id", "name"]
 
 # 虚拟机视图
-class VmServerViewSet(ModelViewSet):
+class VmServerViewSet(CustomModelViewSet):
     queryset = Vm_Server.objects.all()      # 导入模型类所有数据
     serializer_class =  VmServerSerializer   # 序列化数据
 
