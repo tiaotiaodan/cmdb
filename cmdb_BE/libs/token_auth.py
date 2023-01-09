@@ -46,3 +46,14 @@ class ChangeUserPasswordView(APIView):
         else:
             res = {'code': 500, 'msg': '原密码不正确！'}
         return Response(res)
+
+# 登陆认证
+class GetUser(APIView):
+    def post(request, *args, **kwargs):
+        # 获取用户名
+        # username = request.data.get("username")
+        # GetInfo = User.objects.filter(username=username)
+        GetInfo = User.objects.all()
+        print(GetInfo)
+        res = {'code': 200, 'msg': '修改密码成功', 'data': GetInfo }
+        return Response(res)
