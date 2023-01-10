@@ -2,18 +2,12 @@
   <el-dialog :model-value="visible" width="30%" @close="dialogClose">
     <!--标题-->
     <template #header>
-      <div style="font-size:18px; color:#409eff; font-weight:bold;">创建机房信息</div>
+      <div style="font-size:18px; color:#409eff; font-weight:bold;">创建主机分组</div>
     </template>
 
-    <el-form :model="form" ref="formRef" :rules="formRules"  label-width="100px">
-      <el-form-item label="机房名称：" prop="name">
+    <el-form :model="form" ref="formRef" :rules="formRules" label-width="100px">
+      <el-form-item label="分组名称：" prop="name">
         <el-input v-model="form.name"></el-input>
-      </el-form-item>
-      <el-form-item label="城市：" prop="city">
-        <el-input v-model="form.city"></el-input>
-      </el-form-item>
-      <el-form-item label="运营商：" prop="provider">
-        <el-input v-model="form.provider"></el-input>
       </el-form-item>
       <el-form-item label="备注：">
         <el-input v-model="form.note" type="textarea"></el-input>
@@ -31,7 +25,7 @@
 
 <script>
 export default {
-  name: 'IdcCreate',
+  name: 'ServerGroupCreate',
   props: {
     visible: Boolean
   },
@@ -39,22 +33,12 @@ export default {
     return {
       form: {
         name: '',
-        city: '',
-        provider: '',
         note: ''
       },
       formRules: {
         name: [
           { required: true, message: '请输入机房名称', trigger: 'blur' },
           { min: 2, message: '机房名称长度应不小于2个字符', trigger: 'blur' }
-        ],
-        city: [
-          { required: true, message: '请输入城市', trigger: 'blur' },
-          { min: 2, message: '城市长度应不小于2个字符', trigger: 'blur' }
-        ],
-        provider: [
-          { required: true, message: '请输入运营商', trigger: 'blur' },
-          { min: 2, message: '运营商长度应不小于2个字符', trigger: 'blur' }
         ]
       }
     }
@@ -63,11 +47,10 @@ export default {
     submit() {
       this.$refs.formRef.validate(valid => {
         if (valid) {
-          console.log(this.form)
-          this.$http.post('/cmdb/idc/', this.form).then(res => {
+          this.$http.post('cmdb/server_group/', this.form).then(res => {
             if (res.data.code == 200) {
-              this.$message.success('创建成功')
-              this.$parent.getallIdc() // 调用父组件方法，更新数据
+              this.$message.success('创建主机分组成功')
+              this.$parent.getallServerGroup() // 调用父组件方法，更新数据
               this.dialogClose() // 关闭窗口
               this.$refs.formRef.resetFields() // 清空表单数据
             }

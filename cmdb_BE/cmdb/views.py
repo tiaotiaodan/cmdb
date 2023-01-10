@@ -35,7 +35,7 @@ class IdcViewSet(CustomModelViewSet):
     filter_backends = (DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter)
 
     filterset_fields = ('name',)  # 指定可过滤的字段
-    search_fields = ('name',)  # 指定可搜索的字段
+    search_fields = ('name','city','provider')  # 指定可搜索的字段
 
     # 排序
     # 注意 filter_backends多了一个filters.OrderingFilter

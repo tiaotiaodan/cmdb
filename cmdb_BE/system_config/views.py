@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 
 # 导入modelviewset视图模型
-from rest_framework.viewsets import ModelViewSet
+from libs.custom_model_view_set import CustomModelViewSet
 
 # 导入模型
 from system_config.models import Credential
@@ -15,7 +15,7 @@ from rest_framework import filters
 from django_filters.rest_framework import DjangoFilterBackend
 
 
-class CredentialViewSet(ModelViewSet):
+class CredentialViewSet(CustomModelViewSet):
     queryset = Credential.objects.all()      # 导入模型类所有数据
     serializer_class =  CredentialSerializer   # 序列化数据
 

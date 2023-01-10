@@ -5,6 +5,12 @@
       <div>
         <el-row>
           <el-col :span="22">
+            <!--
+              v-model="urlParams.search" 是绑定搜索的数据
+              @keyup.enter="onSearch"  是输入完后，使用回车键进行快捷搜索
+              clearable   属性即可得到一个可一键清空的输入框
+              @clear="onSearch"   搜索框进行清空数据回调函数
+            -->
             <el-input v-model="urlParams.search" placeholder="请输入关键字" @keyup.enter="onSearch" clearable @clear="onSearch" class="search" />
           </el-col>
           <el-col :span="1" style="margin-left: 5px">
