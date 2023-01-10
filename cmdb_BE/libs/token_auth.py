@@ -8,6 +8,7 @@ from rest_framework.views import APIView
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import make_password, check_password
 from rest_framework.permissions import AllowAny
+import json
 
 # 登陆认证
 class CustomAuthToken(ObtainAuthToken):
@@ -47,13 +48,18 @@ class ChangeUserPasswordView(APIView):
             res = {'code': 500, 'msg': '原密码不正确！'}
         return Response(res)
 
-# 登陆认证
-class GetUser(APIView):
-    def post(request, *args, **kwargs):
+# 获取用户信息
+class UserList(APIView):
+    def post(self, request, *args, **kwargs):
         # 获取用户名
-        # username = request.data.get("username")
-        # GetInfo = User.objects.filter(username=username)
-        GetInfo = User.objects.all()
-        print(GetInfo)
-        res = {'code': 200, 'msg': '修改密码成功', 'data': GetInfo }
+        username = request.data.get("username")
+
+
+        user_list = User.objects.get(username=username)
+        result = {
+            "username": user_list.username,
+            "email": user_list.email,
+        }
+        json_data = json.dumps(result)
+        res = {'code': 200, 'msg': '获取用户成功', 'data': json_data}
         return Response(res)

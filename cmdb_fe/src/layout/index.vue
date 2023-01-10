@@ -71,7 +71,7 @@
               </span>
               <template #dropdown>
                 <el-dropdown-menu>
-                  <el-dropdown-item>用户信息</el-dropdown-item>
+                  <el-dropdown-item @click="UserList">用户信息</el-dropdown-item>
                   <el-dropdown-item @click="UserPasswordDialog = true">修改密码</el-dropdown-item>
                   <el-dropdown-item @click="logout">退出登陆</el-dropdown-item>
                 </el-dropdown-menu>
@@ -88,7 +88,13 @@
   </div>
 
   <!--修改密码对话框-->
-  <el-dialog v-model="UserPasswordDialog" width="30%" title="修改密码" v-on:close="closDialogForm()">
+  <el-dialog v-model="UserPasswordDialog" width="30%" v-on:close="closDialogForm()">
+   <!--标题-->
+    <template #header>
+      <div style="font-size:18px; color:#409eff; font-weight:bold;">用户密码修改</div>
+    </template>
+
+    <!--内容-->
     <el-form :model="UserPasswordForm" label-width="100px" :rules="rules" ref="UserPasswordForm">
       <el-form-item label="原密码：" prop="old_password">
         <el-input v-model="UserPasswordForm.old_password" type="password" show-password></el-input>
@@ -106,6 +112,20 @@
         <el-button type="primary" @click="changePasswordSubmit">确定</el-button>
       </span>
     </template>
+  </el-dialog>
+
+  <!-- 用户信息展示 -->
+  <el-dialog v-model="UserListDialog" width="30%" center  v-on:close="closUserListDialog()">
+    <!--标题-->
+    <template #header>
+      <div style="font-size:18px; color:#409eff; font-weight:bold;">用户信息展示</div>
+    </template>
+
+    <!--内容-->
+    <el-descriptions direction="horizontal" :column="2">
+      <el-descriptions-item label-align=center align=center label="用户名：">{{ username }}</el-descriptions-item>
+      <el-descriptions-item label-align=center align=center label="用户邮箱:"></el-descriptions-item>
+    </el-descriptions>
   </el-dialog>
 </template>
 
@@ -134,6 +154,7 @@ export default {
       isTitle: true, // 显示与隐藏标题
       username: window.sessionStorage.getItem('username'), // 获取login保存到会话存储的username
       UserPasswordDialog: false, // 显示修改密码对话框
+      UserListDialog: false, // 显示用户信息对话框
 
       // ======================== 修改密码弹出框配置 ======================
       UserPasswordForm: {
@@ -141,6 +162,11 @@ export default {
         old_password: '',
         new_password: '',
         confirm_password: ''
+      },
+      // ======================== 查看用户信息弹出框配置 ====================
+      UserListinfo: [],
+      UserListinfoForm: {
+        username: window.sessionStorage.getItem('username'),
       },
       // ======================== 修改密码表单验证 ======================
       rules: {
@@ -178,7 +204,6 @@ export default {
     // 修改密码
     changePasswordSubmit() {
       this.$refs.UserPasswordForm.validate(valid => {
-        console.log(this.UserPasswordForm)
         if (valid) {
           this.$http.post('change_password/', this.UserPasswordForm).then(res => {
             if (res.data.code == 200) {
@@ -187,12 +212,18 @@ export default {
               this.closDialogForm()
             }
           })
-        } else {
-          this.$message.warning('修改密码格式输出效验错误')
         }
       })
     },
-    // 关闭弹出框的表单
+    UserList() {
+      this.UserListDialog = true  // 开启弹出框
+      this.$http.post('user_info/', this.UserListinfoForm).then(res => {
+        if (res.data.code == 200) {
+          this.UserListinfo = res.data.data
+        }
+      })
+    },
+    // 关闭修改弹出框的表单
     closDialogForm() {
       // 清空表单数据
       this.UserPasswordForm.old_password = ''
@@ -201,6 +232,10 @@ export default {
 
       // 关闭弹出框
       this.UserPasswordDialog = false
+    },
+    // 关闭查看用户信息弹出框
+    closUserListDialog() {
+      this.UserListDialog = false
     }
   }
 }

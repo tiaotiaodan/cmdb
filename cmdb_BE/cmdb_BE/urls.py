@@ -25,6 +25,6 @@ urlpatterns = [
     path('api/config/', include(systemconfigurls)),
     path('api/login/', token_auth.CustomAuthToken.as_view()),   # 配置认证登陆提交路由
     path('api/change_password/', token_auth.ChangeUserPasswordView.as_view()),   # 配置密码修改提交路由
-    path('api/user_info/', token_auth.GetUser), # 获取用户信息
+    path('api/user_info/', token_auth.UserList.as_view()), # 获取用户信息
 ]
 

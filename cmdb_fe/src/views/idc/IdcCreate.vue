@@ -1,30 +1,24 @@
 <template>
-  <!--操作栏：编辑对话框-->
-  <el-dialog :model-value="visible" @close="dialogClose" width="30%">
-   <!--标题-->
-    <template #header>
-      <div style="font-size:18px; color:#409eff; font-weight:bold;">修改机房信息</div>
-    </template>
-
-    <el-form :model="row" ref="formRef" :rules="formRules" label-width="100px">
+  <el-dialog :model-value="visible" width="30%" title="创建机房" @close="dialogClose">
+    <el-form :model="form" ref="formRef" :rules="formRules" label-position="“right”" label-width="100px">
       <el-form-item label="机房名称：" prop="name">
-        <el-input v-model="row.name"></el-input>
+        <el-input v-model="form.name"></el-input>
       </el-form-item>
       <el-form-item label="城市：" prop="city">
-        <el-input v-model="row.city"></el-input>
+        <el-input v-model="form.city"></el-input>
       </el-form-item>
       <el-form-item label="运营商：" prop="provider">
-        <el-input v-model="row.provider"></el-input>
+        <el-input v-model="form.provider"></el-input>
       </el-form-item>
       <el-form-item label="备注：">
-        <el-input v-model="row.note" type="textarea"></el-input>
+        <el-input v-model="form.note" type="textarea"></el-input>
       </el-form-item>
     </el-form>
 
     <template #footer>
       <span class="dialog-footer">
         <el-button @click="dialogClose">取消</el-button>
-        <el-button type="primary" @click="dialogidcedit_btn">确定</el-button>
+        <el-button type="primary" @click="submit">确定</el-button>
       </span>
     </template>
   </el-dialog>
@@ -32,17 +26,18 @@
 
 <script>
 export default {
-  name: 'idcEdit',
-  // 介绍父组件的值
+  name: 'IdcCreate',
   props: {
-    visible: Boolean, // 获取dialog是否打开变量
-    row: {
-      type: [Object, String, Number],
-      default: 0
-    }
+    visible: Boolean
   },
   data() {
     return {
+      form: {
+        name: '',
+        city: '',
+        provider: '',
+        note: ''
+      },
       formRules: {
         name: [
           { required: true, message: '请输入机房名称', trigger: 'blur' },
@@ -60,27 +55,27 @@ export default {
     }
   },
   methods: {
-    // 点击关闭，子组件通知父组件更新属性
-    dialogClose() {
-      this.$emit('update:visible', false) // 父组件必须使用 v-model
-    },
-    dialogidcedit_btn() {
-      // 验证表单是否通过
+    submit() {
       this.$refs.formRef.validate(valid => {
         if (valid) {
-          this.$http.put('cmdb/idc/' + this.row.id + '/', this.row).then(res => {
+          console.log(this.form)
+          this.$http.post('/cmdb/idc/', this.form).then(res => {
             if (res.data.code == 200) {
-              // 反馈请求接口情况
-              this.$message.success('修改IDC机房数据成功')
-              // 关闭弹出窗口
-              this.dialogClose()
+              this.$message.success('创建成功')
+              this.$parent.getallIdc() // 调用父组件方法，更新数据
+              this.dialogClose() // 关闭窗口
+              this.$refs.formRef.resetFields() // 清空表单数据
             }
           })
+        } else {
+          this.$message.error('格式错误！')
         }
       })
+    },
+    // 点击关闭，子组件通知父组件更新属性
+    dialogClose() {
+      this.$emit('update:visible', false) // 父组件必须使用v-model
     }
   }
 }
 </script>
-
-<style scoped></style>
