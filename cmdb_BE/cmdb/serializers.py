@@ -25,8 +25,11 @@ class ServerGroupSerializer(serializers.ModelSerializer):
 
 class CloudServerSerializer(serializers.ModelSerializer):
     """
-    主机分组序列化类
+    云主机序列化类
     """
+    idc = IdcSerializer(read_only=True)  # IDC只读
+    server_group = ServerGroupSerializer(many=True, read_only=True)  # 主机分组只读，不允许更新
+
     class Meta:
         model = Cloud_Server
         fields = "__all__"
@@ -35,8 +38,11 @@ class CloudServerSerializer(serializers.ModelSerializer):
 
 class PhysicsServerSerializer(serializers.ModelSerializer):
     """
-    主机分组序列化类
+    物理机序列化类
     """
+    idc = IdcSerializer(read_only=True)  # IDC只读
+    server_group = ServerGroupSerializer(many=True, read_only=True)  # 主机分组只读，不允许更新
+
     class Meta:
         model = Physics_Server
         fields = "__all__"
@@ -44,8 +50,11 @@ class PhysicsServerSerializer(serializers.ModelSerializer):
 
 class VmServerSerializer(serializers.ModelSerializer):
     """
-    主机分组序列化类
+    虚拟机序列化类
     """
+    idc = IdcSerializer(read_only=True)  # IDC只读
+    server_group = ServerGroupSerializer(many=True, read_only=True)  # 主机分组只读，不允许更新
+
     class Meta:
         model = Vm_Server
         fields = "__all__"

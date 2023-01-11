@@ -123,8 +123,8 @@
 
     <!--内容-->
     <el-descriptions direction="horizontal" :column="2">
-      <el-descriptions-item label-align=center align=center label="用户名：">{{ username }}</el-descriptions-item>
-      <el-descriptions-item label-align=center align=center label="用户邮箱:"></el-descriptions-item>
+      <el-descriptions-item label-align=center align=center label="用户名：" v-for='value in UserListinfo' v-if='value==username'>{{ value }}</el-descriptions-item>
+      <el-descriptions-item label-align=center align=center label="用户邮箱:" v-for='value in UserListinfo' v-if='value==eamil'>{{ value }}</el-descriptions-item>
     </el-descriptions>
   </el-dialog>
 </template>

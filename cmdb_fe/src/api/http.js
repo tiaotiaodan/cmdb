@@ -3,7 +3,7 @@ import { ElMessage } from 'element-plus'
 
 const instance = axios.create({
   baseURL: 'http://127.0.0.1:8000/api',
-  timeout: 5000
+  // timeout: 5000
   // headers: {'X-Custom-Header': 'foobar'}
 })
 
@@ -30,7 +30,7 @@ instance.interceptors.response.use(
   response => {
     // console.log('响应拦截处理');
     if (response.data.code == 400) {
-      ElMessage.warning('错误请求')
+      ElMessage.warning('错误请求: ' + response.data.msg)
     } else if (response.data.code == 401) {
       ElMessage.warning('未授权，请重新登录')
     } else if (response.data.code == 403) {
@@ -42,7 +42,7 @@ instance.interceptors.response.use(
     } else if (response.data.code == 408) {
       ElMessage.warning('请求超时')
     } else if (response.data.code == 500) {
-      ElMessage.warning('服务器端出错')
+      ElMessage.warning('服务器端出错:' + response.data.msg)
     } else if (response.data.code == 501) {
       ElMessage.warning('网络未实现')
     } else if (response.data.code == 502) {

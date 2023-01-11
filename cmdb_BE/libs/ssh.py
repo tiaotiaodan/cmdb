@@ -64,8 +64,10 @@ class SSH():
 
 if __name__ == '__main__':
     ssh = SSH('192.168.0.200', 22, 'root', '123456')
-    # result = ssh.command('ls -l')
-    local_file=os.path.join(os.getcwd(),'token_auth.py')
-    result = ssh.scp(local_file, '/tmp/agent.py')
+
+    local_file=os.path.join(os.getcwd(),'local_host_collect_linux.py')
+    result = ssh.scp(local_file, '/tmp/local_host_collect_linux.py')
+    result = ssh.command('chmod +x /tmp/local_host_collect_linux.py')
+    result = ssh.command('python /tmp/local_host_collect_linux.py')
 
     print(result)

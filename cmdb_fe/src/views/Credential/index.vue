@@ -122,15 +122,17 @@ export default {
       // ============================== 创建 ===================
       dialogCredentialCreate: false,
 
-      // ============================== 展示列 ==================
+     // ============================== 展示列 ==================
       columnVisible: false, // 可展示列显示与隐藏
       showColumn: {
         // 字段默认是否展示
         name: true,
-        city: true,
-        provider: true,
-        note: true,
-        create_time: true
+        auth_mode: true,
+        username: true,
+        password: true,
+        note: false,
+        update_time: false,
+        create_time: false
       }
     }
   },

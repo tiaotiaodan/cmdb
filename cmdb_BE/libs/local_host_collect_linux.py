@@ -94,7 +94,7 @@ class GetData():
             ip.append(ip)
             return ip_list
         else:
-            ip_list.append('%s(NAT)' %ip)
+            ip_list.append('%s' %ip)
             return ip_list
     def private_ip(self):
         nic_prefix = ['eth', 'en', 'em'] # 常见网卡名前缀

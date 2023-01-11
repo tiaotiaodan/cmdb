@@ -1,7 +1,7 @@
 from django.urls import path, include
 
 # 导入视图集
-from cmdb.views import IdcViewSet, ServerGroupViewSet, CloudServerViewSet, PhysicsServerViewSet, VmServerViewSet, PhysicsServerSshConnView
+from cmdb.views import IdcViewSet, ServerGroupViewSet, CloudServerViewSet, PhysicsServerViewSet, VmServerViewSet, CloudServerCreateHostView
 
 # 导入drf路由
 from rest_framework import routers
@@ -16,5 +16,5 @@ router.register('vm_server',VmServerViewSet, basename="vm_server")
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('physics_server_ssh/', PhysicsServerSshConnView.as_view()),   # 配置主机同步接口
+    path('cloud_server_create_host/', CloudServerCreateHostView.as_view()), # 配置新建主机数据采集同步接口
 ]

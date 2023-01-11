@@ -57,9 +57,8 @@ class UserList(APIView):
 
         user_list = User.objects.get(username=username)
         result = {
-            "username": user_list.username,
-            "email": user_list.email,
+            'username': user_list.username,
+            'email': user_list.email,
         }
-        json_data = json.dumps(result)
-        res = {'code': 200, 'msg': '获取用户成功', 'data': json_data}
+        res = {'code': 200, 'msg': '获取用户成功', 'data': result}
         return Response(res)

@@ -1,7 +1,7 @@
 <template>
   <!--操作栏：编辑对话框-->
   <el-dialog :model-value="visible" @close="dialogClose" width="30%">
-   <!--标题-->
+    <!--标题-->
     <template #header>
       <div style="font-size:18px; color:#409eff; font-weight:bold;">修改凭据信息</div>
     </template>
