@@ -165,3 +165,6 @@ CORS_ALLOW_CREDENTIALS = True
 
 # ssh远程存储目录
 CLIENT_COLLECT_DIR = "/tmp/"
+
+# windows ssh远程存储目录
+CLIENT_COLLECT_WIN_DIR = "C:\\Users\\admin\\Desktop\\"

@@ -46,7 +46,7 @@ class AliCloud():
         except Exception as e:
             return {'code': 500, 'msg': e.get_error_msg()}
 
-    # 实例
+    # 实例信息数据查询
     def instance_list(self, region_id):
         client = AcsClient(self.secret_id, self.secret_key)
         req = DescribeInstancesRequest()
@@ -58,10 +58,11 @@ class AliCloud():
         except Exception as e:
             return {'code': 500, 'msg': e.get_error_msg()}
 
-    # 实例关联的硬盘
-    def instance_disk(self,instance_id):
+    # 实例关联的硬盘数据查询
+    def instance_disk(self,region_id, instance_id,):
         client = AcsClient(self.secret_id, self.secret_key)
         req = DescribeDisksRequest()
+        req.add_query_param('RegionId',region_id)
         req.add_query_param('InstanceId',instance_id)
         try:
             res = client.do_action_with_exception(req)
@@ -72,10 +73,10 @@ class AliCloud():
 
 
 if __name__ == '__main__':
-    cloud = AliCloud('xxxxx', 'xxxxx')
-    result = cloud.region_list()
-    result = cloud.zone_list('cn-chengdu')
-    result = cloud.instance_list('cn-chengdu')
-    result = cloud.instance_disk('i-2vca412cljeu1qux48a2')
+    cloud = AliCloud('ID', 'key')
+    # result = cloud.region_list()
+    # result = cloud.zone_list('cn-chengdu')
+    # result = cloud.instance_list('cn-chengdu')
+    result = cloud.instance_disk('cn-chengdu','i-2vcbu28dm39lz6s1cygk')
 
     print(result)

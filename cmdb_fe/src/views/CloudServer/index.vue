@@ -34,11 +34,11 @@
                 <el-icon color="#409EFC" :size="20"><Edit /></el-icon>
                 新建单台主机
               </el-dropdown-item>
-              <el-dropdown-item>
+              <el-dropdown-item @click="handelCloudServerCreateExcel">
                 <el-icon color="#409EFC" :size="20"><Folder /></el-icon>
                 Excel
               </el-dropdown-item>
-              <el-dropdown-item @click="cloudDialogVisible = true">
+              <el-dropdown-item @click="handelCloudServerCreateCloud">
                 <el-icon color="#409EFC" :size="21"><MostlyCloudy /></el-icon>
                 云主机
               </el-dropdown-item>
@@ -90,8 +90,8 @@
         <!--修改一对多idc机房-->
         <el-table-column prop="idc" label="IDC机房" width="160" sortable v-if="showColumn.idc">
           <template #default="scope">
-            <img src="../../assets/img/aliyun.png" style="width: 18px; height: 18px" v-if="showColumn.idc.provider == '阿里云'" />
-            <img src="../../assets/img/tencend.png" style="width: 18px; height: 18px" v-if="showColumn.idc.provider == '腾讯云'" />
+            <img src="../../assets/img/aliyun.png" style="width: 18px; height: 18px" v-if="scope.row.idc.provider == '阿里云'" />
+            <img src="../../assets/img/tencend.png" style="width: 18px; height: 18px" v-else-if="scope.row.idc.provider == '腾讯云'" />
             <el-icon :size="18" color="#409EFC" v-else><office-building /></el-icon>
             {{ scope.row.idc.city }}-{{ scope.row.idc.name }}
           </template>
@@ -132,7 +132,7 @@
         <el-table-column prop="cpu_num" label="CPU"  width="120" sortable  v-if="showColumn.cpu_num" />
         <el-table-column prop="memory" label="内存" width="120" sortable v-if="showColumn.memory" />
         <!--由于后端model修改为json存储，再次通过提取字段内嵌表格方式展示-->
-        <el-table-column prop="disk" label="硬盘" width="200" sortable v-if="showColumn.disk">
+        <el-table-column prop="disk" label="硬盘" width="260" sortable v-if="showColumn.disk">
           <template #default="scope">
             <table style="background: #ebeef5; width: 100%" v-if="scope.row.disk">
               <!--表格背景设置灰色，表格内默认白色-->
@@ -195,18 +195,24 @@
   <!--使用子组件-->
   <CloudServerEdit v-model:visible="dialogCloudServerEdit" :row="row"></CloudServerEdit>
   <CloudServerCreate v-model:visible="dialogCloudServerCreate"></CloudServerCreate>
+  <CloudServerCreateExcel v-model:visible="dialogCloudServerCreateExcel" ></CloudServerCreateExcel>
+  <CloudServerCreateCloud v-model:visible="dialogCloudServerCreateCloud" ></CloudServerCreateCloud>
 </template>
 
 <script>
 // 导入子组件CloudServer编辑
 import CloudServerEdit from './CloudServerEdit.vue'
 import CloudServerCreate from './CloudServerCreate.vue'
+import CloudServerCreateExcel from './CloudServerCreateExcel'
+import CloudServerCreateCloud from './CloudServerCreateCloud'
 export default {
   name: 'CloudServer',
   // 引用子组件
   components: {
     CloudServerEdit,
-    CloudServerCreate
+    CloudServerCreate,
+    CloudServerCreateExcel,
+    CloudServerCreateCloud
   },
   data() {
     return {
@@ -229,6 +235,12 @@ export default {
 
       // ============================== 创建 ===================
       dialogCloudServerCreate: false,
+      
+      // ============================== Excel导入 ===================
+      dialogCloudServerCreateExcel: false,
+
+      // ============================== 云导入 ===================
+      dialogCloudServerCreateCloud: false,
 
       // ============================== 展示列 ==================
       columnVisible: false, // 可展示列显示与隐藏
@@ -293,11 +305,21 @@ export default {
       // 重新赋值允许打开编辑弹出框
       this.dialogCloudServerCreate = true
     },
+    
+    // excel导入主机
+    handelCloudServerCreateExcel() {
+      // 重新赋值允许打开创建弹出框
+      this.dialogCloudServerCreateExcel = true
+    },
     // 编辑进行数据重新赋值
     handelCloudServerEdit(index, row) {
       // 重新赋值允许打开编辑弹出框
       this.dialogCloudServerEdit = true
       this.row = row
+    },
+    handelCloudServerCreateCloud() {
+    // 重新赋值允许打开导入对话框
+      this.dialogCloudServerCreateCloud = true
     },
     // 删除单条数据
     handelCloudServerDelete(index,row) {

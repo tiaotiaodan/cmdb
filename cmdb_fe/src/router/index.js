@@ -61,7 +61,7 @@ const routes = [
   {
     path: '/config',
     name: '系统配置',
-    icon: 'Grid',
+    icon: 'Setting',
     component: LayoutView,
     children: [
       {
