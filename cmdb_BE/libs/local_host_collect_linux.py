@@ -132,15 +132,14 @@ class GetData():
         return disk
     def network(self):
         nic_prefix = ['eth', 'en', 'em'] # 常见网卡名前缀
-        network_list = []
         with open("/proc/net/dev") as f:
             for s in f.readlines():
                 name = s.split(':')[0].strip()
                 for p in nic_prefix:
                     if name.startswith(p):
                         result = os.popen("ethtool %s | awk '/Speed/ {print $2}'|awk -F'b' '{print $1}'" %name)
-                        network_list.append({'device': '%s' %name, 'size': result.read().strip()})
-        return network_list
+                        result = result.read().strip()
+                        return result
 
     def get_all(self):
         """
@@ -148,9 +147,8 @@ class GetData():
         """
         self.result = {
             "hostname": self.hostname(),
-            "machine_type": self.machine_type(),
             "os_version": self.os_version(),
-            # "public_ip": self.public_ip(),
+            "public_ip": self.public_ip(),
             "private_ip": self.private_ip(),
             "cpu_num": self.cpu_num(),
             "cpu_model": self.cpu_model(),

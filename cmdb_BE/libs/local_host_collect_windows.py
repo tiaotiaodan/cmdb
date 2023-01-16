@@ -52,11 +52,13 @@ class WinTest():
     def disk(self):
         disk_list = []
         # 获取磁盘信息for disk in w.Win32_DiskDrive():
-        for disk in w.Win32_DiskDrive():
-            diskname = disk.Caption
-            diskSize = int(disk.size)
-            disksize = "%dGB" % (diskSize / 1024 ** 3)
-            disk_list.append({'device': diskname, 'size': disksize, 'type': 'None' })
+        for physical_disk in w.Win32_DiskDrive():
+            for partition in physical_disk.associators("Win32_DiskDriveToDiskPartition"):
+                for logical_disk in partition.associators("Win32_LogicalDiskToPartition"):
+                    diskname = logical_disk.Caption[:1],
+                    disksize = ("%dGB" %(int(logical_disk.Size) / (1024 **3)))
+                    disk_list.append({'device': diskname, 'size': disksize, 'type': 'None'})
+
         return disk_list
 
     def hostname(self):
@@ -66,9 +68,8 @@ class WinTest():
 
     def private_ip(self):
         ip_list = []
-        hostname = socket.gethostname()
-        ip = socket.gethostbyname(hostname)
-        ip_list.append(ip)
+        for interface in w.Win32_NetworkAdapterConfiguration(IPEnabled='TRUE'):
+            ip_list.append(interface.IPAddress[0])
         return ip_list
 
     def public_ip(self):
@@ -89,13 +90,21 @@ class WinTest():
         else:
             ip_list.append('%s' %ip)
             return ip_list
+    def network_out(self):
+        # 获取最大带宽
+        for interface in w.Win32_NetworkAdapterConfiguration():
+            index = int(interface.InterfaceIndex)
+            for i in w.Win32_NetworkAdapter(Index=index):
+                if (i.Speed):
+                    network= ("%dM" % (int(i.Speed) / (1000 * 100)))
+                    return network
 
-    # 系统启动时间
-    def system_up_time(self):
-         with open("/proc/uptime") as f:
-            s = f.read().split(".")[0]  # 启动有多少秒
-         up_time = datetime.now() - timedelta(seconds=float(s))  # 当前时间减去启动秒
-         return date.strftime(up_time, '%Y-%m-%d')
+    # # 系统启动时间
+    # def system_up_time(self):
+    #      with open("/proc/uptime") as f:
+    #         s = f.read().split(".")[0]  # 启动有多少秒
+    #      up_time = datetime.now() - timedelta(seconds=float(s))  # 当前时间减去启动秒
+    #      return date.strftime(up_time, '%Y-%m-%d')
 
 
     def get_all(self):
@@ -110,6 +119,7 @@ class WinTest():
             "cpu_num": self.cpu_num(),
             "cpu_model": self.cpu_model(),
             "memory": self.memory(),
+            "network": self.network_out(),
             "disk": self.disk(),
             #"put_shelves_date": self.system_up_time(),  # 上架时间默认设置系统启动时间
         }

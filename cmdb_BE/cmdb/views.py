@@ -435,6 +435,7 @@ class AliyunCloudView(APIView):
             instance_name = host['InstanceName']   # 机器名称
             os_version = host['OSName']         # 系统版本
             machine_type = host['OSType']       # 获取机器类型
+            network_out = "%sM" %host['InternetMaxBandwidthOut']  # 获取云服务器带宽
 
             # 获取私有IP
             private_ip_list =  host['NetworkInterfaces']['NetworkInterface'][0]['PrivateIpSets']['PrivateIpSet']
@@ -481,6 +482,7 @@ class AliyunCloudView(APIView):
                     'os_version': os_version,
                     'public_ip': public_ip,
                     'private_ip': private_ip,
+                    'network': network_out,
                     'cpu_num': cpu,
                     'memory': memory,
                     'disk': disk,

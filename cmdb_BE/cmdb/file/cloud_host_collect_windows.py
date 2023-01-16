@@ -46,11 +46,12 @@ class WinTest():
         disk_list = []
         # 获取磁盘信息for disk in w.Win32_DiskDrive():
         for disk in w.Win32_DiskDrive():
-            diskname = disk.Caption
-            diskname = diskname[:10]
-            diskSize = int(disk.size)
-            disksize = "%dGB" % (diskSize / 1024 ** 3)
-            disk_list.append({'device': diskname, 'size': disksize, 'type': 'None' })
+            for diskpartition in disk.associators("Win32_DiskDriveToDiskPartition"):
+                for logical_disk in diskpartition("Win32_DiskDriveToDiskPartition"):
+                    diskname = logical_disk.Caption[:1]
+                    diskSize = int(logical_disk.size)
+                    disksize = "%dGB" % (diskSize / 1024 ** 3)
+                    disk_list.append({'device': diskname, 'size': disksize, 'type': 'None'})
         return disk_list
 
     def hostname(self):
@@ -60,9 +61,8 @@ class WinTest():
 
     def private_ip(self):
         ip_list = []
-        hostname = socket.gethostname()
-        ip = socket.gethostbyname(hostname)
-        ip_list.append(ip)
+        for interface in w.Win32_NetworkAdapterConfiguration(IPEnabled='TRUE'):
+            ip_list.append(interface.IPAddress[0])
         return ip_list
 
     def public_ip(self):
