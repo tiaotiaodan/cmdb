@@ -4,16 +4,29 @@
     <div style="margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between">
       <div>
         <el-row>
-          <el-col :span="22">
+          <el-col :span="7">
             <!--
               v-model="urlParams.search" 是绑定搜索的数据
               @keyup.enter="onSearch"  是输入完后，使用回车键进行快捷搜索
               clearable   属性即可得到一个可一键清空的输入框
               @clear="onSearch"   搜索框进行清空数据回调函数
             -->
-            <el-input v-model="urlParams.search" placeholder="请输入关键字" @keyup.enter="onSearch" clearable @clear="onSearch" class="search" />
+            <el-input v-model="urlParams.search" placeholder="搜索名称, 主机名, IP" @keyup.enter="onSearch" clearable @clear="onSearch" class="search" />
           </el-col>
-          <el-col :span="1" style="margin-left: 5px">
+          <!--选择IDC-->
+          <el-col :span="7">
+            <el-select v-model="urlParams.idc" class="m-2" @click="getIdc" clearable @clear="onSearch" placeholder="IDC机房">
+              <el-option v-for="row in idc" :key="row.id" :label="row.name" :value="row.id"></el-option>
+            </el-select>
+          </el-col>
+          <!--选择分组-->
+          <el-col :span="7">
+            <el-select v-model="urlParams.server_group" class="m-2" @click="getServerGroup" clearable @clear="onSearch" placeholder="主机分组">
+              <el-option v-for="row in serverGroup" :key="row.id" :label="row.name" :value="row.id"></el-option>
+            </el-select>
+          </el-col>
+
+          <el-col :span="2" style="margin-left: 5px">
             <el-button type="primary" @click="onSearch">
               <el-icon><search /></el-icon>
               &nbsp;搜索
@@ -129,8 +142,8 @@
             <el-tag type="info" v-for="(ip, index) in scope.row.private_ip" :key="index">{{ ip }}</el-tag>
           </template>
         </el-table-column>
-        <el-table-column prop="cpu_num" label="CPU"  width="120" sortable  v-if="showColumn.cpu_num" />
-        <el-table-column prop="memory" label="内存" width="120" sortable v-if="showColumn.memory" />
+        <el-table-column prop="cpu_num" label="CPU"  width="80" sortable  v-if="showColumn.cpu_num" />
+        <el-table-column prop="memory" label="内存" width="80" sortable v-if="showColumn.memory" />
         <!--由于后端model修改为json存储，再次通过提取字段内嵌表格方式展示-->
         <el-table-column prop="disk" label="硬盘" width="260" sortable v-if="showColumn.disk">
           <template #default="scope">
@@ -154,7 +167,7 @@
             <span v-else>{{ scope.row.disk }}</span>
           </template>
         </el-table-column>
-        <el-table-column prop="network" label="带宽"  width="120" sortable v-if="showColumn.network" />
+        <el-table-column prop="network" label="带宽"  width="80" sortable v-if="showColumn.network" />
         <el-table-column prop="put_shelves_date" label="上架时间" width="120" sortable v-if="showColumn.put_shelves_date" />
         <el-table-column prop="off_shelves_date" label="下架时间" width="120" sortable v-if="showColumn.off_shelves_date"  />
         <el-table-column prop="expire_datetime" label="租约过期时间" width="160" sortable v-if="showColumn.expire_datetime" />
@@ -170,11 +183,14 @@
         <el-table-column prop="update_time" label="更新时间" width="160" sortable v-if="showColumn.update_time" />
         <el-table-column prop="create_time" label="创建时间" width="160" sortable v-if="showColumn.create_time" />
         <!--操作栏-->
-        <el-table-column label="操作栏" fixed="right" width="100">
+        <el-table-column label="操作栏" fixed="right" width="140">
           <!--定义获取行内数据参数-->
           <template #default="scope">
             <!--通过回调函数获取行内数据-->
             <!-- 编辑按钮 -->
+             <el-button type="success" size="small" circle @click="handelCloudServerSync(scope.$index, scope.row)">
+              <el-icon><Refresh /></el-icon>
+            </el-button>
             <el-button type="primary" size="small" circle @click="handelCloudServerEdit(scope.$index, scope.row)">
               <el-icon><Edit /></el-icon>
             </el-button>
@@ -197,6 +213,7 @@
   <CloudServerCreate v-model:visible="dialogCloudServerCreate"></CloudServerCreate>
   <CloudServerCreateExcel v-model:visible="dialogCloudServerCreateExcel" ></CloudServerCreateExcel>
   <CloudServerCreateCloud v-model:visible="dialogCloudServerCreateCloud" ></CloudServerCreateCloud>
+  <CloudServerSync v-model:visible="dialogCloudServerSync" :row="row" ></CloudServerSync>
 </template>
 
 <script>
@@ -205,6 +222,8 @@ import CloudServerEdit from './CloudServerEdit.vue'
 import CloudServerCreate from './CloudServerCreate.vue'
 import CloudServerCreateExcel from './CloudServerCreateExcel'
 import CloudServerCreateCloud from './CloudServerCreateCloud'
+import CloudServerSync from './CloudServerSync'
+
 export default {
   name: 'CloudServer',
   // 引用子组件
@@ -212,7 +231,8 @@ export default {
     CloudServerEdit,
     CloudServerCreate,
     CloudServerCreateExcel,
-    CloudServerCreateCloud
+    CloudServerCreateCloud,
+    CloudServerSync
   },
   data() {
     return {
@@ -226,9 +246,12 @@ export default {
         // URL查询参数，传递服务端，放这里方便修改值
         page_num: 1,
         page_size: 10,
-        search: ''
+        search: '',
+        idc: '',
+        server_group: ''
       },
-
+      idc: '',
+      serverGroup: '',
       // =============================== 编辑配置 ===============
       dialogCloudServerEdit: false,
       row: '',
@@ -241,6 +264,9 @@ export default {
 
       // ============================== 云导入 ===================
       dialogCloudServerCreateCloud: false,
+
+      // ============================== 同步 ===================
+      dialogCloudServerSync: false,
 
       // ============================== 展示列 ==================
       columnVisible: false, // 可展示列显示与隐藏
@@ -282,6 +308,12 @@ export default {
   // 请求方法
   methods: {
     getallCloudServer() {
+      if (!this.urlParams.idc) {
+        delete this.urlParams.idc
+      }
+      if (!this.urlParams.server_group) {
+        delete this.urlParams.server_group
+      }
       this.$http.get('cmdb/cloud_server/', { params: this.urlParams }).then(res => {
         if (res.data.code == 200) {
           // 把获取数据重新赋值到表格
@@ -320,6 +352,24 @@ export default {
     handelCloudServerCreateCloud() {
     // 重新赋值允许打开导入对话框
       this.dialogCloudServerCreateCloud = true
+    },
+    handelCloudServerSync(index, row) {
+      // 如果主机有凭据直接同步
+      if(row.credential) {
+        this.$http
+          .get('cmdb/cloud_server_host_collect/', {params: {'hostname': row.hostname}})
+          .then(res => {
+            if(res.data.code == 200) {
+              this.$message.success('同步成功')
+              this.getallCloudServer()
+            }
+          })
+      } else {
+        // 重新赋值允许打开同步弹出框
+        this.dialogCloudServerSync = true
+        this.row = row
+      }
+      
     },
     // 删除单条数据
     handelCloudServerDelete(index,row) {
@@ -363,6 +413,18 @@ export default {
       this.currentPage = currentPage // 重新设置分页显示
       this.urlParams.page_num = currentPage
       this.getallCloudServer()
+    },
+    getIdc() {
+      this.$http.get('cmdb/idc/?page_size=100')
+        .then(res => {
+            this.idc = res.data.data;
+        })
+    },
+    getServerGroup() {
+      this.$http.get('cmdb/server_group/?page_size=100')
+        .then(res => {
+          this.serverGroup = res.data.data;
+        });
     }
   }
 }

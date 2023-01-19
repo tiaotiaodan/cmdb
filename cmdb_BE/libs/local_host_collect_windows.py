@@ -32,7 +32,7 @@ class WinTest():
         # 获取电脑CPU信息for processor in w.Win32_Processor():
         for processor in w.Win32_Processor():
             # return processor)
-            cpunucleus = processor.NumberOfCores
+            cpunucleus = ("%s核" %processor.NumberOfCores)
         return cpunucleus
 
     def cpu_model(self):
@@ -57,7 +57,7 @@ class WinTest():
                 for logical_disk in partition.associators("Win32_LogicalDiskToPartition"):
                     diskname = logical_disk.Caption[:1],
                     disksize = ("%dGB" %(int(logical_disk.Size) / (1024 **3)))
-                    disk_list.append({'device': diskname, 'size': disksize, 'type': 'None'})
+                    disk_list.append({'device': diskname[0], 'size': disksize, 'type': 'None'})
 
         return disk_list
 
@@ -99,13 +99,6 @@ class WinTest():
                     network= ("%dM" % (int(i.Speed) / (1000 * 100)))
                     return network
 
-    # # 系统启动时间
-    # def system_up_time(self):
-    #      with open("/proc/uptime") as f:
-    #         s = f.read().split(".")[0]  # 启动有多少秒
-    #      up_time = datetime.now() - timedelta(seconds=float(s))  # 当前时间减去启动秒
-    #      return date.strftime(up_time, '%Y-%m-%d')
-
 
     def get_all(self):
         """
@@ -121,7 +114,6 @@ class WinTest():
             "memory": self.memory(),
             "network": self.network_out(),
             "disk": self.disk(),
-            #"put_shelves_date": self.system_up_time(),  # 上架时间默认设置系统启动时间
         }
         json_data = json.dumps(self.result)
         return json_data

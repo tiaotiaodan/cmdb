@@ -31,7 +31,7 @@ class ServerGroup(models.Model):
     def __str__(self):
         return self.name
 
-class Cloud_Server(models.Model):
+class CloudServer(models.Model):
     idc = models.ForeignKey(Idc, on_delete=models.PROTECT, verbose_name="IDC机房")            # 一对多
     server_group = models.ManyToManyField(ServerGroup, default="Default", verbose_name="主机分组")    # 多对多
     credential = models.ForeignKey(Credential, on_delete=models.PROTECT, blank=True, null=True, verbose_name="凭据")   # 一对多
@@ -64,7 +64,7 @@ class Cloud_Server(models.Model):
         return self.hostname
 
 
-class Physics_Server(models.Model):
+class PhysicsServer(models.Model):
     idc = models.ForeignKey(Idc, on_delete=models.PROTECT, verbose_name="IDC机房")            # 一对多
     server_group = models.ManyToManyField(ServerGroup, default="Default", verbose_name="主机分组")    # 多对多
     credential = models.ForeignKey(Credential, on_delete=models.PROTECT, blank=True, null=True, verbose_name="凭据")   # 一对多
@@ -73,9 +73,9 @@ class Physics_Server(models.Model):
     ssh_ip = models.GenericIPAddressField(verbose_name="远程连接IP")
     ssh_port = models.IntegerField(verbose_name="远程连接端口")
     note = models.TextField(blank=True, null=True, verbose_name="备注")
-    machine_type = models.CharField(max_length=30, blank=True, choices=(('windows','windows'),('linux','linux')), default='linux', verbose_name="机器类型")
-    os_version = models.CharField(max_length=50, blank=True, null=True, verbose_name="系统版本")
+    machine_type = models.CharField(max_length=30, blank=True, choices=(('windows','windows'),('linux','linux'),('vmware','vmware')), default='linux', verbose_name="机器类型")
     asset_code = models.CharField(max_length=50, blank=True, null=True, verbose_name="资产编码")
+    os_version = models.CharField(max_length=50, blank=True, null=True, verbose_name="系统版本")
     public_ip = models.JSONField(max_length=100, blank=True, null=True, verbose_name="公网IP")
     private_ip = models.JSONField(max_length=100, blank=True, null=True, verbose_name="内网IP")
     cpu_num = models.CharField(max_length=10, blank=True, null=True, verbose_name="CPU")
@@ -97,11 +97,11 @@ class Physics_Server(models.Model):
     def __str__(self):
         return self.hostname
 
-class Vm_Server(models.Model):
+class VmServer(models.Model):
     idc = models.ForeignKey(Idc, on_delete=models.PROTECT, verbose_name="IDC机房")            # 一对多
     server_group = models.ManyToManyField(ServerGroup, default="Default", verbose_name="主机分组")    # 多对多
     credential = models.ForeignKey(Credential, on_delete=models.PROTECT, blank=True, null=True, verbose_name="凭据")   # 一对多
-    vm_host = models.ForeignKey(Physics_Server, on_delete=models.PROTECT, verbose_name="虚拟主机")  # 一对多
+    vm_host = models.ForeignKey(PhysicsServer, on_delete=models.PROTECT, verbose_name="虚拟主机")  # 一对多
     name = models.CharField(max_length=30, blank=True, verbose_name="名称")
     hostname = models.CharField(max_length=30, unique=True, verbose_name="主机名")
     ssh_ip = models.GenericIPAddressField(verbose_name="远程连接IP")

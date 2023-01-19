@@ -28,7 +28,7 @@
             <el-menu-item v-if="menu.path == '/'" :index="menu.children[0].path">
               <!--字体图标-->
               <el-icon>
-                <component :is="menu.children[0].icon"></component>
+                <component :is="menu.children[0].icon" color="#79bbff"></component>
               </el-icon>
               <span>{{ menu.children[0].name }}</span>
             </el-menu-item>
@@ -36,7 +36,7 @@
             <el-sub-menu v-else-if="menu.children" :index="menu.path">
               <template #title>
                 <!--字体图标-->
-                <el-icon><component :is="menu.icon"></component></el-icon>
+                <el-icon><component :is="menu.icon" color="#79bbff"></component></el-icon>
                 <span>{{ menu.name }}</span>
               </template>
               <!--循环二级菜单-->

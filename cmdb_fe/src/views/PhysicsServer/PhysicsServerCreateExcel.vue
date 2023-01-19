@@ -2,7 +2,7 @@
   <el-dialog :model-value="visible" width="30%" @close="dialogClose">
     <!--标题-->
     <template #header>
-      <div style="font-size: 18px; color: #409eff; font-weight: bold">云主机Excel导入</div>
+      <div style="font-size: 18px; color: #409eff; font-weight: bold">物理主机Excel导入</div>
     </template>
     <el-form :model="form" ref="formRef" :rules="formRules" label-width="100px">
       <el-form-item label="模板下载：">
@@ -42,7 +42,7 @@
 <script>
 import { expotOut } from '../../api/export.js' 
 export default {
-  name: 'IdcCreate',
+  name: 'PhysicsServerCreate',
   props: {
     visible: Boolean
   },
@@ -67,11 +67,11 @@ export default {
           fd.append('idc', this.form.idc)
           fd.append('server_group', this.form.server_group)
           this.$http
-          .post('cmdb/cloud_server_excel_create_host/', fd)
+          .post('cmdb/physics_server_excel_create_host/', fd)
           .then(res => {
             if (res.data.code == 200) {
               this.$message.success('创建成功')
-              this.$parent.getallCloudServer() // 调用父组件方法，获取所有数据
+              this.$parent.getallPhysicsServer() // 调用父组件方法，获取所有数据
               this.dialogClose() // 关闭窗口
               this.$refs.formRef.resetFields() // 清空表单数据
             }
@@ -83,7 +83,7 @@ export default {
     },
     // 导出文件调用
     outFile() {
-      expotOut(this.query, 'userList', '云主机信息模板', 'cmdb/cloud_server_excel_create_host/')
+      expotOut(this.query, 'userList', '物理主机信息模板', 'cmdb/physics_server_excel_create_host/')
     },
     // 点击关闭，子组件通知父组件更新属性
     dialogClose() {

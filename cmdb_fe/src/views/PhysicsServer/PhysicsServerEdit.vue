@@ -3,7 +3,7 @@
   <el-dialog :model-value="visible" @close="dialogClose" width="35%">
     <!--标题-->
     <template #header>
-      <div style="font-size: 18px; color: #409eff; font-weight: bold">修改云主机信息</div>
+      <div style="font-size: 18px; color: #409eff; font-weight: bold">修改物理主机信息</div>
     </template>
 
     <el-form :model="row" ref="formRef" :rules="formRules" label-width="160px">
@@ -29,9 +29,12 @@
         <el-select v-model="row.machine_type" placeholder="请选择机器类型" style="width:100%;">
           <el-option label="linux" value="linux" />
           <el-option label="windows" value="windows" />
+          <el-option label="vmware" value="vmware" />
         </el-select>
       </el-form-item>
-
+      <el-form-item label="资产编码：" prop="asset_code">
+        <el-input v-model="row.asset_code"></el-input>
+      </el-form-item>
       <!--配置ssh连接显示格式配置-->
       <!--配置ssh连接显示格式配置-->
       <el-form-item label="SSH 连接：" required>
@@ -53,7 +56,7 @@
           </el-col>
           <el-tag class="ml-2" type="warning">
           <el-icon><InfoFilled /></el-icon>
-          linux和windows端口默认填写为22, 由于windows连接走openssh
+          linux和windows端口默认填写为22，vmware填写管理页面端口443
           </el-tag>
       </el-form-item>
       <el-form-item label="SSH凭据：" prop="credential">
@@ -93,9 +96,6 @@
         <el-form-item label="下架日期：">
           <el-date-picker v-model="row.off_shelves_date" type="date" value-format="YYYY-MM-DD" placeholder="请选择日期" style="width:100%;"></el-date-picker>
         </el-form-item>
-        <el-form-item label="租约过期时间：">
-          <el-date-picker v-model="row.expire_datetime" type="datetime" value-format="YYYY-MM-DD HH:mm:ss" placeholder="请选择时间" style="width:100%;"></el-date-picker>
-        </el-form-item>
         <el-form-item label="备注：">
           <el-input v-model="row.note" type="textarea"></el-input>
         </el-form-item>
@@ -113,7 +113,7 @@
 
 <script>
 export default {
-  name: 'CloudServerEdit',
+  name: 'PhysicsServerEdit',
   // 介绍父组件的值
   props: {
     visible: Boolean, // 获取dialog是否打开变量
@@ -138,6 +138,10 @@ export default {
         server_group: [{ required: true, message: '请选择主机分组', trigger: 'change' }],
         hostname: [{ required: true, message: '请输入hostname主机名', trigger: 'change' }],
         machine_type: [{ required: true, message: '请选择主机类型', trigger: 'change' }],
+        asset_code: [
+          { required: true, message: '请输入固定资产编码', trigger: 'blur' },
+          { pattern: /^[A-Za-z0-9]\w*$/, message: '请输入大小写和数字', trigger: 'blur' }
+        ],
         credential: [{ required: true, message: '请选择SSH凭据', trigger: 'change' }],
       }
     }
@@ -147,7 +151,7 @@ export default {
     dialogClose() {
       this.$emit('update:visible', false) // 父组件必须使用 v-model
       this.serverDetalVisible = false // 点击取消和x掉关闭，把详情设置为false关闭状态
-      this.$parent.getallCloudServer() // 点击取消和x掉关闭，进行重新获取数据
+      this.$parent.getallPhysicsServer() // 点击取消和x掉关闭，进行重新获取数据
     },
     // 获取idc机房信息
     getIdc() {
@@ -172,18 +176,18 @@ export default {
       // 验证表单是否通过
       this.$refs.formRef.validate(valid => {
         if (valid) {
-          this.$http.put('cmdb/cloud_server/' + this.row.id + '/', this.row).then(res => {
+          this.$http.put('cmdb/physics_server/' + this.row.id + '/', this.row).then(res => {
             if (res.data.code == 200) {
               // 反馈请求接口情况
               this.$message.success('修改数据成功')
               // 关闭弹出窗口
               this.dialogClose()
               // 调用父组件方法，更新数据
-              this.$parent.getallCloudServer() 
+              this.$parent.getallPhysicsServer() 
             }
           })
         } else {
-          console.log('格式错误')
+          this.$message.warning('格式错误')
         }
       })
     },
@@ -199,7 +203,7 @@ export default {
     visible() {
       if (this.visible) {
         // 关闭窗口不请求
-        this.$http.get('cmdb/cloud_server/' + this.row.id + '/').then(res => {
+        this.$http.get('cmdb/physics_server/' + this.row.id + '/').then(res => {
           if (res.data.code == 200) {
             // IDC机房：从对象中提取ID字段重新赋值
             this.row.idc = res.data.data.idc.id

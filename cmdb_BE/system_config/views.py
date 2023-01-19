@@ -13,7 +13,8 @@ from system_config.serializers import CredentialSerializer
 # 导入过滤、搜索和排序插件
 from rest_framework import filters
 from django_filters.rest_framework import DjangoFilterBackend
-
+# 导入drf返回 Response模块
+from rest_framework.response import Response
 
 class CredentialViewSet(CustomModelViewSet):
     queryset = Credential.objects.all()      # 导入模型类所有数据
@@ -28,3 +29,12 @@ class CredentialViewSet(CustomModelViewSet):
     # 排序
     # 注意 filter_backends多了一个filters.OrderingFilter
     ordering_fields = ["id", "name"]
+
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        try:
+            self.perform_destroy(instance)
+            res = {'code': 200, 'msg': '删除成功'}
+        except Exception as e:
+            res = {'code': 500, 'msg': '该凭据管理关联其他应用，请删除关联的应用再操作'}
+        return Response(res)

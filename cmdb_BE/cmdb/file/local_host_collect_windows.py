@@ -35,6 +35,13 @@ class WinTest():
             cpunucleus = ("%s核" %processor.NumberOfCores)
         return cpunucleus
 
+    def cpu_model(self):
+        # 获取电脑CPU信息for processor in w.Win32_Processor():
+        for processor in w.Win32_Processor():
+            # return processor)
+            cpu = processor.Name.strip()
+        return cpu
+
     def memory(self):
         # 获取内存信息for memModule in w.Win32_PhysicalMemory():
         for memModule in w.Win32_PhysicalMemory():
@@ -81,8 +88,17 @@ class WinTest():
             ip.append(ip)
             return ip_list
         else:
-            ip_list.append('%s' %ip)
+            ip_list.append('%s (NAT)' %ip)
             return ip_list
+    def network_out(self):
+        # 获取最大带宽
+        for interface in w.Win32_NetworkAdapterConfiguration():
+            index = int(interface.InterfaceIndex)
+            for i in w.Win32_NetworkAdapter(Index=index):
+                if (i.Speed):
+                    network= ("%dM" % (int(i.Speed) / (1000 * 100)))
+                    return network
+
 
     def get_all(self):
         """
@@ -94,7 +110,9 @@ class WinTest():
             "public_ip": self.public_ip(),
             "private_ip": self.private_ip(),
             "cpu_num": self.cpu_num(),
+            "cpu_model": self.cpu_model(),
             "memory": self.memory(),
+            "network": self.network_out(),
             "disk": self.disk(),
         }
         json_data = json.dumps(self.result)

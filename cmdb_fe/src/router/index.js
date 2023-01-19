@@ -28,7 +28,7 @@ const routes = [
   {
     path: '/host',
     name: '主机管理',
-    icon: 'Menu',
+    icon: 'Platform',
     component: LayoutView,
     children: [
       {
@@ -53,7 +53,7 @@ const routes = [
       },
       {
         path: '/host/vm_server',
-        name: '虚拟主机管理',
+        name: '虚拟机管理',
         component: () => import('../views/VmServer/index.vue')
       }
     ]
