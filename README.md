@@ -20,3 +20,12 @@ python3.8.4开发cmdb系统
 
 #### cmdb说明
 本次开发的cmdb，实现阿里云和腾讯云通过api，excel文件导入，单台主机创建公共，并实现windows、linux、vmware进行数据采集同步
+
+
+
+#### cmdb注意事项
+
+1. 在windows采集同步方面需要在windows机器客户端进行安装openssh、winrm、python工具，并需要开启允许openssh和winrm远程连接和远程文件传输端口功能
+2. 需设置openssh设置端口为默认22端口
+3. winrm开启端口设置默认为5985端口，
+4. 修改了openssh端口和winrm端口，请对应修改代码配置端口设置
