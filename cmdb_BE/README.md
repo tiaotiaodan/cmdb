@@ -174,7 +174,7 @@
     # 指定sock的文件路径
     socket = /opt/cmdb/uwsgi/uwsgi.sock
     # 指定监听端口
-    # http = 0.0.0.0:8080
+    # http = 0.0.0.0:8000
     
     # 静态资源
     static-map = /static=/opt/cmdb/static
