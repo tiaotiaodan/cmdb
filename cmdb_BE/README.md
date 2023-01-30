@@ -66,14 +66,14 @@
   - 修改数据库驱动或配置
 
     ```python
-    # devops_api/__init__.py
+    # devops_BE/__init__.py
     import pymysql
     pymysql.install_as_MySQLdb()
     
     ```
 
     ```python
-    # vi devops_api/settings.py
+    # vi devops_BE/settings.py
     
     DATABASES = {
         'default': {
