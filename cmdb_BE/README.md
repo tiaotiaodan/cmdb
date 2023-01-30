@@ -6,8 +6,6 @@
 
 - 部署架构
 
-  ![image-20221018160823150](img/image-20221018160823150.png)
-
   Nginx 前端Web服务，接收到动态请求通过uwsgi模块将请求转发给uwsgi服务器，uwsgi服务器通过django处理完后返回给Nginx，Nginx返回用户浏览器展示。
 
    
@@ -121,7 +119,7 @@
     docker run -d --name db -p 3306:3306 -v mysqldata:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7 --character-set-server=utf8
     
     docker exec -it db bash
-    root@e2eff2d75dd2:/# mysql -uroot -p$MYSQL_ROOT_PASSWORD -e "create database devops_cmdb;"
+    root@e2eff2d75dd2:/# mysql -uroot -p$MYSQL_ROOT_PASSWORD -e "create database cmdb;"
     
     ```
 
