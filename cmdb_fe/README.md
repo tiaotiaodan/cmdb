@@ -4,6 +4,17 @@
 
 ### 1. 线上部署-前端
 
+- 修改前端api请求后端接口地址，修改src下api目录下http.js文件
+
+  ```javascript
+  const instance = axios.create({
+    // api请求地址，根据实际需求修改
+    baseURL: 'http://127.0.0.1:8000/',
+    // timeout: 5000
+    // headers: {'X-Custom-Header': 'foobar'}
+  })
+  ```
+
 - 进行代码编译打包
 
   ```
