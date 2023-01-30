@@ -30,7 +30,6 @@
         <el-select v-model="form.machine_type" placeholder="请选择机器类型" style="width:100%;">
           <el-option label="linux" value="linux" />
           <el-option label="windows" value="windows" />
-          <el-option label="vmware" value="vmware" />
         </el-select>
       </el-form-item>
       <el-form-item label="虚拟主机：" prop="vm_host">
@@ -42,7 +41,7 @@
         <el-col :span="1.5">
           <el-tag size="large" type="info">IP</el-tag>
         </el-col>
-        <el-col :span="10">
+        <el-col :span="15">
           <el-form-item prop="ssh_ip">
             <el-input v-model="form.ssh_ip"></el-input>
           </el-form-item>
@@ -50,7 +49,7 @@
         <el-col :span="1.5">
           <el-tag size="large" type="info">端口</el-tag>
         </el-col>
-        <el-col :span="5">
+        <el-col :span="4">
           <el-form-item prop="ssh_port">
             <el-input v-model="form.ssh_port"></el-input>
           </el-form-item>
@@ -141,7 +140,7 @@ export default {
           this.$http.post('cmdb/vm_server_create_host/', this.form).then(res => {
             if (res.data.code == 200) {
               this.$message.success('创建成功')
-              this.$parent.getallPhysicsServer() // 调用父组件方法，更新数据
+              this.$parent.getallVmServer() // 调用父组件方法，更新数据
               this.dialogClose() // 关闭窗口
               this.$refs.formRef.resetFields() // 清空表单数据
             }
@@ -170,7 +169,7 @@ export default {
         this.credential = res.data.data
       })
     },
-    // 获取凭据信息
+    // 获取虚拟主机信息
     getVmHost() {
       this.$http.get('cmdb/physics_server/?search=vmware&page_size=100').then(res => {
         this.vmhost = res.data.data

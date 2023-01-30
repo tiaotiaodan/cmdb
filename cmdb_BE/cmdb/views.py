@@ -1230,7 +1230,7 @@ class PhysicsServerHostCollectView(APIView):
             return Response(result)
 
 
-# 新建物理主机信息并同步数据
+# 新建虚拟机信息并同步数据
 class VmServerCreateHostView(APIView):
     def post(self, request, *args, **kwargs):
 
@@ -1240,14 +1240,14 @@ class VmServerCreateHostView(APIView):
         idc_id = int(request.data.get('idc'))   # 机房id
         server_group_id = request.data.get('server_group')   # 分组id
         machine_type = request.data.get('machine_type')
-        asset_code = request.data.get('asset_code')
+        vm_host = int(request.data.get('vm_host'))
         ssh_ip = request.data.get('ssh_ip')
         ssh_port = int(request.data.get('ssh_port'))
         credential_id = int(request.data.get('credential'))
         note = request.data.get('note')
 
         # 如果主机存在返回
-        server = PhysicsServer.objects.filter(hostname=hostname)
+        server = VmServer.objects.filter(hostname=hostname)
         if server:
             result = {'code': 500, 'msg': '主机已存在！'}
             return Response(result)
@@ -1283,12 +1283,13 @@ class VmServerCreateHostView(APIView):
 
                     # 1.基本主机信息入库（人工录入）
                     idc = Idc.objects.get(id=idc_id)  # 根据id查询IDC
-                    server_obj = PhysicsServer.objects.create(
+
+                    server_obj = VmServer.objects.create(
                         idc=idc,  # 一对多，传入是一个idc对象
                         name=name if name else hostname,
                         hostname=hostname,
                         machine_type=machine_type,
-                        asset_code=asset_code,
+                        vm_host_id=vm_host,
                         ssh_ip=ssh_ip,
                         ssh_port=ssh_port,
                         is_verified='verified',
@@ -1337,12 +1338,12 @@ class VmServerCreateHostView(APIView):
 
                     # 1.基本主机信息入库（人工录入）
                     idc = Idc.objects.get(id=idc_id)  # 根据id查询IDC
-                    server_obj = PhysicsServer.objects.create(
+                    server_obj = VmServer.objects.create(
                         idc=idc,  # 一对多，传入是一个idc对象
                         name=name if name else hostname,
                         hostname=hostname,
                         machine_type=machine_type,
-                        asset_code=asset_code,
+                        vm_host_id=vm_host,
                         ssh_ip=ssh_ip,
                         ssh_port=ssh_port,
                         is_verified='verified',
@@ -1362,3 +1363,182 @@ class VmServerCreateHostView(APIView):
             else:
                 result = {'code': 500, 'msg': 'windows SSH连接异常！错误：%s' % test['msg']}
             return Response(result)
+
+# 虚拟机excel导入数据
+class VmServerExcelCreateHostView(APIView):
+    # 下载主机导入模板.xlsx
+    def get(self, request):
+        file_name = 'vm_server_host.xlsx'
+        file_path = os.path.join(settings.BASE_DIR, 'cmdb', 'file', file_name)
+        # 通过二进制流式方式打开
+        response = FileResponse(open(file_path, 'rb'))
+        # 指定下载的格式
+        response['Content-Type'] = 'application/octet-stream'
+        # 设置下载时看到的文件名称
+        response['Content-Disposition'] = 'attachment; filename=%s' % file_name
+        # result = {'code': 200, 'msg': '获取文件成功'}
+        return response
+
+    # 导入excel
+    def post(self,request, *args, **kwargs):
+        # 获取前端提交数据
+        idc_id = int(request.data.get('idc'))
+        vm_host_id = int(request.data.get('vm_host'))
+        server_group_id = request.data.get('server_group')
+        excel_file_obj = request.data['file']
+
+        # 直接自定义分隔符，把字符串转换为列表格式
+        server_group_list_id = server_group_id.split(',')
+
+        # 判断读取是否是excel文件
+        try:
+            data = xlrd.open_workbook(file_contents=excel_file_obj.read(), filename=None)
+        except Exception:
+            result = {'code': 500, 'msg': '请上传Excel文件！'}
+            return Response(result)
+
+        idc = Idc.objects.get(id=idc_id)
+        # 打开第一个工作表
+        table = data.sheets()[0]
+        # 获取表的行数
+        nrows = table.nrows
+
+        try:
+            # 循环行提取数据
+            for i in range(nrows):
+                if i != 0:   # 跳过标题行
+                    # 获取每一行的每一列数据
+                    name = table.row_values(i)[0]
+                    hostname  = table.row_values(i)[1]
+                    machine_type = table.row_values(i)[2]
+                    ssh_ip  = table.row_values(i)[3]
+                    ssh_port = table.row_values(i)[4]
+                    note = table.row_values(i)[5]
+                    server = VmServer.objects.create(
+                        idc=idc,
+                        name=name,
+                        hostname=hostname,
+                        vm_host_id=vm_host_id,
+                        machine_type=machine_type,
+                        ssh_ip=ssh_ip,
+                        ssh_port=ssh_port,
+                        note=note
+                    )
+                    # 添加多对多字段
+                    for group_id in server_group_list_id:
+                        group = ServerGroup.objects.get(id=group_id)   # 获取分组
+                        server.server_group.add(group)   # 将服务器添加到分组
+            result = {'code': 200, 'msg': '导入成功'}
+
+        except  Exception as e:
+            result = {'code': 500, 'msg': '导入异常！%s' % e}
+
+        return Response(result)
+
+
+# 虚拟机同步按钮功能
+class VmServerHostCollectView(APIView):
+    def get(self, request):
+        hostname = request.query_params.get('hostname')
+        server = VmServer.objects.get(hostname=hostname)
+        ssh_ip = server.ssh_ip
+        ssh_port = server.ssh_port
+        machine_type = server.machine_type
+
+
+        # 未绑定凭据并且没有选择凭据
+        credential_id = request.query_params.get('credential_id')
+        if not server.credential and not credential_id:
+            result = {'code': 500, 'msg': '未发现凭据，请选择！'}
+            return Response(result)
+        elif server.credential:
+            credential_id = int(server.credential.id)
+        elif credential_id:
+            credential_id = int(request.query_params.get('credential_id'))
+
+        credential = Credential.objects.get(id=credential_id)
+
+        if machine_type == 'linux':
+            username = credential.username
+            if credential.auth_mode == 1:
+                password = credential.password
+                ssh = SSH(ssh_ip, ssh_port, username, password=password)
+            else:
+                private_key = credential.private_key
+                ssh = SSH(ssh_ip, ssh_port, username, key=private_key)
+
+            # 先SSH基本测试
+            test = ssh.test()
+            if test['code'] == 200:
+                client_agent_name = "local_host_collect_linux.py"
+                local_file = os.path.join(settings.BASE_DIR, 'cmdb', 'file', client_agent_name)
+                remote_file = os.path.join(settings.CLIENT_COLLECT_DIR, client_agent_name)  # 这个工作路径在setting里配置
+                ssh.scp(local_file, remote_file=remote_file)
+                ssh.command('chmod +x %s' % remote_file)
+                result = ssh.command('python %s' % remote_file)
+                if result['code'] == 200:  # 采集脚本执行成功
+                    # 再进一步判断客户端采集脚本提交结果
+                    data = json.loads(result['data'])
+                    VmServer.objects.filter(hostname=hostname).update(**data)
+
+                    server = VmServer.objects.get(hostname=hostname)
+                    # 更新凭据ID
+                    server.credential = credential
+                    server.is_verified = 'verified'
+                    server.save()
+
+                    result = {'code': 200, 'msg': '主机配置同步成功'}
+
+                else:
+                    result = {'code': 500, 'msg': '主机配置同步失败！错误：%s' % result['msg']}
+            else:
+                result = {'code': 500, 'msg': 'SSH连接异常！错误：%s' % test['msg']}
+
+            return Response(result)
+        else:
+            username = credential.username
+            if credential.auth_mode == 1:
+                password = credential.password
+                ssh = Win_ssh(ssh_ip, ssh_port, username, password=password)
+
+            # 先SSH基本测试
+            test = ssh.test()
+            if test['code'] == 200:
+                client_agent_name = "local_host_collect_windows.py"
+                local_file = os.path.join(settings.BASE_DIR, 'cmdb', 'file', client_agent_name)
+                remote_file = os.path.join(settings.CLIENT_COLLECT_WIN_DIR, client_agent_name)  # 这个工作路径在setting里配置
+                ssh.win_scp(local_file, remote_file=remote_file)
+                result = ssh.win_command('python %s' % remote_file)
+                if result['code'] == 200:  # 采集脚本执行成功
+                    # 再进一步判断客户端采集脚本提交结果
+                    data = json.loads(result['data'])
+                    VmServer.objects.filter(hostname=hostname).update(**data)
+
+                    server = VmServer.objects.get(hostname=hostname)
+                    # 更新凭据ID
+                    server.credential = credential
+                    server.is_verified = 'verified'
+                    server.save()
+
+                    result = {'code': 200, 'msg': '主机配置同步成功'}
+
+                else:
+                    result = {'code': 500, 'msg': '主机配置同步失败！错误：%s' % result['msg']}
+            else:
+                result = {'code': 500, 'msg': 'SSH连接异常！错误：%s' % test['msg']}
+            return Response(result)
+
+
+# 仪表盘展示
+class EchartViewSet(APIView):
+    def get(self, request):
+        x_data = []
+        cloudserver_list = len(CloudServer.objects.all())
+        physicsserver_list = len(PhysicsServer.objects.all())
+        vmserver_list = len(VmServer.objects.all())
+        x_data.append(cloudserver_list)
+        x_data.append(physicsserver_list)
+        x_data.append(vmserver_list)
+        data = {'x_echart': x_data}
+        result = {'code': 200, 'msg': '请求成功', 'data': data}
+        return Response(result)

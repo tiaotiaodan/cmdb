@@ -3,7 +3,8 @@ from django.urls import path, include
 # 导入视图集
 from cmdb.views import IdcViewSet, ServerGroupViewSet, CloudServerViewSet, PhysicsServerViewSet, VmServerViewSet, \
     CloudServerCreateHostView, CloudServerExcelCreateHostView, AliyunCloudView, TencentCloudView, \
-    CloudServerHostCollectView,PhysicsServerCreateHostView,PhysicsServerExcelCreateHostView,PhysicsServerHostCollectView
+    CloudServerHostCollectView,PhysicsServerCreateHostView,PhysicsServerExcelCreateHostView,PhysicsServerHostCollectView,\
+    VmServerCreateHostView,VmServerExcelCreateHostView,VmServerHostCollectView,EchartViewSet
 
 # 导入drf路由
 from rest_framework import routers
@@ -27,4 +28,8 @@ urlpatterns = [
     path('physics_server_create_host/', PhysicsServerCreateHostView.as_view()),  # 配置新建物理主机单台数据采集同步接口
     path('physics_server_excel_create_host/', PhysicsServerExcelCreateHostView.as_view()),  # 配置物理机主机excel导入和模板下载
     path('physics_server_host_collect/', PhysicsServerHostCollectView.as_view()),  # 配置物理主机服务器主机同步功能
+    path('vm_server_create_host/', VmServerCreateHostView.as_view()),  # 配置新建虚拟机单台数据采集同步接口
+    path('vm_server_excel_create_host/', VmServerExcelCreateHostView.as_view()),  # 配置虚拟机excel导入和模板下载
+    path('vm_server_host_collect/', VmServerHostCollectView.as_view()),  # 配置虚拟机服务器主机同步功能
+    path('echart/',EchartViewSet.as_view()),
 ]

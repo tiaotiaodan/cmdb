@@ -2,35 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30e90a8f-f783-4627-b5b6-4fe5351821f4" name="默认更改列表" comment="">
-      <change afterPath="$PROJECT_DIR$/cmdb/file/local_host_collect_linux.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmdb/file/local_host_collect_windows.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmdb/file/local_server_host.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/vmware.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/cmdb_BE.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cmdb_BE.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmdb/file/vm_server_host.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmdb/file/cloud_host_collect_windows.py" beforeDir="false" afterPath="$PROJECT_DIR$/cmdb/file/cloud_host_collect_windows.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmdb/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/cmdb/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmdb/migrations/0002_remove_cloud_server_cpu_model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmdb/migrations/0003_auto_20221230_1032.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmdb/migrations/0004_auto_20230103_1106.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmdb/migrations/0005_auto_20230111_1132.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmdb/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/cmdb/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmdb/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/cmdb/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmdb/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/cmdb/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmdb/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/cmdb/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/local_host_collect_windows.py" beforeDir="false" afterPath="$PROJECT_DIR$/libs/local_host_collect_windows.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/libs/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/windows.py" beforeDir="false" afterPath="$PROJECT_DIR$/libs/windows.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/system_config/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/system_config/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cmdb_fe/src/api/http.js" beforeDir="false" afterPath="$PROJECT_DIR$/../cmdb_fe/src/api/http.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cmdb_fe/src/layout/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../cmdb_fe/src/layout/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cmdb_fe/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../cmdb_fe/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cmdb_fe/src/views/CloudServer/CloudServerCreate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../cmdb_fe/src/views/CloudServer/CloudServerCreate.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cmdb_fe/src/views/CloudServer/CloudServerCreateExcel.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../cmdb_fe/src/views/CloudServer/CloudServerCreateExcel.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cmdb_fe/src/views/CloudServer/CloudServerEdit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../cmdb_fe/src/views/CloudServer/CloudServerEdit.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cmdb_fe/src/views/CloudServer/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../cmdb_fe/src/views/CloudServer/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cmdb_fe/src/views/PhysicsServer/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../cmdb_fe/src/views/PhysicsServer/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cmdb_fe/src/views/VmServer/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../cmdb_fe/src/views/VmServer/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmdb_fe/src/views/VmServer/VmServerCreate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../cmdb_fe/src/views/VmServer/VmServerCreate.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmdb_fe/src/views/VmServer/VmServerCreateExcel.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../cmdb_fe/src/views/VmServer/VmServerCreateExcel.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmdb_fe/src/views/VmServer/VmServerSync.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../cmdb_fe/src/views/VmServer/VmServerSync.vue" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,8 +24,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cmdb/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="107">
-              <caret line="1310" column="12" selection-start-line="1310" selection-start-column="12" selection-end-line="1310" selection-end-column="12" />
+            <state relative-caret-position="368">
+              <caret line="1541" column="25" selection-start-line="1541" selection-start-column="25" selection-end-line="1541" selection-end-column="25" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
                 <element signature="e#1876#2643#0" />
@@ -63,7 +41,8 @@
                 <element signature="e#32429#34973#0" />
                 <element signature="e#39574#42114#0" />
                 <element signature="e#42178#47475#0" />
-                <element signature="e#48610#51154#0" />
+                <element signature="e#47750#53704#0" />
+                <element signature="e#53719#56259#0" />
               </folding>
             </state>
           </provider>
@@ -90,8 +69,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cmdb/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
-              <caret line="16" column="45" lean-forward="true" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
+            <state relative-caret-position="353">
+              <caret line="33" column="16" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="16" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -213,7 +192,6 @@
         <option value="$PROJECT_DIR$/libs/windows.py" />
         <option value="$PROJECT_DIR$/cmdb/file/cloud_host_collect_windows.py" />
         <option value="$PROJECT_DIR$/libs/local_host_collect_windows.py" />
-        <option value="$PROJECT_DIR$/cmdb/urls.py" />
         <option value="$PROJECT_DIR$/libs/local_host_collect_vmware.py" />
         <option value="$PROJECT_DIR$/system_config/views.py" />
         <option value="$PROJECT_DIR$/libs/test.py" />
@@ -222,6 +200,7 @@
         <option value="$PROJECT_DIR$/cmdb/file/local_host_collect_linux.py" />
         <option value="$PROJECT_DIR$/cmdb/file/local_host_collect_windows.py" />
         <option value="$PROJECT_DIR$/libs/vmware.py" />
+        <option value="$PROJECT_DIR$/cmdb/urls.py" />
         <option value="$PROJECT_DIR$/cmdb/views.py" />
       </list>
     </option>
@@ -267,7 +246,7 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/cmdb/file" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -280,14 +259,14 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/cmdb/file" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/libs" />
       <recent name="$PROJECT_DIR$/cmdb/file" />
+      <recent name="$PROJECT_DIR$/libs" />
       <recent name="$PROJECT_DIR$/system_config" />
       <recent name="$PROJECT_DIR$/cmdb" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/cmdb/file" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -467,12 +446,12 @@
       <workItem from="1673851942407" duration="16255000" />
       <workItem from="1673942846969" duration="955000" />
       <workItem from="1673943853689" duration="11829000" />
-      <workItem from="1674017876862" duration="28155000" />
+      <workItem from="1674017876862" duration="38773000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="169510000" />
+    <option name="totallyTimeSpent" value="180128000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1440" height="813" extended-state="6" />
@@ -746,16 +725,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cmdb/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="16" column="45" lean-forward="true" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/libs/local_host_collect_windows.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
@@ -810,10 +779,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/cmdb/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="33" column="16" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/cmdb/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="1310" column="12" selection-start-line="1310" selection-start-column="12" selection-end-line="1310" selection-end-column="12" />
+        <state relative-caret-position="368">
+          <caret line="1541" column="25" selection-start-line="1541" selection-start-column="25" selection-end-line="1541" selection-end-column="25" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
             <element signature="e#1876#2643#0" />
@@ -829,7 +808,8 @@
             <element signature="e#32429#34973#0" />
             <element signature="e#39574#42114#0" />
             <element signature="e#42178#47475#0" />
-            <element signature="e#48610#51154#0" />
+            <element signature="e#47750#53704#0" />
+            <element signature="e#53719#56259#0" />
           </folding>
         </state>
       </provider>

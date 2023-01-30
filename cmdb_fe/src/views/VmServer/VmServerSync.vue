@@ -20,7 +20,7 @@
 
 <script>
 export default {
-  name: 'PhyscsServerSync',
+  name: 'VmServerSync',
   // 介绍父组件的值
   props: {
     visible: Boolean, // 获取dialog是否打开变量
@@ -39,14 +39,14 @@ export default {
     dialogeServerSync_btn(index, row) {
       // 如果主机有凭据，就直接同步
       this.$http
-        .get('cmdb/physics_server_host_collect/', { params: { hostname: this.row.hostname, credential_id: this.credentialId } })
+        .get('cmdb/vm_server_host_collect/', { params: { hostname: this.row.hostname, credential_id: this.credentialId } })
         .then(res => {
           if (res.data.code == 200) {
             this.$message.success('同步成功')
             // 关闭弹出窗口
             this.dialogClose()
             // 调用父组件方法，更新数据
-            this.$parent.getallPhysicsServer() 
+            this.$parent.getallVmServer() 
           }
         })
     },
