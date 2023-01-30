@@ -22,8 +22,10 @@ const app = createApp(App)
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component)
 }
+
 // axios全局注册
 app.config.globalProperties.$http = axios
+
 
 // 注册store
 app.use(store)

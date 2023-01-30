@@ -1532,13 +1532,12 @@ class VmServerHostCollectView(APIView):
 # 仪表盘展示
 class EchartViewSet(APIView):
     def get(self, request):
-        x_data = []
+        data = []
         cloudserver_list = len(CloudServer.objects.all())
         physicsserver_list = len(PhysicsServer.objects.all())
         vmserver_list = len(VmServer.objects.all())
-        x_data.append(cloudserver_list)
-        x_data.append(physicsserver_list)
-        x_data.append(vmserver_list)
-        data = {'x_echart': x_data}
+        data.append(cloudserver_list)
+        data.append(physicsserver_list)
+        data.append(vmserver_list)
         result = {'code': 200, 'msg': '请求成功', 'data': data}
         return Response(result)

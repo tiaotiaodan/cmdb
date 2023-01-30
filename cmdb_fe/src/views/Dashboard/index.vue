@@ -160,12 +160,10 @@ export default {
     // 请求后端数据赋值
     getEchat() {
       this.$http.get('cmdb/echart/').then(res => {
-        console.log(res)
-        console.log(res.data.data.x_echart)
         if (res.data.code == 200) {
           // 重新赋值
-          this.dashboardlist = res.data.data.x_echart
-          // 调用图标
+          this.dashboardlist = res.data.data
+          // 调用图表，进行渲染
           this.releaseEchat()
         }
       })
