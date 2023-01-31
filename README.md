@@ -3,7 +3,7 @@
 #### 介绍
 python3.8.4开发cmdb系统
 使用到版本：
-    django 4.0版本
+    django 3.2版本
     vue 3.0 版本
     element-plus 3.0版本
 
