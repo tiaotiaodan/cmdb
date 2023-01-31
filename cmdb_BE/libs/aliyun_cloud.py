@@ -11,6 +11,9 @@ from aliyunsdkecs.request.v20140526.DescribeInstancesRequest import DescribeInst
 # 硬盘请求
 from aliyunsdkecs.request.v20140526.DescribeDisksRequest import DescribeDisksRequest
 
+# 域名获取
+from aliyunsdkdomain.request.v20180129.QueryDomainListRequest import QueryDomainListRequest
+
 # 导入json
 import json
 
@@ -71,12 +74,26 @@ class AliCloud():
         except Exception as e:
             return {'code': 500, 'msg': e.get_error_msg()}
 
+    # 获取域名数据查询
+    def instance_domain(self, page_num, page_size,):
+        client = AcsClient(self.secret_id, self.secret_key)
+        req = QueryDomainListRequest()
+        req.set_accept_format('json')
+
+        req.set_PageNum(page_num)
+        req.set_PageSize(page_size)
+        try:
+            res = client.do_action_with_exception(req)
+            data = json.loads(res.decode())
+            return {'code': 200, 'data': data}
+        except Exception as e:
+            return {'code': 500, 'msg': e.get_error_msg()}
 
 if __name__ == '__main__':
-    cloud = AliCloud('ID', 'key')
+    cloud = AliCloud('LTAI5tDhczAfJGghQXCvxhcm', 'qv69eRGFHJozSopr0k28r8CTBOMDV5')
     # result = cloud.region_list()
     # result = cloud.zone_list('cn-chengdu')
     # result = cloud.instance_list('cn-chengdu')
-    result = cloud.instance_disk('cn-chengdu','i-2vcbu28dm39lz6s1cygk')
-
+    # result = cloud.instance_disk('cn-chengdu','i-2vcbu28dm39lz6s1cygk')
+    result = cloud.instance_domain(0, 200)
     print(result)
