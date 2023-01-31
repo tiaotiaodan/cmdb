@@ -54,7 +54,14 @@
       <el-table :data="CredentialData" border style="width: 100%" :header-cell-style="{ backgroundColor: '#409EFF', color: '#fff', fontsize: '14px' }">
         <el-table-column prop="name" label="凭据名称" width="180" v-if="showColumn.name" />
         <el-table-column prop="username" label="用户名" width="120" v-if="showColumn.username" />
-        <el-table-column prop="auth_mode" label="认证方式"  v-if="showColumn.auth_mode" />
+        <!--通过elementpuls进行筛选，进行自定义格式显示-->
+        <el-table-column prop="auth_mode" label="认证方式" width="120" v-if="showColumn.auth_mode">
+          <template #default="scope">
+            <!--使用el-tag进行背景样式显示-->
+            <el-tag type="success" v-if="scope.row.auth_mode == '1'">密码</el-tag>
+            <el-tag type="primary" v-if="scope.row.auth_mode == '2'">秘钥</el-tag>
+          </template>
+        </el-table-column>
         <el-table-column prop="password" label="密码"  v-if="showColumn.password" />
         <!-- :show-overflow-tooltip='true' 进行事件绑定，超过表格就隐藏 -->
         <el-table-column prop="private_key" label="私钥"  :show-overflow-tooltip='true' v-if="showColumn.private_key"/>
