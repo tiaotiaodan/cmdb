@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="30e90a8f-f783-4627-b5b6-4fe5351821f4" name="默认更改列表" comment="">
-      <change beforePath="$PROJECT_DIR$/libs/aliyun_cloud.py" beforeDir="false" afterPath="$PROJECT_DIR$/libs/aliyun_cloud.py" afterDir="false" />
-    </list>
+    <list default="true" id="30e90a8f-f783-4627-b5b6-4fe5351821f4" name="默认更改列表" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +25,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libs/windows.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
+            <state relative-caret-position="600">
               <caret line="42" column="55" selection-start-line="42" selection-start-column="55" selection-end-line="42" selection-end-column="55" />
               <folding>
                 <element signature="e#77#89#0" expanded="true" />
@@ -48,7 +46,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libs/aliyun_cloud.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
+            <state relative-caret-position="1170">
               <caret line="96" column="42" selection-start-line="96" selection-start-column="14" selection-end-line="96" selection-end-column="42" />
               <folding>
                 <element signature="e#37#79#0" expanded="true" />
@@ -57,7 +55,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/domain/models.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="45">
@@ -66,10 +64,22 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/libs/vmware.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="421">
+              <caret line="83" column="17" lean-forward="true" selection-start-line="83" selection-start-column="17" selection-end-line="83" selection-end-column="17" />
+              <folding>
+                <element signature="e#91#114#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cmdb/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
+            <state relative-caret-position="1050">
               <caret line="72" column="41" selection-start-line="72" selection-start-column="20" selection-end-line="72" selection-end-column="41" />
               <folding>
                 <element signature="e#1#29#0" expanded="true" />
@@ -139,7 +149,6 @@
         <option value="$PROJECT_DIR$/cmdb/serializers.py" />
         <option value="$PROJECT_DIR$/cmdb/file/local_host_collect_linux.py" />
         <option value="$PROJECT_DIR$/cmdb/file/local_host_collect_windows.py" />
-        <option value="$PROJECT_DIR$/libs/vmware.py" />
         <option value="$PROJECT_DIR$/cmdb/urls.py" />
         <option value="$PROJECT_DIR$/cmdb/views.py" />
         <option value="$PROJECT_DIR$/cmdb_BE/urls.py" />
@@ -147,6 +156,7 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/libs/aliyun_cloud.py" />
         <option value="$PROJECT_DIR$/domain/models.py" />
+        <option value="$PROJECT_DIR$/libs/vmware.py" />
       </list>
     </option>
   </component>
@@ -164,7 +174,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -201,6 +210,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -242,7 +252,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.aliyun_cloud">
+  <component name="RunManager" selected="Python.vmware">
     <configuration name="aliyun_cloud" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="cmdb_BE" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -379,9 +389,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.vmware" />
         <item itemvalue="Python.aliyun_cloud" />
         <item itemvalue="Python.models" />
-        <item itemvalue="Python.vmware" />
         <item itemvalue="Python.windows" />
         <item itemvalue="Python.test" />
       </list>
@@ -411,22 +421,23 @@
       <workItem from="1675067682865" duration="1614000" />
       <workItem from="1675130160263" duration="49000" />
       <workItem from="1675130389689" duration="15797000" />
+      <workItem from="1675304593613" duration="171000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="200414000" />
+    <option name="totallyTimeSpent" value="200585000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1679" y="72" width="1440" height="813" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18955651" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19170243" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.27272728" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.27272728" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.32867134" />
       <window_info anchor="bottom" id="Python Console" order="4" weight="0.32867134" />
       <window_info anchor="bottom" id="Terminal" order="5" weight="0.24755245" />
@@ -454,7 +465,7 @@
     <SUITE FILE_PATH="coverage/cmdb_BE$models.coverage" NAME="models Coverage Results" MODIFIED="1675160222334" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/cmdb" />
     <SUITE FILE_PATH="coverage/cmdb_BE$sftp_client.coverage" NAME="sftp_client Coverage Results" MODIFIED="1673507578682" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/virtualenvs/cmdb/lib/python3.8/site-packages/paramiko" />
     <SUITE FILE_PATH="coverage/cmdb_BE$ssh.coverage" NAME="ssh Coverage Results" MODIFIED="1673834516784" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/libs" />
-    <SUITE FILE_PATH="coverage/cmdb_BE$vmware.coverage" NAME="vmware Coverage Results" MODIFIED="1674106618838" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/libs" />
+    <SUITE FILE_PATH="coverage/cmdb_BE$vmware.coverage" NAME="vmware Coverage Results" MODIFIED="1675304769410" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/libs" />
     <SUITE FILE_PATH="coverage/cmdb_BE$tests.coverage" NAME="tests Coverage Results" MODIFIED="1673600562473" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/cmdb" />
     <SUITE FILE_PATH="coverage/cmdb_BE$local_host_collect_vmware.coverage" NAME="local_host_collect_vmware Coverage Results" MODIFIED="1673936952738" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/libs" />
     <SUITE FILE_PATH="coverage/cmdb_BE$win_test.coverage" NAME="win-test Coverage Results" MODIFIED="1673512141855" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/libs" />
@@ -673,16 +684,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/libs/vmware.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="90" column="13" selection-start-line="90" selection-start-column="13" selection-end-line="90" selection-end-column="13" />
-          <folding>
-            <element signature="e#91#114#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cmdb/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="353">
@@ -764,7 +765,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/libs/windows.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
+        <state relative-caret-position="600">
           <caret line="42" column="55" selection-start-line="42" selection-start-column="55" selection-end-line="42" selection-end-column="55" />
           <folding>
             <element signature="e#77#89#0" expanded="true" />
@@ -779,12 +780,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/domain/tests.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/libs/aliyun_cloud.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
+        <state relative-caret-position="1170">
           <caret line="96" column="42" selection-start-line="96" selection-start-column="14" selection-end-line="96" selection-end-column="42" />
           <folding>
             <element signature="e#37#79#0" expanded="true" />
@@ -794,7 +792,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cmdb/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
+        <state relative-caret-position="1050">
           <caret line="72" column="41" selection-start-line="72" selection-start-column="20" selection-end-line="72" selection-end-column="41" />
           <folding>
             <element signature="e#1#29#0" expanded="true" />
@@ -802,10 +800,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/domain/tests.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/domain/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/vmware.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="421">
+          <caret line="83" column="17" lean-forward="true" selection-start-line="83" selection-start-column="17" selection-end-line="83" selection-end-column="17" />
+          <folding>
+            <element signature="e#91#114#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
