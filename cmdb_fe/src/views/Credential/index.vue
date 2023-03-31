@@ -69,17 +69,13 @@
         <el-table-column prop="create_time" label="创建时间" v-if="showColumn.create_time" />
         <el-table-column prop="update_time" label="更新时间" v-if="showColumn.update_time" />
         <!--操作栏-->
-        <el-table-column label="操作栏" fixed="right" width="100">
+        <el-table-column label="操作栏" fixed="right" width="140">
           <!--定义获取行内数据参数-->
           <template #default="scope">
             <!--通过回调函数获取行内数据-->
             <!-- 编辑按钮 -->
-            <el-button type="primary" size="small" circle @click="handelCredentialEdit(scope.$index, scope.row)">
-              <el-icon><Edit /></el-icon>
-            </el-button>
-            <el-button type="danger" size="small" circle @click="handelCredentialDelete(scope.$index, scope.row)">
-              <el-icon><Delete /></el-icon>
-            </el-button>
+            <el-button type="primary" size="small"  @click="handelCredentialEdit(scope.$index, scope.row)">编辑</el-button>
+            <el-button type="danger" size="small"  @click="handelCredentialDelete(scope.$index, scope.row)">删除</el-button>
           </template>
         </el-table-column>
       </el-table>

@@ -44,7 +44,10 @@ INSTALLED_APPS = [
     'django_filters',
     'rest_framework.authtoken',
     'corsheaders',
+    'channels',
 ]
+
+ASGI_APPLICATION = 'libs.websocket.routing.application'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

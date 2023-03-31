@@ -183,20 +183,14 @@
         <el-table-column prop="update_time" label="更新时间" width="160" sortable v-if="showColumn.update_time" />
         <el-table-column prop="create_time" label="创建时间" width="160" sortable v-if="showColumn.create_time" />
         <!--操作栏-->
-        <el-table-column label="操作栏" fixed="right" width="140">
+        <el-table-column label="操作栏" fixed="right" width="200">
           <!--定义获取行内数据参数-->
           <template #default="scope">
             <!--通过回调函数获取行内数据-->
             <!-- 编辑按钮 -->
-             <el-button type="success" size="small" circle @click="handelPhysicsServerSync(scope.$index, scope.row)">
-              <el-icon><Refresh /></el-icon>
-            </el-button>
-            <el-button type="primary" size="small" circle @click="handelPhysicsServerEdit(scope.$index, scope.row)">
-              <el-icon><Edit /></el-icon>
-            </el-button>
-            <el-button type="danger" size="small" circle @click="handelPhysicsServerDelete(scope.$index, scope.row)">
-              <el-icon><Delete /></el-icon>
-            </el-button>
+             <el-button type="success" size="small"  @click="handelPhysicsServerSync(scope.$index, scope.row)">同步</el-button>
+            <el-button type="primary" size="small"  @click="handelPhysicsServerEdit(scope.$index, scope.row)">编辑</el-button>
+            <el-button type="danger" size="small"  @click="handelPhysicsServerDelete(scope.$index, scope.row)">删除</el-button>
           </template>
         </el-table-column>
       </el-table>
