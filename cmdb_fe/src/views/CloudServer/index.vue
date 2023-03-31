@@ -183,12 +183,13 @@
         <el-table-column prop="update_time" label="更新时间" width="160" sortable v-if="showColumn.update_time" />
         <el-table-column prop="create_time" label="创建时间" width="160" sortable v-if="showColumn.create_time" />
         <!--操作栏-->
-        <el-table-column label="操作栏" fixed="right" width="200">
+        <el-table-column label="操作栏" fixed="right" width="260">
           <!--定义获取行内数据参数-->
           <template #default="scope">
             <!--通过回调函数获取行内数据-->
             <!-- 编辑按钮 -->
-             <el-button type="success" size="small"  @click="handelCloudServerSync(scope.$index, scope.row)">同步</el-button>
+            <el-button type="info" size="small"  @click="handelSSH(scope.$index, scope.row)" v-if="scope.row.machine_type == 'linux'">终端</el-button>
+            <el-button type="success" size="small"  @click="handelCloudServerSync(scope.$index, scope.row)">同步</el-button>
             <el-button type="primary" size="small"  @click="handelCloudServerEdit(scope.$index, scope.row)">编辑</el-button>
             <el-button type="danger" size="small"  @click="handelCloudServerDelete(scope.$index, scope.row)">删除</el-button>
           </template>
@@ -208,6 +209,7 @@
   <CloudServerCreateExcel v-model:visible="dialogCloudServerCreateExcel" ></CloudServerCreateExcel>
   <CloudServerCreateCloud v-model:visible="dialogCloudServerCreateCloud" ></CloudServerCreateCloud>
   <CloudServerSync v-model:visible="dialogCloudServerSync" :row="row" ></CloudServerSync>
+  <ssh v-model:visible="dialogssh" :row="row" ></ssh>
 </template>
 
 <script>
@@ -217,6 +219,7 @@ import CloudServerCreate from './CloudServerCreate.vue'
 import CloudServerCreateExcel from './CloudServerCreateExcel'
 import CloudServerCreateCloud from './CloudServerCreateCloud'
 import CloudServerSync from './CloudServerSync'
+import ssh from './SSH'
 
 export default {
   name: 'CloudServer',
@@ -226,7 +229,8 @@ export default {
     CloudServerCreate,
     CloudServerCreateExcel,
     CloudServerCreateCloud,
-    CloudServerSync
+    CloudServerSync,
+    ssh
   },
   data() {
     return {
@@ -261,6 +265,9 @@ export default {
 
       // ============================== 同步 ===================
       dialogCloudServerSync: false,
+
+      // ============================== ssh ===================
+      dialogssh: false,
 
       // ============================== 展示列 ==================
       columnVisible: false, // 可展示列显示与隐藏
@@ -341,6 +348,12 @@ export default {
     handelCloudServerEdit(index, row) {
       // 重新赋值允许打开编辑弹出框
       this.dialogCloudServerEdit = true
+      this.row = row
+    },
+    // 编辑进行数据重新赋值
+    handelSSH(index, row) {
+      // 重新赋值允许打开编辑弹出框
+      this.dialogssh = true
       this.row = row
     },
     handelCloudServerCreateCloud() {

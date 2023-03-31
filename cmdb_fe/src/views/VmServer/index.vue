@@ -285,9 +285,6 @@ export default {
       }
     }
   },
-  components: {
-       ssh,
-  },
   // 页面渲染完后挂载
   mounted() {
     // 渲染完后挂载数据
