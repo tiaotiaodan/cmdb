@@ -73,7 +73,7 @@
           </div>
         </template>
         <div>
-          <el-progress type="circle" :percentage="100" status="success" width="50" />
+          <el-progress type="circle" :percentage="100" status="success" v-bind:width="50" />
           <span class="number">{{ config_number }}</span>
         </div>
       </el-card>
@@ -105,11 +105,13 @@ export default {
       dashboardlist: ''
     }
   },
+  // 页面渲染完后自动加载
   mounted() {
     this.getNumber()
     this.getEchat()
     this.releaseEchat()
   },
+  // 按钮调用接口
   methods: {
     getNumber() {
       this.$http.get('cmdb/idc/').then(res => {

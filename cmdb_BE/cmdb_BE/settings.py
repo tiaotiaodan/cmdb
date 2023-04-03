@@ -43,8 +43,8 @@ INSTALLED_APPS = [
     'system_config',
     'django_filters',
     'rest_framework.authtoken',
-    'corsheaders',
     'channels',
+    'corsheaders',
 ]
 
 ASGI_APPLICATION = 'libs.websocket.routing.application'
@@ -161,7 +161,8 @@ REST_FRAMEWORK = {
     ],
 }
 
-CORS_ORIGIN_WHITELIST = ('http://127.0.0.1:8080',)
+# 设置跨域
+# CORS_ORIGIN_WHITELIST = ('http://127.0.0.1:8080',)
 CORS_ORIGIN_ALLOW_ALL = True
 
 # 指明在跨域访问中，后端是否支持对cookie的操作。
