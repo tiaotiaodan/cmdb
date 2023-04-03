@@ -1,5 +1,10 @@
 <template>
-  <el-dialog :model-value="visible" width="60%" title="SSH终端" @close="dialogClose">
+  <el-dialog :model-value="visible" width="60%" @close="dialogClose">
+    <!--标题-->
+    <template #header>
+      <div style="font-size: 18px; color: #409eff; font-weight: bold">SSH终端</div>
+    </template>
+    
     <div ref="xterm" class="terminal" />
   </el-dialog>
 </template>

@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="30e90a8f-f783-4627-b5b6-4fe5351821f4" name="默认更改列表" comment="" />
+    <list default="true" id="30e90a8f-f783-4627-b5b6-4fe5351821f4" name="默认更改列表" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmdb_fe/src/views/CloudServer/SSH.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../cmdb_fe/src/views/CloudServer/SSH.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmdb_fe/src/views/PhysicsServer/SSH.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../cmdb_fe/src/views/PhysicsServer/SSH.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmdb_fe/src/views/VmServer/SSH.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../cmdb_fe/src/views/VmServer/SSH.vue" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,7 +21,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libs/aliyun_cloud.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1620">
+            <state relative-caret-position="1350">
               <caret line="108" column="26" selection-start-line="108" selection-start-column="26" selection-end-line="108" selection-end-column="26" />
               <folding>
                 <element signature="e#37#79#0" expanded="true" />
@@ -28,7 +33,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libs/ssh.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="915">
+            <state relative-caret-position="885">
               <caret line="61" column="8" selection-start-line="61" selection-start-column="8" selection-end-line="62" selection-end-column="21" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
@@ -40,7 +45,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libs/tencent_cloud.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
+            <state relative-caret-position="480">
               <caret line="34" column="52" selection-start-line="34" selection-start-column="52" selection-end-line="34" selection-end-column="52" />
               <folding>
                 <element signature="e#0#42#0" expanded="true" />
@@ -52,7 +57,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cmdb_BE/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="735">
+            <state relative-caret-position="720">
               <caret line="49" selection-start-line="49" selection-end-line="49" selection-end-column="55" />
               <folding>
                 <element signature="e#308#332#0" expanded="true" />
@@ -64,7 +69,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libs/websocket/routing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
+            <state relative-caret-position="135">
               <caret line="13" selection-start-line="13" selection-end-line="13" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
@@ -91,7 +96,7 @@
         <entry file="file://$PROJECT_DIR$/libs/websocket/terminal.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="324">
-              <caret line="70" column="10" lean-forward="true" selection-start-line="70" selection-start-column="10" selection-end-line="70" selection-end-column="10" />
+              <caret line="70" column="10" selection-start-line="70" selection-start-column="10" selection-end-line="70" selection-end-column="10" />
               <folding>
                 <element signature="e#0#56#0" expanded="true" />
               </folding>
@@ -102,7 +107,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cmdb/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1080">
+            <state relative-caret-position="1050">
               <caret line="72" column="41" selection-start-line="72" selection-start-column="20" selection-end-line="72" selection-end-column="41" />
               <folding>
                 <element signature="e#1#29#0" expanded="true" />
@@ -446,17 +451,19 @@
       <workItem from="1675130389689" duration="15797000" />
       <workItem from="1675304593613" duration="951000" />
       <workItem from="1680230966673" duration="5585000" />
-      <workItem from="1680249040090" duration="405000" />
+      <workItem from="1680249040090" duration="997000" />
+      <workItem from="1680489085821" duration="280000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="207355000" />
+    <option name="totallyTimeSpent" value="208227000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1440" height="818" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19742489" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20028612" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
@@ -793,7 +800,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/libs/aliyun_cloud.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1620">
+        <state relative-caret-position="1350">
           <caret line="108" column="26" selection-start-line="108" selection-start-column="26" selection-end-line="108" selection-end-column="26" />
           <folding>
             <element signature="e#37#79#0" expanded="true" />
@@ -803,7 +810,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/libs/ssh.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="915">
+        <state relative-caret-position="885">
           <caret line="61" column="8" selection-start-line="61" selection-start-column="8" selection-end-line="62" selection-end-column="21" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
@@ -813,7 +820,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/libs/tencent_cloud.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
+        <state relative-caret-position="480">
           <caret line="34" column="52" selection-start-line="34" selection-start-column="52" selection-end-line="34" selection-end-column="52" />
           <folding>
             <element signature="e#0#42#0" expanded="true" />
@@ -823,7 +830,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cmdb_BE/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
+        <state relative-caret-position="720">
           <caret line="49" selection-start-line="49" selection-end-line="49" selection-end-column="55" />
           <folding>
             <element signature="e#308#332#0" expanded="true" />
@@ -833,7 +840,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/libs/websocket/routing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
+        <state relative-caret-position="135">
           <caret line="13" selection-start-line="13" selection-end-line="13" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
@@ -853,7 +860,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cmdb/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1080">
+        <state relative-caret-position="1050">
           <caret line="72" column="41" selection-start-line="72" selection-start-column="20" selection-end-line="72" selection-end-column="41" />
           <folding>
             <element signature="e#1#29#0" expanded="true" />
@@ -867,7 +874,7 @@
     <entry file="file://$PROJECT_DIR$/libs/websocket/terminal.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
-          <caret line="70" column="10" lean-forward="true" selection-start-line="70" selection-start-column="10" selection-end-line="70" selection-end-column="10" />
+          <caret line="70" column="10" selection-start-line="70" selection-start-column="10" selection-end-line="70" selection-end-column="10" />
           <folding>
             <element signature="e#0#56#0" expanded="true" />
           </folding>
