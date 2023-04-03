@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="30e90a8f-f783-4627-b5b6-4fe5351821f4" name="默认更改列表" comment="">
-      <change beforePath="$PROJECT_DIR$/../cmdb_fe/src/views/Dashboard/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../cmdb_fe/src/views/Dashboard/index.vue" afterDir="false" />
-    </list>
+    <list default="true" id="30e90a8f-f783-4627-b5b6-4fe5351821f4" name="默认更改列表" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +40,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/domain/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-75">
+            <state relative-caret-position="45">
               <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
             </state>
           </provider>
@@ -428,12 +426,12 @@
       <workItem from="1675304593613" duration="951000" />
       <workItem from="1680230966673" duration="5585000" />
       <workItem from="1680249040090" duration="997000" />
-      <workItem from="1680489085821" duration="5316000" />
+      <workItem from="1680489085821" duration="5698000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="213263000" />
+    <option name="totallyTimeSpent" value="213645000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1440" height="818" extended-state="6" />
@@ -444,7 +442,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.27638888" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.27638888" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.32867134" />
       <window_info anchor="bottom" id="Python Console" order="4" weight="0.32867134" />
       <window_info anchor="bottom" id="Terminal" order="5" weight="0.3532684" />
@@ -855,7 +853,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/domain/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-75">
+        <state relative-caret-position="45">
           <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
         </state>
       </provider>
