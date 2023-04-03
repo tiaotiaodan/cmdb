@@ -25,6 +25,8 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 
 // axios全局注册
 app.config.globalProperties.$http = axios
+// 设置请求默认路径
+app.config.globalProperties.$wsbaseURL = "ws://127.0.0.1:8000/server/terminal"
 
 
 // 注册store

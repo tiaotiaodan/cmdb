@@ -111,7 +111,7 @@ export default {
     this.getEchat()
     this.releaseEchat()
   },
-  // 按钮调用接口
+  // 按钮调用
   methods: {
     getNumber() {
       this.$http.get('cmdb/idc/').then(res => {

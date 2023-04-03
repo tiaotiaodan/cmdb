@@ -50,7 +50,7 @@ export default {
       // this.term.loadAddon(fitPlugin)
 
       // 建立ws连接
-      this.ws = new WebSocket(`ws://127.0.0.1:8000/server/terminal/${this.row.ssh_ip}/${this.row.ssh_port}/${this.row.credential}/`)
+      this.ws = new WebSocket(`${this.$wsbaseURL}/${this.row.ssh_ip}/${this.row.ssh_port}/${this.row.credential}/`)
 
       // 建立ws连接成功后回调
       this.ws.onopen = () => {
