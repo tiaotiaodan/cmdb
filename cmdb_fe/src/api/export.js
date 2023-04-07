@@ -8,7 +8,7 @@ export function expotOut(searchList, pathName, xlsName, url) {
     let day = d.getDate()
     let time = d.getFullYear() + '-' + (String(month).length > 1 ? month : '0' + month) + '-' + (String(day).length > 1 ? day : '0' + day)
     // 地址
-    let baseURL = axios.defaults.baseURL // 域名
+    let baseURL = axios.defaults.baseURL // 域名读取
     const PATH = {
             userList: url // 后台接口地址
         }
