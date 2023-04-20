@@ -3,7 +3,7 @@ import { ElMessage } from 'element-plus'
 
 const instance = axios.create({
   // api请求地址，根据实际需求修改
-  baseURL: 'http://127.0.0.1:8000/',
+  baseURL: process.env.VUE_APP_BASEURL,
   timeout: 30000   // 超时时间，默认是ms秒单位
   // headers: {'X-Custom-Header': 'foobar'}
 })
