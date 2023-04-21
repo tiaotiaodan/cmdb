@@ -4,15 +4,17 @@
 
 ### 1. 线上部署-前端
 
-- 修改前端api请求后端接口地址，修改src下api目录下http.js文件
+- 修改前端api请求后端接口地址，修改.env.local或者.env.prod文件，下面是.env.local示例文件
 
   ```javascript
-  const instance = axios.create({
-    // api请求地址，根据实际需求修改
-    baseURL: 'http://127.0.0.1:8000/',
-    // timeout: 5000
-    // headers: {'X-Custom-Header': 'foobar'}
-  })
+  NODE_ENV=dev
+ 
+  VUE_APP_CURRENTMODE=serve
+     
+  VUE_APP_BASEURL=http://127.0.0.1:8000/
+     
+  VUE_APP_WSURL=ws://127.0.0.1:8000/server/terminal
+
   ```
 
 - 进行代码编译打包
