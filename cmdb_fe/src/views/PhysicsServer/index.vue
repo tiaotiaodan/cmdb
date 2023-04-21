@@ -189,6 +189,7 @@
             <!--通过回调函数获取行内数据-->
             <!-- 编辑按钮 -->
             <el-button type="info" size="small"  @click="handelSSH(scope.$index, scope.row)" v-if="scope.row.machine_type == 'linux'">终端</el-button>
+            <el-button type="info" size="small"  @click="handelVmware(scope.$index, scope.row)" v-if="scope.row.machine_type == 'vmware'"><a :href='url' target="_blank" style="color:#fff; text-decoration:none">管理</a></el-button>
             <el-button type="success" size="small"  @click="handelPhysicsServerSync(scope.$index, scope.row)">同步</el-button>
             <el-button type="primary" size="small"  @click="handelPhysicsServerEdit(scope.$index, scope.row)">编辑</el-button>
             <el-button type="danger" size="small"  @click="handelPhysicsServerDelete(scope.$index, scope.row)">删除</el-button>
@@ -262,6 +263,7 @@ export default {
 
       // ============================== ssh ===================
       dialogssh: false,
+      url: '',
 
       // ============================== 展示列 ==================
       columnVisible: false, // 可展示列显示与隐藏
@@ -349,6 +351,11 @@ export default {
       // 重新赋值允许打开编辑弹出框
       this.dialogssh = true
       this.row = row
+    },
+    handelVmware(index, row) {
+      // VMware终端跳转到浏览器访问
+      let urldata = 'https://' + row.private_ip[0]
+      this.url = urldata
     },
     handelPhysicsServerSync(index, row) {
       // 如果主机有凭据直接同步
