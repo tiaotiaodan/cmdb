@@ -12,7 +12,7 @@ from aliyunsdkecs.request.v20140526.DescribeInstancesRequest import DescribeInst
 from aliyunsdkecs.request.v20140526.DescribeDisksRequest import DescribeDisksRequest
 
 # 域名获取
-from aliyunsdkdomain.request.v20180129.QueryDomainListRequest import QueryDomainListRequest
+from aliyunsdkdomain.request.v20180129.QueryAdvancedDomainListRequest import QueryAdvancedDomainListRequest
 
 # 域名解析获取
 from aliyunsdkalidns.request.v20150109.DescribeDomainRecordsRequest import DescribeDomainRecordsRequest
@@ -81,7 +81,7 @@ class AliCloud():
     # 获取域名数据查询
     def instance_domain(self, page_num, page_size,):
         client = AcsClient(self.secret_id, self.secret_key)
-        req = QueryDomainListRequest()
+        req = QueryAdvancedDomainListRequest()
         req.set_PageNum(page_num)
         req.set_PageSize(page_size)
         try:
@@ -107,7 +107,7 @@ class AliCloud():
 
 
 if __name__ == '__main__':
-    cloud = AliCloud('ID', 'KEY')
+    cloud = AliCloud('id', 'key')
     # result = cloud.region_list()
     # result = cloud.zone_list('cn-chengdu')
     # result = cloud.instance_list('cn-chengdu')
