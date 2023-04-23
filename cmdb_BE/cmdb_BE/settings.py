@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'cmdb',
     'system_config',
+    'domain',
     'django_filters',
     'rest_framework.authtoken',
     'channels',

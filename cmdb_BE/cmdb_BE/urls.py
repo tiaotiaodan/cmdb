@@ -17,12 +17,14 @@ from django.contrib import admin
 from django.urls import path,include
 from cmdb import urls as cmdburls
 from system_config import urls as systemconfigurls
+from domain import urls as domainurls
 from libs import token_auth        # 导入认证登陆接口文件
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('cmdb/', include(cmdburls)),
-    path('config/', include(systemconfigurls)),
+    path('cmdb/', include(cmdburls)),    # 主机管理
+    path('config/', include(systemconfigurls)),  # 主机账号配置管理
+    path('domain/', include(domainurls)),   # 域名管理
     path('login/', token_auth.CustomAuthToken.as_view()),   # 配置认证登陆提交路由
     path('change_password/', token_auth.ChangeUserPasswordView.as_view()),   # 配置密码修改提交路由
     path('user_info/', token_auth.UserList.as_view()), # 获取用户信息

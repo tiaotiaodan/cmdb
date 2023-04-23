@@ -107,7 +107,7 @@ class AliCloud():
 
 
 if __name__ == '__main__':
-    cloud = AliCloud('ID', 'key')
+    cloud = AliCloud('ID', 'KEY')
     # result = cloud.region_list()
     # result = cloud.zone_list('cn-chengdu')
     # result = cloud.instance_list('cn-chengdu')

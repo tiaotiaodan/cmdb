@@ -34,7 +34,7 @@
       </el-form-item>
       <el-form-item label="虚拟主机：" prop="vm_host">
         <el-select class="m-2" v-model="form.vm_host" @click="getVmHost" placeholder="请选择" style="width:100%;">
-          <el-option v-for="row in vmhost" :key="row.id" :label="`${row.name}-${row.ssh_ip}`" :value="row.id"></el-option>
+          <el-option v-for="row in vmhost" :key="row.id" :label="`${row.ssh_ip}`" :value="row.id"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="SSH连接：" required>

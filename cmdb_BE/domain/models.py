@@ -7,7 +7,7 @@ class DomainManage(models.Model):
     status = models.CharField(max_length=20, verbose_name="域名状态")
     create_time = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")
     expire_time = models.DateTimeField(auto_now=True, verbose_name="到期时间")
-    ExpirationTime = models.IntegerField(max_length=20, verbose_name="过期时间提示")
+    ExpirationTime = models.IntegerField(verbose_name="过期时间提示")
     note = models.TextField(blank=True, verbose_name="备注")
 
     class Meta:

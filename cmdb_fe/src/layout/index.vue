@@ -32,6 +32,7 @@
               </el-icon>
               <span>{{ menu.children[0].name }}</span>
             </el-menu-item>
+
             <!--处理一级菜单有子路由-->
             <el-sub-menu v-else-if="menu.children" :index="menu.path">
               <template #title>

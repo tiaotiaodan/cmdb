@@ -61,7 +61,7 @@ const routes = [
   {
     path: '/domain',
     name: '域名管理',
-    icon: 'Setting',
+    icon: 'InfoFilled',
     component: LayoutView,
     children: [
       {
@@ -79,7 +79,7 @@ const routes = [
   {
     path: '/ssl',
     name: '证书管理',
-    icon: 'Setting',
+    icon: 'Folder',
     component: LayoutView,
     children: [
       {
@@ -92,7 +92,7 @@ const routes = [
   {
     path: '/software',
     name: '软件管理',
-    icon: 'Setting',
+    icon: 'Menu',
     component: LayoutView,
     children: [
       {
