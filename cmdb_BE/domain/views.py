@@ -83,6 +83,8 @@ class AliyunCloudDomainManageView(APIView):
         secret_id = request.data.get('secret_id')
         secret_key = request.data.get('secret_key')
         platform = request.data.get('platform')
+        note = request.data.get('note')
+
 
         # 导入阿里云sdk
         cloud = AliCloud(secret_id, secret_key)
@@ -100,18 +102,6 @@ class AliyunCloudDomainManageView(APIView):
 
             # 域名状态
             status_list = domain_result['data']['Data']['Domain'][i].get('DomainStatus')
-            if status_list == 1 :
-                status_list = "急需续费"
-            elif status_list == 2:
-                status_list = "急需赎回"
-            elif status_list == 3:
-                status_list = "正常"
-            elif status_list == 6:
-                status_list = "未实名认证"
-            elif status_list == 7:
-                status_list = "审核失败，重新实名认证"
-            elif status_list == 8:
-                status_list = "审核中"
 
             # 时间设置
             create_time = domain_result['data']['Data']['Domain'][i].get('RegistrationDate')
@@ -126,13 +116,15 @@ class AliyunCloudDomainManageView(APIView):
 
             ExpirationDateStatus = domain_result['data']['Data']['Domain'][i].get('ExpirationDateStatus')
 
+
             data = {'name': name,
                     'platform': platform,
                     'status': status_list,
                     'create_time': create_time,
                     'expire_time': expire_time,
                     'ExpirationTime': ExpirationTime,
-                    'ExpirationDateStatus': ExpirationDateStatus}
+                    'ExpirationDateStatus': ExpirationDateStatus,
+                    'note': note}
 
             # 如果instance_id不存在才创建
             server = DomainManage.objects.filter(name=name)
