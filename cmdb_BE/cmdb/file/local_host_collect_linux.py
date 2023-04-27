@@ -108,8 +108,11 @@ class GetData():
                         ip_list.append(result.read().strip())
         return ip_list
     def cpu_num(self):
-        cpu = self.parse_file("/proc/cpuinfo", "cpu cores")
-        return "%s核" %cpu
+        result = os.popen("lscpu |grep 'CPU(s):' |awk '{print $2}'")
+        for c in result.read().strip().split('\n'):
+            c = c.split()
+            cpu = c[0]
+            return "%s核" %cpu
     def cpu_model(self):
         model = self.parse_file("/proc/cpuinfo", "model name")
         return model
@@ -148,7 +151,7 @@ class GetData():
         self.result = {
             "hostname": self.hostname(),
             "os_version": self.os_version(),
-            "public_ip": self.public_ip(),
+            #"public_ip": self.public_ip(),
             "private_ip": self.private_ip(),
             "cpu_num": self.cpu_num(),
             "cpu_model": self.cpu_model(),

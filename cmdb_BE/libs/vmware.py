@@ -88,7 +88,7 @@ class EsxiApi():
         这里字段必须与API对应
         """
         self.result = {
-            #"hostname": self.hostname(),
+            "hostname": self.hostname(),
             "os_version": self.os_version(),
             "public_ip": self.public_ip(),
             "private_ip": self.private_ip(),
@@ -109,6 +109,6 @@ class EsxiApi():
 if __name__ == '__main__':
 
 
-    esxi = EsxiApi("172.16.128.89", 443, "root", "Sobey@2021")
+    esxi = EsxiApi("192.168.0.108", 443, "root", "Aa@963852#@!")
     result = esxi.get_all()
     print(result)

@@ -107,15 +107,16 @@ class AliCloud():
 
 
 if __name__ == '__main__':
-    cloud = AliCloud('id', 'key')
+    cloud = AliCloud('LTAI5tNQBAUMjhry7s9yGsjv', '1ZzNc8jP0jfrhUgrRtprKYwAWDsSiM')
     # result = cloud.region_list()
     # result = cloud.zone_list('cn-chengdu')
     # result = cloud.instance_list('cn-chengdu')
     # result = cloud.instance_disk('cn-chengdu','i-2vcbu28dm39lz6s1cygk')
 
     # 获取域名列表
-    result = cloud.instance_domain(0, 200)
+    # result = cloud.instance_domain(0, 200)
 
     # 获取dns解析
-    # result = cloud.instance_domain_analysis('shichao.xin')
+    result = cloud.instance_domain_analysis('shichao.xin')
+
     print(result)

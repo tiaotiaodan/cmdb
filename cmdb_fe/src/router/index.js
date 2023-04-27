@@ -76,32 +76,32 @@ const routes = [
       }
     ]
   },
-  {
-    path: '/ssl',
-    name: '证书管理',
-    icon: 'Folder',
-    component: LayoutView,
-    children: [
-      {
-        path: '/ssl/ssl_manage',
-        name: '证书管理',
-        component: () => import('../views/SslManage/index.vue')
-      }
-    ]
-  },
-  {
-    path: '/software',
-    name: '软件管理',
-    icon: 'Menu',
-    component: LayoutView,
-    children: [
-      {
-        path: '/software/software_manage',
-        name: '软件信息管理',
-        component: () => import('../views/SoftwareManage/index.vue')
-      }
-    ]
-  },
+  // {
+  //   path: '/ssl',
+  //   name: '证书管理',
+  //   icon: 'Folder',
+  //   component: LayoutView,
+  //   children: [
+  //     {
+  //       path: '/ssl/ssl_manage',
+  //       name: '证书管理',
+  //       component: () => import('../views/SslManage/index.vue')
+  //     }
+  //   ]
+  // },
+  // {
+  //   path: '/software',
+  //   name: '软件管理',
+  //   icon: 'Menu',
+  //   component: LayoutView,
+  //   children: [
+  //     {
+  //       path: '/software/software_manage',
+  //       name: '软件信息管理',
+  //       component: () => import('../views/SoftwareManage/index.vue')
+  //     }
+  //   ]
+  // },
   {
     path: '/config',
     name: '系统配置',

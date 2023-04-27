@@ -21,6 +21,7 @@ class DomainAnalysisSerializer(serializers.ModelSerializer):
     """
     DomainAnalysis 域名解析序列化类
     """
+    domain_name = DomainManageSerializer(read_only=True)  # IDC只读
 
     class Meta:
         model = DomainAnalysis

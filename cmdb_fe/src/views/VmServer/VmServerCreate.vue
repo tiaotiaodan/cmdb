@@ -136,7 +136,6 @@ export default {
     submit() {
       this.$refs.formRef.validate(valid => {
         if (valid) {
-          console.log(this.form)
           this.$http.post('cmdb/vm_server_create_host/', this.form).then(res => {
             if (res.data.code == 200) {
               this.$message.success('创建成功')

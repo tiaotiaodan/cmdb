@@ -97,8 +97,11 @@ class GetData():
                         ip_list.append(result.read().strip())
         return ip_list
     def cpu_num(self):
-        cpu = self.parse_file("/proc/cpuinfo", "cpu cores")
-        return "%s核" %cpu
+        result = os.popen("lscpu |grep 'CPU(s):' |awk '{print $2}'")
+        for c in result.read().strip().split('\n'):
+            c = c.split()
+            cpu = c[0]
+            return "%s核" %cpu
     def memory(self):
         total = self.parse_file("/proc/meminfo", "MemTotal")
         total = round(float(total.split()[0]) / 1024 / 1024, 1) # 转GB单位

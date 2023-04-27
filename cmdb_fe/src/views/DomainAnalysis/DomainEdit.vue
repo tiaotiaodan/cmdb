@@ -3,33 +3,18 @@
   <el-dialog :model-value="visible" @close="dialogClose" width="30%">
     <!--标题-->
     <template #header>
-      <div style="font-size: 18px; color: #409eff; font-weight: bold">修改域名管理信息</div>
+      <div style="font-size: 18px; color: #409eff; font-weight: bold">修改域名解析信息</div>
     </template>
 
     <el-form :model="row" ref="formRef" :rules="formRules" label-width="100px">
+      <!-- 配置idc选择，通过下拉框选择-->
       <el-form-item label="域名名称：" prop="name">
-        <el-input v-model="row.name"></el-input>
+        <el-select class="m-2" v-model="row.name" @click="getIdc" placeholder="请选择" style="width:100%;">
+          <el-option v-for="row in domain" :key="row.id" :label="`${row.city}-${row.name}`" :value="row.id"></el-option>
+        </el-select>
       </el-form-item>
       <el-form-item label="平台管理：" prop="platform">
         <el-input v-model="row.platform"></el-input>
-      </el-form-item>
-      <el-form-item label="域名状态：" prop="status">
-        <el-select v-model="row.status" placeholder="请选择域名状态类型" style="width: 100%">
-          <el-option label="正常" value="正常" />
-          <el-option label="急需续费" value="急需续费" />
-          <el-option label="急需赎回" value="急需赎回" />
-          <el-option label="转出中" value="转出中" />
-          <el-option label="未认证" value="未认证" />
-          <el-option label="实名认证失败" value="实名认证失败" />
-          <el-option label="实名认证审核中" value="实名认证审核中" />
-          <el-option label="域名持有者信息修改中" value="域名持有者信息修改中" />
-        </el-select>
-      </el-form-item>
-      <el-form-item label="创建日期：">
-        <el-date-picker v-model="row.create_time" type="datetime" value-format="YYYY-MM-DD HH:mm:ss" placeholder="请选择日期" style="width: 100%"></el-date-picker>
-      </el-form-item>
-      <el-form-item label="过期日期：">
-        <el-date-picker v-model="row.expire_time" type="datetime" value-format="YYYY-MM-DD HH:mm:ss" placeholder="请选择时间" style="width: 100%"></el-date-picker>
       </el-form-item>
       <el-form-item label="备注：">
         <el-input v-model="row.note" type="textarea"></el-input>
@@ -58,11 +43,9 @@ export default {
   },
   data() {
     return {
+      domain: '', // 获取idc所有数据
       formRules: {
-        name: [
-          { required: true, message: '请输入域名名称', trigger: 'blur' },
-          { min: 1, message: '域名名称长度应不小于1个字符', trigger: 'blur' }
-        ]
+        domain: [{ required: true, message: '请选择IDC机房', trigger: 'change' }]
       }
     }
   },

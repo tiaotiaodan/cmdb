@@ -1,7 +1,7 @@
 from django.urls import path, include
 
 # 导入视图集
-from domain.views import DomainManageViewSet, DomainAnalysisViewSet,AliyunCloudDomainManageView
+from domain.views import DomainManageViewSet, DomainAnalysisViewSet,AliyunCloudDomainManageView,AliyunCloudDomainAnalysisView
 
 # 导入drf路由
 from rest_framework import routers
@@ -15,5 +15,6 @@ router.register('domain_analysis', DomainAnalysisViewSet, basename="domain_analy
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('create_domain_manage/', AliyunCloudDomainManageView.as_view()),  # 配置新建云域名导入
+    path('ali_domain_manage_create/', AliyunCloudDomainManageView.as_view()),  # 配置新建阿里云域名导入
+    path('create_domain_analysis/', AliyunCloudDomainAnalysisView.as_view()),  # 配置新建云域名解析导入
 ]

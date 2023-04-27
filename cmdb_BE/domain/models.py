@@ -4,12 +4,12 @@ from django.db import models
 class DomainManage(models.Model):
     name = models.CharField(max_length=30, verbose_name="名称")
     platform = models.CharField(max_length=20, verbose_name="平台管理")
-    status = models.CharField(max_length=20, verbose_name="域名状态", choices=(('1','急需续费'),('2','急需赎回'),('3','正常'),('4','转出中'),('5','域名持有者信息修改中'),('6','未实名认证'),('7','实名认证失败'),('8','实名认证审核中')), default='6')
-    create_time = models.CharField(max_length=20, verbose_name="创建时间" )
-    expire_time = models.CharField(max_length=20, verbose_name="到期时间")
-    ExpirationTime = models.IntegerField(verbose_name="过期时间提示")
-    ExpirationDateStatus = models.IntegerField(verbose_name="域名过期状态", choices=(('1','域名未过期'),('2','域名已过期')), default='1')
-    note = models.TextField(blank=True, verbose_name="备注")
+    status = models.CharField(max_length=20, verbose_name="域名状态", blank=True, null=True,)
+    create_time = models.CharField(max_length=20, verbose_name="创建时间", blank=True, null=True,)
+    expire_time = models.CharField(max_length=20, verbose_name="到期时间", blank=True, null=True,)
+    ExpirationTime = models.CharField(max_length=20,verbose_name="过期时间提示", blank=True, null=True,)
+    ExpirationDateStatus = models.CharField(max_length=20,verbose_name="域名过期状态", choices=(('1','域名未过期'),('2','域名已过期')), default='1', blank=True, null=True,)
+    note = models.TextField(blank=True, null=True, verbose_name="备注")
 
     class Meta:
         db_table = "domain_manage"
@@ -21,13 +21,14 @@ class DomainManage(models.Model):
 
 
 class DomainAnalysis(models.Model):
-    domain_name = models.CharField(max_length=30, verbose_name="域名名称")
+    domain_name = models.ForeignKey(DomainManage, on_delete=models.PROTECT, verbose_name="关联域名名称")   # 一对多
     host_name = models.CharField(max_length=20,  verbose_name="主机记录")
     RecordType = models.CharField(max_length=20, verbose_name="记录类型")
     analyshost = models.GenericIPAddressField(verbose_name="解析地址")
     host_status = models.CharField(max_length=20, verbose_name="状态")
-    create_time = models.CharField(max_length=20, verbose_name="创建时间")
-    note = models.TextField(blank=True, verbose_name="备注")
+    create_time = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")
+    update_time = models.DateTimeField(auto_now=True, verbose_name="修改时间")
+    note = models.TextField(blank=True, null=True, verbose_name="备注")
 
     class Meta:
         db_table = "domain_analysis"
