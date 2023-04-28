@@ -16,5 +16,5 @@ router.register('domain_analysis', DomainAnalysisViewSet, basename="domain_analy
 urlpatterns = [
     path('', include(router.urls)),
     path('ali_domain_manage_create/', AliyunCloudDomainManageView.as_view()),  # 配置新建阿里云域名导入
-    path('create_domain_analysis/', AliyunCloudDomainAnalysisView.as_view()),  # 配置新建云域名解析导入
+    path('ali_domain_analysis_create/', AliyunCloudDomainAnalysisView.as_view()),  # 配置新建云域名解析导入
 ]

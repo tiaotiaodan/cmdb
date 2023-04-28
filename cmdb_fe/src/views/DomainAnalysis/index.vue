@@ -10,7 +10,7 @@
       -->
         <el-row>
           <el-col :span="22">
-            <el-input v-model="urlParams.search" placeholder="请输入搜索域名名称或平台" @keyup.enter="onSearch" clearable @clear="onSearch" class="search" />
+            <el-input v-model="urlParams.search" placeholder="请输入搜索主机记录和解析地址" @keyup.enter="onSearch" clearable @clear="onSearch" class="search" />
           </el-col>
           <el-col :span="1" style="margin-left: 5px">
             <el-button type="primary" @click="onSearch">

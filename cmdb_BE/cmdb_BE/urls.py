@@ -29,4 +29,3 @@ urlpatterns = [
     path('change_password/', token_auth.ChangeUserPasswordView.as_view()),   # 配置密码修改提交路由
     path('user_info/', token_auth.UserList.as_view()), # 获取用户信息
 ]
-

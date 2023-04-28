@@ -30,8 +30,8 @@ class DomainManageViewSet(CustomModelViewSet):
     # 导入模块，filters.SearchFilter 是指搜索, filters.OrderingFilter 是指排序
     filter_backends = (DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter)
 
-    filterset_fields = ('name',)  # 指定可过滤的字段
-    search_fields = ('name',)  # 指定可搜索的字段
+    filterset_fields = ('name', 'platform')  # 指定可过滤的字段
+    search_fields = ('name', 'platform')  # 指定可搜索的字段
 
     # 排序
     # 注意 filter_backends多了一个filters.OrderingFilter
@@ -54,8 +54,8 @@ class DomainAnalysisViewSet(CustomModelViewSet):
     # 导入模块，filters.SearchFilter 是指搜索, filters.OrderingFilter 是指排序
     filter_backends = (DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter)
 
-    filterset_fields = ('domain_name',)  # 指定可过滤的字段
-    search_fields = ('domain_name',)  # 指定可搜索的字段
+    filterset_fields = ('id', 'host_name', 'analyshost')  # 指定可过滤的字段
+    search_fields = ('id', 'host_name', 'analyshost')  # 指定可搜索的字段
 
     # 排序
     # 注意 filter_backends多了一个filters.OrderingFilter
@@ -178,7 +178,7 @@ class AliyunCloudDomainAnalysisView(APIView):
         # 凭据
         secret_id = request.data.get('secret_id')
         secret_key = request.data.get('secret_key')
-        domain_manage_id = int(request.data.get('domain_manage_id'))
+        domain_manage_id = int(request.data.get('cloudDomainId'))
         note = request.data.get('note')
 
         # 通过前端上传id查询域名名称

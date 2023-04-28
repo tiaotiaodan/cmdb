@@ -80,6 +80,8 @@ export default {
               this.$message.success('修改域名数据信息成功')
               // 关闭弹出窗口
               this.dialogClose()
+              // 调用父组件方法，更新数据
+              this.$parent.getallDomain()
             }
           })
         }
