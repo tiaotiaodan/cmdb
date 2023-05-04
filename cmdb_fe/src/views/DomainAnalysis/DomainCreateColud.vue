@@ -32,7 +32,9 @@
       <div v-show="active == 3">
         <el-form-item label="选择域名：" prop="cloudDomainId">
           <el-select class="m-2" v-model="form.cloudDomainId" @click="getCloudDomain" placeholder="请选择" style="width: 100%">
-            <el-option v-for="row in cloudDomain" :key="row.id" :label="row.name" :value="row.id" ></el-option>
+            <template v-for="row in cloudDomain">
+              <el-option  v-if="form.cloud == row.platform"  :key="row.id" :label="row.name" :value="row.id" ></el-option>
+            </template>
           </el-select>
         </el-form-item>
       </div>
@@ -115,8 +117,6 @@ export default {
     // 获取域名管理信息
     getCloudDomain() {
       this.$http.get('domain/domain_manage/?page_size=100').then(res => {
-        console.log(res)
-        // if this.form.cloud == "res.data."
         this.cloudDomain = res.data.data
       })
     },
