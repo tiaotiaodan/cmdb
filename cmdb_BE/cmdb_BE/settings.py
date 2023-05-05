@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'cmdb',
     'system_config',
+    'domain',
     'django_filters',
     'rest_framework.authtoken',
     'channels',
@@ -162,7 +163,7 @@ REST_FRAMEWORK = {
 }
 
 # 设置跨域
-# CORS_ORIGIN_WHITELIST = ('http://127.0.0.1:8080',)
+CORS_ORIGIN_WHITELIST = ('http://127.0.0.1:8080','http://localhost:8080')
 CORS_ORIGIN_ALLOW_ALL = True
 
 # 指明在跨域访问中，后端是否支持对cookie的操作。

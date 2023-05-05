@@ -9,6 +9,7 @@ import 'element-plus/dist/index.css'
 
 // 注册icon图标
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+
 // 使用中文
 import locale from 'element-plus/lib/locale/lang/zh-cn'
 

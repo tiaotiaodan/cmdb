@@ -107,7 +107,7 @@ class WinTest():
         self.result = {
             "hostname": self.hostname(),
             "os_version": self.os_version(),
-            "public_ip": self.public_ip(),
+            #"public_ip": self.public_ip(),
             "private_ip": self.private_ip(),
             "cpu_num": self.cpu_num(),
             "cpu_model": self.cpu_model(),

@@ -50,7 +50,7 @@ class Win_ssh():
 
 
 if __name__ == '__main__':
-    ssh = Win_ssh("172.16.128.98", 22, "admin", "Aa@963852#@!")
+    ssh = Win_ssh("192.168.0.162", 22, "admin", "123456")
     # result = ssh.test()  # 验证是否能连接
     local_file = os.path.join(os.getcwd(), 'local_host_collect_windows.py')   # 本地需要上传的文件
 

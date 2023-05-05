@@ -15,18 +15,18 @@
       </el-form-item>
       <!-- 配置idc选择，通过下拉框选择-->
       <el-form-item label="IDC机房：" prop="idc">
-        <el-select class="m-2" v-model="row.idc" @click="getIdc" placeholder="请选择" style="width:100%;">
+        <el-select class="m-2" v-model="row.idc" @click="getIdc" placeholder="请选择" style="width: 100%">
           <el-option v-for="row in idc" :key="row.id" :label="`${row.city}-${row.name}`" :value="row.id"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="主机分组：" prop="server_group">
         <!--表单多选multiple-->
-        <el-select class="m-2" v-model="row.server_group" @click="getServerGroup" multiple placeholder="请选择" style="width:100%;">
+        <el-select class="m-2" v-model="row.server_group" @click="getServerGroup" multiple placeholder="请选择" style="width: 100%">
           <el-option v-for="row in serverGroup" :key="row.id" :label="row.name" :value="row.id"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="机器类型：" prop="machine_type">
-        <el-select v-model="row.machine_type" placeholder="请选择机器类型" style="width:100%;">
+        <el-select v-model="row.machine_type" placeholder="请选择机器类型" style="width: 100%">
           <el-option label="linux" value="linux" />
           <el-option label="windows" value="windows" />
         </el-select>
@@ -35,29 +35,29 @@
       <!--配置ssh连接显示格式配置-->
       <!--配置ssh连接显示格式配置-->
       <el-form-item label="SSH 连接：" required>
-          <el-col :span="1.5">
-            <el-tag size="large" type="info">IP</el-tag>
-          </el-col>
-          <el-col :span="15">
-            <el-form-item prop="ssh_ip">
-              <el-input v-model="row.ssh_ip"></el-input>
-            </el-form-item>
-          </el-col>
-          <el-col :span="1.5">
-            <el-tag size="large" type="info">端口</el-tag>
-          </el-col>
-          <el-col :span="4">
-            <el-form-item prop="ssh_port">
-              <el-input v-model="row.ssh_port"></el-input>
-            </el-form-item>
-          </el-col>
-          <el-tag class="ml-2" type="warning">
+        <el-col :span="1.5">
+          <el-tag size="large" type="info">IP</el-tag>
+        </el-col>
+        <el-col :span="15">
+          <el-form-item prop="ssh_ip">
+            <el-input v-model="row.ssh_ip"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="1.5">
+          <el-tag size="large" type="info">端口</el-tag>
+        </el-col>
+        <el-col :span="4">
+          <el-form-item prop="ssh_port">
+            <el-input v-model="row.ssh_port"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-tag class="ml-2" type="warning">
           <el-icon><InfoFilled /></el-icon>
           linux和windows端口默认填写为22, 由于windows连接走openssh
-          </el-tag>
+        </el-tag>
       </el-form-item>
       <el-form-item label="SSH凭据：" prop="credential">
-        <el-select class="m-2" v-model="row.credential" @click="getCredential" placeholder="请选择" >
+        <el-select class="m-2" v-model="row.credential" @click="getCredential" placeholder="请选择">
           <el-option v-for="row in credential" :key="row.id" :label="`${row.name}-${row.username}`" :value="row.id"></el-option>
         </el-select>
       </el-form-item>
@@ -88,13 +88,13 @@
           <el-input v-model="row.network"></el-input>
         </el-form-item>
         <el-form-item label="上架日期：">
-          <el-date-picker v-model="row.put_shelves_date" type="date" value-format="YYYY-MM-DD" placeholder="请选择日期" style="width:100%;"></el-date-picker>
+          <el-date-picker v-model="row.put_shelves_date" type="date" value-format="YYYY-MM-DD" placeholder="请选择日期" style="width: 100%"></el-date-picker>
         </el-form-item>
         <el-form-item label="下架日期：">
-          <el-date-picker v-model="row.off_shelves_date" type="date" value-format="YYYY-MM-DD" placeholder="请选择日期" style="width:100%;"></el-date-picker>
+          <el-date-picker v-model="row.off_shelves_date" type="date" value-format="YYYY-MM-DD" placeholder="请选择日期" style="width: 100%"></el-date-picker>
         </el-form-item>
         <el-form-item label="租约过期时间：">
-          <el-date-picker v-model="row.expire_datetime" type="datetime" value-format="YYYY-MM-DD HH:mm:ss" placeholder="请选择时间" style="width:100%;"></el-date-picker>
+          <el-date-picker v-model="row.expire_datetime" type="datetime" value-format="YYYY-MM-DD HH:mm:ss" placeholder="请选择时间" style="width: 100%"></el-date-picker>
         </el-form-item>
         <el-form-item label="备注：">
           <el-input v-model="row.note" type="textarea"></el-input>
@@ -138,7 +138,7 @@ export default {
         server_group: [{ required: true, message: '请选择主机分组', trigger: 'change' }],
         hostname: [{ required: true, message: '请输入hostname主机名', trigger: 'change' }],
         machine_type: [{ required: true, message: '请选择主机类型', trigger: 'change' }],
-        credential: [{ required: true, message: '请选择SSH凭据', trigger: 'change' }],
+        credential: [{ required: true, message: '请选择SSH凭据', trigger: 'change' }]
       }
     }
   },
@@ -179,7 +179,7 @@ export default {
               // 关闭弹出窗口
               this.dialogClose()
               // 调用父组件方法，更新数据
-              this.$parent.getallCloudServer() 
+              this.$parent.getallCloudServer()
             }
           })
         } else {
@@ -210,7 +210,6 @@ export default {
               group_id.push(server_group[i].id)
             }
             this.row.server_group = group_id
-
 
             // 重新渲染编辑对话框IDC机房和主机分组
             this.getIdc()

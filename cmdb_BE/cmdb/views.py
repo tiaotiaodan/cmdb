@@ -847,7 +847,6 @@ class CloudServerHostCollectView(APIView):
                     server.credential = credential
                     server.is_verified = 'verified'
                     server.save()
-
                     result = {'code': 200, 'msg': '主机配置同步成功'}
 
                 else:
