@@ -20,7 +20,11 @@ from rest_framework.views import APIView
 # 导入调用阿里云模块
 from libs.aliyun_cloud import AliCloud
 
+# 导入调用腾讯云模块
+from libs.tencent_cloud import TCloud
+
 import os, json, time
+from datetime import date, datetime
 
 # 域名管理视图
 class DomainManageViewSet(CustomModelViewSet):
@@ -218,4 +222,92 @@ class AliyunCloudDomainAnalysisView(APIView):
                 server.update(**data)
 
         res = {'code': 200, 'msg': '导入域名解析成功'}
+        return Response(res)
+
+class TenCentCloudDomainManageView(APIView):
+    """
+    腾讯云域名管理
+    """
+
+    def post(self, request):
+        """
+          根据获取云平台域名，再导入域名到数据库
+        """
+        # 凭据
+        secret_id = request.data.get('secret_id')
+        secret_key = request.data.get('secret_key')
+        cloud = request.data.get('cloud')
+
+        # 导入阿里云sdk
+        tcloud = TCloud(secret_id, secret_key)
+
+        # 调用域名管理
+        domain_result = tcloud.domain_list(0, 100)
+
+        # 获取指定数据
+        result_list = domain_result.TotalCount
+
+        for i in range(result_list):
+            # 域名名称
+            name = domain_result.DomainSet[i].DomainName
+
+            # 获取创建时间
+            create_time = domain_result.DomainSet[i].CreationDate
+            # 处理腾讯云返回只有日期，没有时间，添加时间转换
+            create_time = (create_time + " 00:00:00")
+            create_time = time.strftime("%Y-%m-%d %H:%M:%S", time.strptime(create_time, "%Y-%m-%d %H:%M:%S"))
+
+            # 获取到期时间
+            expire_time = domain_result.DomainSet[i].ExpirationDate
+            # 处理腾讯云返回只有日期，没有时间，添加时间转换
+            expire_time = (expire_time + " 00:00:00")
+            expire_time = time.strftime("%Y-%m-%d %H:%M:%S", time.strptime(expire_time, "%Y-%m-%d %H:%M:%S"))
+
+            # 过期剩余天数
+            # 获取当前时间
+            ini_time_str = date.strftime(datetime.now(), '%Y-%m-%d %H:%M:%S')
+            # 格式化当前时间格式
+            ini_time = datetime.strptime(ini_time_str, '%Y-%m-%d %H:%M:%S')
+            end_time = datetime.strptime(expire_time, '%Y-%m-%d %H:%M:%S')
+            res = (end_time - ini_time).days
+            ExpirationTime = res
+
+            # 判断过期状态
+            ExpirationDateStatusList = []
+            if ExpirationTime <= 0 :
+                ExpirationDateStatus = "2"
+                ExpirationDateStatusList.append(ExpirationDateStatus)
+            else:
+                ExpirationDateStatus = "1"
+                ExpirationDateStatusList.append(ExpirationDateStatus)
+            ExpirationDateStatus = ExpirationDateStatusList[0]
+
+            # 域名状态
+            status_list = domain_result.DomainSet[i].BuyStatus
+            status_name = []
+            if status_list == "ok":
+                status = "正常"
+                status_name.append(status)
+            else:
+                status = "没有获取到"
+                status_name.append(status)
+            status = status_name[0]
+
+            data = {'name': name,
+                    'platform': cloud,
+                    'status': status,
+                    'create_time': create_time,
+                    'expire_time': expire_time,
+                    'ExpirationTime': ExpirationTime,
+                    'ExpirationDateStatus': ExpirationDateStatus, }
+
+            # 如果instance_id不存在才创建
+            server = DomainManage.objects.filter(name=name)
+            if not server:
+                DomainManage.objects.create(**data)
+
+            else:
+                server.update(**data)
+
+        res = {'code': 200, 'msg': '导入域名成功'}
         return Response(res)
