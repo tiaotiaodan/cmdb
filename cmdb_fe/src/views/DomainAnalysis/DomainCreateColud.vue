@@ -95,7 +95,7 @@ export default {
               }
             })
           } else if (this.form.cloud == '腾讯云') {
-            this.$http.post('cmdb/tencent_cloud/', this.form).then(res => {
+            this.$http.post('domain/tencent_domain_analysis_create/', this.form).then(res => {
               if (res.data.code == 200) {
                 this.$message.success('导入云主机成功')
                 this.$parent.getallDomain()

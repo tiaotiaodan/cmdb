@@ -72,11 +72,3 @@ if __name__ == '__main__':
     # result = cloud.instance_list("ap-shanghai")
     result = cloud.domain_list(0, 100)
     print(result)
-
-    print(result.DomainSet)
-    print(result.DomainSet[0].IsPremium)
-
-    print(result.DomainSet[0].DomainName)
-
-    code = result.code
-    print(code)

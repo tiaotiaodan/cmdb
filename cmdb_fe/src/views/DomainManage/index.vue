@@ -2,7 +2,7 @@
   <el-card class="box-card">
     <div style="margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between">
       <div>
-      <!--
+        <!--
         v-model="urlParams.search" 是绑定搜索的数据
         @keyup.enter="onSearch"  是输入完后，使用回车键进行快捷搜索
         clearable   属性即可得到一个可一键清空的输入框
@@ -36,6 +36,26 @@
             </el-dropdown-menu>
           </template>
         </el-dropdown>
+        <!--展示列弹出框-->
+        <el-popover placement="left" :width="100" v-model:visible="columnVisible">
+          <template #reference>
+            <el-button type="primary" @click="columnVisible = true">
+              <el-icon><Tools /></el-icon>
+              &nbsp;展示列
+            </el-button>
+          </template>
+          <el-checkbox v-model="showColumn.name" disabled>域名名称</el-checkbox>
+          <el-checkbox v-model="showColumn.platform">平台管理</el-checkbox>
+          <el-checkbox v-model="showColumn.status">域名状态</el-checkbox>
+          <el-checkbox v-model="showColumn.create_time">创建时间</el-checkbox>
+          <el-checkbox v-model="showColumn.expire_time">到期时间</el-checkbox>
+          <el-checkbox v-model="showColumn.ExpirationTime">过期时间提示</el-checkbox>
+          <el-checkbox v-model="showColumn.note">备注</el-checkbox>
+          <div style="text-align: right; margin: 0">
+            <el-button size="small" type="primary" @click="columnVisible = false">取消</el-button>
+            <el-button size="small" type="primary" @click="saveColumn">确认</el-button>
+          </div>
+        </el-popover>
       </div>
     </div>
 
@@ -43,9 +63,9 @@
       <!--数据表格-->
       <el-table :data="DomainData" border style="width: 100%">
         <el-table-column prop="name" label="域名名称" width="180" />
-        <el-table-column prop="platform" label="平台管理" width="180" />
+        <el-table-column prop="platform" label="平台管理" width="180"  v-if="showColumn.platform" />
         <!--域名状态显示-->
-        <el-table-column prop="status" label="域名状态" sortable>
+        <el-table-column prop="status" label="域名状态" sortable v-if="showColumn.status" >
           <template #default="scope">
             <el-icon :size="18" color="#409EFC" v-if="scope.row.status == '域名持有者信息修改中'"><Avatar /></el-icon>
             <el-icon :size="18" color="#F56C6C" v-else-if="scope.row.status == '急需续费'"><WarningFilled /></el-icon>
@@ -58,16 +78,16 @@
             {{ scope.row.status }}
           </template>
         </el-table-column>
-        <el-table-column prop="create_time" label="创建时间" />
-        <el-table-column prop="expire_time" label="到期时间" />
+        <el-table-column prop="create_time" label="创建时间"  v-if="showColumn.create_time" />
+        <el-table-column prop="expire_time" label="到期时间" v-if="showColumn.expire_time" />
         <!--修改过期时间显示-->
-        <el-table-column prop="ExpirationTime" label="过期时间提示" sortable>
+        <el-table-column prop="ExpirationTime" label="过期时间提示" sortable v-if="showColumn.ExpirationTime">
           <template #default="scope">
             <el-tag class="ml-2" type="success" v-if="scope.row.ExpirationDateStatus == 1">还有{{ scope.row.ExpirationTime }}天过期</el-tag>
             <el-tag class="ml-2" type="danger" v-if="scope.row.ExpirationDateStatus == 2">已过期{{ scope.row.ExpirationTime }}天</el-tag>
           </template>
         </el-table-column>
-        <el-table-column prop="note" label="备注" />
+        <el-table-column prop="note" label="备注" v-if="showColumn.note" />
         <!--操作栏-->
         <el-table-column label="操作栏" fixed="right" width="180">
           <!--定义获取行内数据参数-->
@@ -122,11 +142,31 @@ export default {
       row: '',
       // =============================== 编辑配置 ===============
       dialogDomainManageColudCreate: false,
+
+      // ============================== 展示列 ==================
+      columnVisible: false, // 可展示列显示与隐藏
+      showColumn: {
+        // 字段默认是否展示
+        name: true,
+        platform: true,
+        status: true,
+        create_time: true,
+        expire_time: true,
+        ExpirationTime: true,
+        note: false,
+      }
     }
   },
   // 页面渲染完后挂载
   mounted() {
+    // 渲染完后挂载数据
     this.getallDomain()
+    // 从浏览器本地存储获取历史存储展示
+    const columnSet = localStorage.getItem(this.$route.path + '-columnSet')
+    // 如果本地有存储就使用
+    if (columnSet) {
+      this.showColumn = JSON.parse(columnSet)
+    }
   },
   // 请求方法
   methods: {
@@ -149,8 +189,15 @@ export default {
           this.$message.error('服务端接口请求错误！' + error)
         })
     },
-     handelDomainCreateCloud_btn() {
-    // 重新赋值允许打开导入对话框
+    // 展示列事件调用
+    saveColumn() {
+      // 将可显示的字段存储到浏览器本地存储, 使用路由+key保存唯一key值
+      localStorage.setItem(this.$route.path + '-columnSet', JSON.stringify(this.showColumn))
+      // 关闭展示列
+      this.columnVisible = false
+    },
+    handelDomainCreateCloud_btn() {
+      // 重新赋值允许打开导入对话框
       this.dialogDomainManageColudCreate = true
     },
     // 搜索查询

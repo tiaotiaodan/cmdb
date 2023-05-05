@@ -2,7 +2,7 @@
   <el-card class="box-card">
     <div style="margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between">
       <div>
-      <!--
+        <!--
         v-model="urlParams.search" 是绑定搜索的数据
         @keyup.enter="onSearch"  是输入完后，使用回车键进行快捷搜索
         clearable   属性即可得到一个可一键清空的输入框
@@ -36,6 +36,25 @@
             </el-dropdown-menu>
           </template>
         </el-dropdown>
+        <!--展示列弹出框-->
+        <el-popover placement="left" :width="100" v-model:visible="columnVisible">
+          <template #reference>
+            <el-button type="primary" @click="columnVisible = true">
+              <el-icon><Tools /></el-icon>
+              &nbsp;展示列
+            </el-button>
+          </template>
+          <el-checkbox v-model="showColumn.name" disabled>域名名称</el-checkbox>
+          <el-checkbox v-model="showColumn.host_name">主机记录</el-checkbox>
+          <el-checkbox v-model="showColumn.RecordType">记录类型</el-checkbox>
+          <el-checkbox v-model="showColumn.analyshost">解析地址</el-checkbox>
+          <el-checkbox v-model="showColumn.host_status">域名解析状态</el-checkbox>
+          <el-checkbox v-model="showColumn.note">备注</el-checkbox>
+          <div style="text-align: right; margin: 0">
+            <el-button size="small" type="primary" @click="columnVisible = false">取消</el-button>
+            <el-button size="small" type="primary" @click="saveColumn">确认</el-button>
+          </div>
+        </el-popover>
       </div>
     </div>
 
@@ -43,20 +62,22 @@
       <!--数据表格-->
       <el-table :data="DomainData" border style="width: 100%">
         <el-table-column prop="domain_name.name" label="域名名称" width="180" />
-        <el-table-column prop="host_name" label="主机记录"  />
-        <el-table-column prop="RecordType" label="记录类型" />
-        <el-table-column prop="analyshost" label="解析地址" />
-         <el-table-column prop="host_status" label="域名状态" sortable>
+        <el-table-column prop="host_name" label="主机记录" v-if="showColumn.host_name"  />
+        <el-table-column prop="RecordType" label="记录类型" v-if="showColumn.RecordType"  />
+        <el-table-column prop="analyshost" label="解析地址" v-if="showColumn.analyshost" />
+        <el-table-column prop="host_status" label="域名解析状态" sortable v-if="showColumn.host_status" >
           <template #default="scope">
             <div v-if="scope.row.host_status == 'ENABLE'">
-              <el-icon :size="18" color="#67C23A" ><SuccessFilled /></el-icon>正常
+              <el-icon :size="18" color="#67C23A"><SuccessFilled /></el-icon>
+              正常
             </div>
             <div v-else>
-              <el-icon :size="18" color="#F56C6C" ><WarningFilled /></el-icon>失败
+              <el-icon :size="18" color="#F56C6C"><WarningFilled /></el-icon>
+              失败
             </div>
           </template>
         </el-table-column>
-        <el-table-column prop="note" label="备注" />
+        <el-table-column prop="note" label="备注" v-if="showColumn.note" />
         <!--操作栏-->
         <el-table-column label="操作栏" fixed="right" width="180">
           <!--定义获取行内数据参数-->
@@ -111,11 +132,29 @@ export default {
       row: '',
       // =============================== 编辑配置 ===============
       dialogDomainManageColudCreate: false,
+
+      // ============================== 展示列 ==================
+      columnVisible: false, // 可展示列显示与隐藏
+      showColumn: {
+        // 字段默认是否展示
+        host_name: true,
+        RecordType: true,
+        analyshost: true,
+        host_status: true,
+        note: true,
+      }
     }
   },
   // 页面渲染完后挂载
   mounted() {
+    // 渲染完后挂载数据
     this.getallDomain()
+    // 从浏览器本地存储获取历史存储展示
+    const  columnSet = localStorage.getItem(this.$route.path + '-columnSet')
+    // 如果本地有存储就使用
+    if(columnSet) {
+      this.showColumn = JSON.parse(columnSet)
+    }
   },
   // 请求方法
   methods: {
@@ -138,8 +177,15 @@ export default {
           this.$message.error('服务端接口请求错误！' + error)
         })
     },
-     handelDomainCreateCloud_btn() {
-    // 重新赋值允许打开导入对话框
+    // 展示列事件调用
+    saveColumn() {
+      // 将可显示的字段存储到浏览器本地存储, 使用路由+key保存唯一key值
+      localStorage.setItem(this.$route.path + '-columnSet', JSON.stringify(this.showColumn))
+      // 关闭展示列
+      this.columnVisible = false
+    },
+    handelDomainCreateCloud_btn() {
+      // 重新赋值允许打开导入对话框
       this.dialogDomainManageColudCreate = true
     },
     // 搜索查询

@@ -6,7 +6,7 @@ from tencentcloud.dnspod.v20210323 import dnspod_client, models
 
 import json
 
-class TCloud():
+class TCloud_Dnspod():
     def __init__(self, secret_id, secret_key):
         self.secret_id = secret_id
         self.secret_key = secret_key
@@ -33,10 +33,9 @@ class TCloud():
 
 
 if __name__ == '__main__':
-    cloud = TCloud("ID", "key")
+    cloud = TCloud_Dnspod("ID", "key")
     # result = cloud.region_list()
     # result = cloud.zone_list("ap-shanghai")
     # result = cloud.instance_list("ap-shanghai")
     result = cloud.domain_dnspods_list("fwqaq.cn")
-
     print(result)
