@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="30e90a8f-f783-4627-b5b6-4fe5351821f4" name="默认更改列表" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/domain/tests.py" afterDir="false" />
-    </list>
+    <list default="true" id="30e90a8f-f783-4627-b5b6-4fe5351821f4" name="默认更改列表" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +53,7 @@
         <entry file="file://$PROJECT_DIR$/domain/tests.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="17" column="32" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
+              <caret line="17" column="41" lean-forward="true" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
               <folding>
                 <element signature="e#33#44#0" expanded="true" />
               </folding>
@@ -467,12 +464,12 @@
       <workItem from="1682242220542" duration="16592000" />
       <workItem from="1682413288384" duration="40444000" />
       <workItem from="1682651083368" duration="29270000" />
-      <workItem from="1683342267133" duration="2642000" />
+      <workItem from="1683342267133" duration="3329000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="342142000" />
+    <option name="totallyTimeSpent" value="342829000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1440" height="814" extended-state="6" />
@@ -919,7 +916,7 @@
     <entry file="file://$PROJECT_DIR$/domain/tests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="17" column="32" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
+          <caret line="17" column="41" lean-forward="true" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
           <folding>
             <element signature="e#33#44#0" expanded="true" />
           </folding>
