@@ -16,7 +16,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/domain/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
+            <state relative-caret-position="210">
               <caret line="20" column="103" selection-start-line="20" selection-start-column="103" selection-end-line="20" selection-end-column="103" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
@@ -28,7 +28,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cmdb/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1635">
+            <state relative-caret-position="1005">
               <caret line="109" column="47" selection-start-line="109" selection-start-column="47" selection-end-line="109" selection-end-column="47" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
@@ -37,7 +37,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/domain/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="354">
@@ -49,22 +49,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/domain/tests.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
-              <folding>
-                <element signature="e#33#44#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libs/tencent_cloud.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1095">
+            <state relative-caret-position="990">
               <caret line="73" column="17" selection-start-line="73" selection-start-column="17" selection-end-line="73" selection-end-column="17" />
               <folding>
                 <element signature="e#0#42#0" expanded="true" />
@@ -76,7 +64,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libs/tencent_cloud_dnspods.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
+            <state relative-caret-position="285">
               <caret line="25" column="52" selection-start-line="25" selection-start-column="52" selection-end-line="25" selection-end-column="52" />
               <folding>
                 <element signature="e#0#42#0" expanded="true" />
@@ -88,7 +76,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cmdb_BE/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
+            <state relative-caret-position="285">
               <caret line="24" column="47" selection-end-line="31" />
               <folding>
                 <element signature="e#634#666#0" expanded="true" />
@@ -100,7 +88,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/domain/serializers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
+            <state relative-caret-position="195">
               <caret line="16" selection-start-line="16" selection-end-line="16" />
               <folding>
                 <element signature="e#9#63#0" expanded="true" />
@@ -117,7 +105,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libs/aliyun_cloud.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1560">
+            <state relative-caret-position="1290">
               <caret line="104" selection-start-line="104" selection-end-line="104" />
               <folding>
                 <element signature="e#38#80#0" expanded="true" />
@@ -219,7 +207,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -241,6 +228,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -285,7 +273,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.tests">
+  <component name="RunManager" selected="Django server.cmdb_BE">
     <configuration name="aliyun_cloud" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="cmdb_BE" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -465,17 +453,17 @@
       <workItem from="1682413288384" duration="40444000" />
       <workItem from="1682651083368" duration="29270000" />
       <workItem from="1683342267133" duration="4058000" />
+      <workItem from="1685085680098" duration="73000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="343558000" />
+    <option name="totallyTimeSpent" value="343631000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="25" width="1440" height="814" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="26" width="1440" height="814" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22031474" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22317597" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
@@ -483,7 +471,7 @@
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49928468" weight="0.29608938" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.32867134" />
       <window_info anchor="bottom" id="Python Console" order="4" weight="0.32867134" />
-      <window_info anchor="bottom" id="Terminal" order="5" sideWeight="0.4985694" weight="0.23463687" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="5" sideWeight="0.4985694" visible="true" weight="0.23463687" />
       <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.5007153" side_tool="true" weight="0.29608938" />
       <window_info anchor="bottom" id="调试" order="7" show_stripe_button="false" weight="0.3282123" />
       <window_info anchor="bottom" id="Message" order="8" />
@@ -510,7 +498,7 @@
     <SUITE FILE_PATH="coverage/cmdb_BE$ssh.coverage" NAME="ssh Coverage Results" MODIFIED="1673834516784" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/libs" />
     <SUITE FILE_PATH="coverage/cmdb_BE$vmware.coverage" NAME="vmware Coverage Results" MODIFIED="1682477898588" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/libs" />
     <SUITE FILE_PATH="coverage/cmdb_BE$tencent_cloud_dnspods.coverage" NAME="tencent_cloud_dnspods Coverage Results" MODIFIED="1683265322668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/libs" />
-    <SUITE FILE_PATH="coverage/cmdb_BE$tests.coverage" NAME="tests Coverage Results" MODIFIED="1683345248215" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/domain" />
+    <SUITE FILE_PATH="coverage/cmdb_BE$tests.coverage" NAME="tests Coverage Results" MODIFIED="1685085702070" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/domain" />
     <SUITE FILE_PATH="coverage/cmdb_BE$local_host_collect_vmware.coverage" NAME="local_host_collect_vmware Coverage Results" MODIFIED="1673936952738" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/libs" />
     <SUITE FILE_PATH="coverage/cmdb_BE$win_test.coverage" NAME="win-test Coverage Results" MODIFIED="1673512141855" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/libs" />
     <SUITE FILE_PATH="coverage/cmdb_BE$windows.coverage" NAME="windows Coverage Results" MODIFIED="1682097425301" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/libs" />
@@ -830,9 +818,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/domain/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="20" column="103" selection-start-line="20" selection-start-column="103" selection-end-line="20" selection-end-column="103" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/cmdb/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1635">
+        <state relative-caret-position="1005">
           <caret line="109" column="47" selection-start-line="109" selection-start-column="47" selection-end-line="109" selection-end-column="47" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
@@ -842,7 +840,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/libs/tencent_cloud.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1095">
+        <state relative-caret-position="990">
           <caret line="73" column="17" selection-start-line="73" selection-start-column="17" selection-end-line="73" selection-end-column="17" />
           <folding>
             <element signature="e#0#42#0" expanded="true" />
@@ -852,7 +850,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/libs/tencent_cloud_dnspods.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
+        <state relative-caret-position="285">
           <caret line="25" column="52" selection-start-line="25" selection-start-column="52" selection-end-line="25" selection-end-column="52" />
           <folding>
             <element signature="e#0#42#0" expanded="true" />
@@ -862,7 +860,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cmdb_BE/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
+        <state relative-caret-position="285">
           <caret line="24" column="47" selection-end-line="31" />
           <folding>
             <element signature="e#634#666#0" expanded="true" />
@@ -872,7 +870,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/domain/serializers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
+        <state relative-caret-position="195">
           <caret line="16" selection-start-line="16" selection-end-line="16" />
           <folding>
             <element signature="e#9#63#0" expanded="true" />
@@ -885,7 +883,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/libs/aliyun_cloud.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1560">
+        <state relative-caret-position="1290">
           <caret line="104" selection-start-line="104" selection-end-line="104" />
           <folding>
             <element signature="e#38#80#0" expanded="true" />
@@ -893,13 +891,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/domain/urls.py">
+    <entry file="file://$PROJECT_DIR$/domain/tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="103" selection-start-line="20" selection-start-column="103" selection-end-line="20" selection-end-column="103" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="240">
+          <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -909,16 +904,6 @@
           <caret line="364" column="55" selection-start-line="364" selection-start-column="55" selection-end-line="364" selection-end-column="55" />
           <folding>
             <element signature="e#21#78#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/domain/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
-          <folding>
-            <element signature="e#33#44#0" expanded="true" />
           </folding>
         </state>
       </provider>
