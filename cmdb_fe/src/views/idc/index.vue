@@ -23,8 +23,11 @@
       </div>
       <div>
         <!--新建-->
-        <el-button type="primary" @click="handelIdcCreate"><el-icon><CirclePlus /></el-icon>&nbsp;新建</el-button>
-        
+        <el-button type="primary" @click="handelIdcCreate">
+          <el-icon><CirclePlus /></el-icon>
+          &nbsp;新建
+        </el-button>
+
         <!--展示列弹出框-->
         <el-popover placement="left" :width="100" v-model:visible="columnVisible">
           <template #reference>
@@ -50,9 +53,9 @@
       <!--数据表格-->
       <el-table :data="IdcData" border style="width: 100%" :header-cell-style="{ backgroundColor: '#409EFF', color: '#fff', fontsize: '14px' }">
         <el-table-column prop="name" label="机房名称" width="180" />
-        <el-table-column prop="city" label="城市"  v-if="showColumn.city" />
-        <el-table-column prop="provider" label="运营商"   v-if="showColumn.provider" />
-        <el-table-column prop="create_time" label="创建时间" v-if="showColumn.create_time" />
+        <el-table-column prop="city" label="城市" v-if="showColumn.city" />
+        <el-table-column prop="provider" label="运营商" v-if="showColumn.provider" />
+        <el-table-column prop="create_time" label="创建时间" :formatter="dateFormat" v-if="showColumn.create_time" />
         <el-table-column prop="note" label="备注" v-if="showColumn.note" />
         <!--操作栏-->
         <el-table-column label="操作栏" fixed="right" width="140">
@@ -60,8 +63,8 @@
           <template #default="scope">
             <!--通过回调函数获取行内数据-->
             <!-- 编辑按钮 -->
-            <el-button type="primary" size="small"  @click="handelIdcEdit(scope.$index, scope.row)">编辑</el-button>
-            <el-button type="danger" size="small"  @click="handelIdcDelete(scope.$index, scope.row)">删除</el-button>
+            <el-button type="primary" size="small" @click="handelIdcEdit(scope.$index, scope.row)">编辑</el-button>
+            <el-button type="danger" size="small" @click="handelIdcDelete(scope.$index, scope.row)">删除</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -128,9 +131,9 @@ export default {
     // 渲染完后挂载数据
     this.getallIdc()
     // 从浏览器本地存储获取历史存储展示
-    const  columnSet = localStorage.getItem(this.$route.path + '-columnSet')
+    const columnSet = localStorage.getItem(this.$route.path + '-columnSet')
     // 如果本地有存储就使用
-    if(columnSet) {
+    if (columnSet) {
       this.showColumn = JSON.parse(columnSet)
     }
   },
@@ -167,26 +170,26 @@ export default {
       this.row = row
     },
     // 删除单条数据
-    handelIdcDelete(index,row) {
+    handelIdcDelete(index, row) {
       this.$confirm('你确定要删除选中的吗？', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
-      }).then(() => {
-        this.$http
-          .delete('/cmdb/idc/' + row.id + '/')
-          .then(res => {
+      })
+        .then(() => {
+          this.$http.delete('/cmdb/idc/' + row.id + '/').then(res => {
             if (res.data.code == 200) {
               this.$message.success('删除成功')
-              this.IdcData.splice(index,1) // 根据表格索引临时删除数据
+              this.IdcData.splice(index, 1) // 根据表格索引临时删除数据
             }
           })
-      }).catch(() => {
-        this.$message({
-          type: 'info',
-          message: '已取消删除'
         })
-      })
+        .catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          })
+        })
     },
     // 展示列事件调用
     saveColumn() {
@@ -208,6 +211,38 @@ export default {
       this.currentPage = currentPage // 重新设置分页显示
       this.urlParams.page_num = currentPage
       this.getallIdc()
+    },
+    // drf返回时间戳进行转换为标准显示格式
+    dateFormat(row, col) {
+      let data = row[col.property]
+      if (data == null) {
+        return ''
+      }
+
+      let currDate = new Date(data)
+      // 例如 2022-8-15 10:21:30
+      let getMonth = currDate.getMonth() + 1
+      let getDay = currDate.getDate()
+      let getHours = currDate.getHours()
+      let getMinutes = currDate.getMinutes()
+      let getSeconds = currDate.getSeconds()
+      if (getMonth < 10) {
+        getMonth = '0' + getMonth
+      }
+      if (getDay < 10) {
+        getDay = '0' + getDay
+      }
+      if (getHours < 10) {
+        getHours = '0' + getHours
+      }
+      if (getMinutes < 10) {
+        getMinutes = '0' + getMinutes
+      }
+      if (getSeconds < 10) {
+        getSeconds = '0' + getSeconds
+      }
+      // 组合进行返回时间操作
+      return currDate.getFullYear() + '-' + getMonth + '-' + getDay + ' ' + getHours + ':' + getMinutes + ':' + getSeconds
     }
   }
 }

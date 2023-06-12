@@ -180,8 +180,8 @@
           </template>
         </el-table-column>
         <el-table-column prop="note" label="备注" v-if="showColumn.note" />
-        <el-table-column prop="update_time" label="更新时间" width="160" sortable v-if="showColumn.update_time" />
-        <el-table-column prop="create_time" label="创建时间" width="160" sortable v-if="showColumn.create_time" />
+        <el-table-column prop="update_time" label="更新时间" width="160" sortable :formatter="dateFormat" v-if="showColumn.update_time" />
+        <el-table-column prop="create_time" label="创建时间" width="160" sortable :formatter="dateFormat" v-if="showColumn.create_time" />
         <!--操作栏-->
         <el-table-column label="操作栏" fixed="right" width="260">
           <!--定义获取行内数据参数-->
@@ -429,6 +429,38 @@ export default {
         .then(res => {
           this.serverGroup = res.data.data;
         });
+    },
+        // drf返回时间戳进行转换为标准显示格式
+    dateFormat(row, col) {
+      let data = row[col.property]
+      if (data == null) {
+        return ''
+      }
+
+      let currDate = new Date(data)
+      // 例如 2022-8-15 10:21:30
+      let getMonth = currDate.getMonth() + 1
+      let getDay = currDate.getDate()
+      let getHours = currDate.getHours()
+      let getMinutes = currDate.getMinutes()
+      let getSeconds = currDate.getSeconds()
+      if (getMonth < 10) {
+        getMonth = '0' + getMonth
+      }
+      if (getDay < 10) {
+        getDay = '0' + getDay
+      }
+      if (getHours < 10) {
+        getHours = '0' + getHours
+      }
+      if (getMinutes < 10) {
+        getMinutes = '0' + getMinutes
+      }
+      if (getSeconds < 10) {
+        getSeconds = '0' + getSeconds
+      }
+      // 组合进行返回时间操作
+      return currDate.getFullYear() + '-' + getMonth + '-' + getDay + ' ' + getHours + ':' + getMinutes + ':' + getSeconds
     }
   }
 }

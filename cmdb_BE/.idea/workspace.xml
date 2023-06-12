@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="30e90a8f-f783-4627-b5b6-4fe5351821f4" name="默认更改列表" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmdb_fe/src/views/ServerGroup/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../cmdb_fe/src/views/ServerGroup/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmdb_fe/src/views/idc/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../cmdb_fe/src/views/idc/index.vue" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,7 +20,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cmdb/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-316">
+            <state relative-caret-position="213">
               <caret line="112" column="40" selection-start-line="112" selection-start-column="26" selection-end-line="112" selection-end-column="40" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
@@ -221,7 +223,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -248,6 +249,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -478,17 +480,18 @@
       <workItem from="1686292742767" duration="80000" />
       <workItem from="1686293520867" duration="13000" />
       <workItem from="1686294174293" duration="36000" />
+      <workItem from="1686305309471" duration="640000" />
+      <workItem from="1686538980374" duration="604000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="344073000" />
+    <option name="totallyTimeSpent" value="345317000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="26" width="1440" height="814" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="25" width="1440" height="814" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23748212" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24391988" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
@@ -842,7 +845,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cmdb/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-316">
+        <state relative-caret-position="213">
           <caret line="112" column="40" selection-start-line="112" selection-start-column="26" selection-end-line="112" selection-end-column="40" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
