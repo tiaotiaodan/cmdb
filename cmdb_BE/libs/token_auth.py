@@ -18,7 +18,9 @@ class CustomAuthToken(ObtainAuthToken):
 
         if serializer.is_valid():
             user = serializer.validated_data['user']
+            print(user)
             token, created = Token.objects.get_or_create(user=user)
+            print(token)
             res = {'code': 200,'msg': '认证成功','token': token.key,'username': user.username,}
             return Response(res)
         else:
