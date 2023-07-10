@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30e90a8f-f783-4627-b5b6-4fe5351821f4" name="默认更改列表" comment="">
-      <change beforePath="$PROJECT_DIR$/libs/token_auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/libs/token_auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmdb_fe/.env.prod" beforeDir="false" afterPath="$PROJECT_DIR$/../cmdb_fe/.env.prod" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,7 +19,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cmdb/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
+            <state relative-caret-position="1050">
               <caret line="112" column="40" selection-start-line="112" selection-start-column="26" selection-end-line="112" selection-end-column="40" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
@@ -31,7 +32,7 @@
         <entry file="file://$PROJECT_DIR$/libs/token_auth.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="318">
-              <caret line="29" column="38" lean-forward="true" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
+              <caret line="29" column="38" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
               <folding>
                 <element signature="e#58#138#0" expanded="true" />
               </folding>
@@ -42,7 +43,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cmdb/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1710">
+            <state relative-caret-position="1680">
               <caret line="114" column="49" selection-start-line="114" selection-start-column="49" selection-end-line="114" selection-end-column="71" />
               <folding>
                 <element signature="e#1#29#0" expanded="true" />
@@ -54,7 +55,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cmdb/serializers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="825">
+            <state relative-caret-position="780">
               <caret line="55" selection-start-line="55" selection-end-line="66" selection-end-column="62" />
               <folding>
                 <element signature="e#9#87#0" expanded="true" />
@@ -66,7 +67,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libs/tencent_cloud.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1095">
+            <state relative-caret-position="990">
               <caret line="73" column="17" selection-start-line="73" selection-start-column="17" selection-end-line="73" selection-end-column="17" />
               <folding>
                 <element signature="e#0#42#0" expanded="true" />
@@ -78,7 +79,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libs/tencent_cloud_dnspods.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
+            <state relative-caret-position="285">
               <caret line="25" column="52" selection-start-line="25" selection-start-column="52" selection-end-line="25" selection-end-column="52" />
               <folding>
                 <element signature="e#0#42#0" expanded="true" />
@@ -90,7 +91,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cmdb_BE/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
+            <state relative-caret-position="285">
               <caret line="24" column="47" selection-end-line="31" />
               <folding>
                 <element signature="e#634#666#0" expanded="true" />
@@ -102,7 +103,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/domain/serializers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
+            <state relative-caret-position="195">
               <caret line="16" selection-start-line="16" selection-end-line="16" />
               <folding>
                 <element signature="e#9#63#0" expanded="true" />
@@ -119,7 +120,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libs/aliyun_cloud.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1560">
+            <state relative-caret-position="1290">
               <caret line="104" selection-start-line="104" selection-end-line="104" />
               <folding>
                 <element signature="e#38#80#0" expanded="true" />
@@ -486,22 +487,23 @@
       <workItem from="1686305309471" duration="640000" />
       <workItem from="1686538980374" duration="604000" />
       <workItem from="1686550203401" duration="1020000" />
+      <workItem from="1688978894153" duration="632000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="346337000" />
+    <option name="totallyTimeSpent" value="346969000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="25" width="1440" height="814" extended-state="6" />
+    <frame x="0" y="26" width="1440" height="814" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24749643" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25107297" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49928468" weight="0.29608938" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49928468" visible="true" weight="0.29608938" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.32867134" />
       <window_info anchor="bottom" id="Python Console" order="4" weight="0.32867134" />
       <window_info anchor="bottom" id="Terminal" order="5" sideWeight="0.4985694" weight="0.23463687" />
@@ -838,16 +840,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cmdb/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="112" column="40" selection-start-line="112" selection-start-column="26" selection-end-line="112" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/domain/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5445">
@@ -858,9 +850,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/cmdb/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1050">
+          <caret line="112" column="40" selection-start-line="112" selection-start-column="26" selection-end-line="112" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/cmdb/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1710">
+        <state relative-caret-position="1680">
           <caret line="114" column="49" selection-start-line="114" selection-start-column="49" selection-end-line="114" selection-end-column="71" />
           <folding>
             <element signature="e#1#29#0" expanded="true" />
@@ -870,7 +872,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cmdb/serializers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
+        <state relative-caret-position="780">
           <caret line="55" selection-start-line="55" selection-end-line="66" selection-end-column="62" />
           <folding>
             <element signature="e#9#87#0" expanded="true" />
@@ -880,7 +882,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/libs/tencent_cloud.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1095">
+        <state relative-caret-position="990">
           <caret line="73" column="17" selection-start-line="73" selection-start-column="17" selection-end-line="73" selection-end-column="17" />
           <folding>
             <element signature="e#0#42#0" expanded="true" />
@@ -890,7 +892,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/libs/tencent_cloud_dnspods.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
+        <state relative-caret-position="285">
           <caret line="25" column="52" selection-start-line="25" selection-start-column="52" selection-end-line="25" selection-end-column="52" />
           <folding>
             <element signature="e#0#42#0" expanded="true" />
@@ -900,7 +902,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cmdb_BE/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
+        <state relative-caret-position="285">
           <caret line="24" column="47" selection-end-line="31" />
           <folding>
             <element signature="e#634#666#0" expanded="true" />
@@ -910,7 +912,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/domain/serializers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
+        <state relative-caret-position="195">
           <caret line="16" selection-start-line="16" selection-end-line="16" />
           <folding>
             <element signature="e#9#63#0" expanded="true" />
@@ -923,7 +925,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/libs/aliyun_cloud.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1560">
+        <state relative-caret-position="1290">
           <caret line="104" selection-start-line="104" selection-end-line="104" />
           <folding>
             <element signature="e#38#80#0" expanded="true" />
@@ -934,7 +936,7 @@
     <entry file="file://$PROJECT_DIR$/libs/token_auth.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="318">
-          <caret line="29" column="38" lean-forward="true" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
+          <caret line="29" column="38" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
           <folding>
             <element signature="e#58#138#0" expanded="true" />
           </folding>
