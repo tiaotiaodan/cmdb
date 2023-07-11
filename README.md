@@ -18,8 +18,7 @@ python3.8.4开发cmdb系统
 ![输入图片说明](https://foruda.gitee.com/images/1675066876252224072/bd8d8b59_4875258.jpeg "QQ20230130-162058.jpg")
 开发域名管理，把阿里云和腾讯云域名集中导入到管理平台管理
 完善前后端功能开发，实现平台展示
-![输入图片说明](https://foruda.gitee.com/images/1683272788422046691/2646af5f_4875258.jpeg "QQ20230505-154600.jpg")
-![输入图片说明](https://foruda.gitee.com/images/1683272802903496353/95c62837_4875258.jpeg "QQ20230505-154615.jpg")
+
 
 
 #### cmdb说明
