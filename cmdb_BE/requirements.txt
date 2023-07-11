@@ -13,11 +13,13 @@ channels==3.0.0
 charset-normalizer==3.0.1
 constantly==15.1.0
 cryptography==39.0.0
+Cython==0.29.35
 daphne==3.0.2
-Django==3.2.13
+Django==3.2
 django-cors-headers==3.13.0
 django-filter==22.1
 djangorestframework==3.14.0
+djangorestframework-jwt==1.11.0
 docopt==0.6.2
 hyperlink==21.0.0
 idna==3.4
@@ -31,6 +33,7 @@ pyasn1-modules==0.2.8
 pycparser==2.21
 pyflakes==3.0.1
 Pygments==2.14.0
+PyJWT==1.7.1
 PyMySQL==1.0.2
 PyNaCl==1.5.0
 pyOpenSSL==23.0.0
@@ -38,8 +41,10 @@ pytz==2022.7.1
 pyvim==0.0.21
 pyvmomi==6.7.1
 pywinrm==0.4.3
+qt4reactor==1.6
 requests==2.28.2
 requests-ntlm==1.1.0
+rsa==4.9
 service-identity==21.1.0
 six==1.16.0
 sqlparse==0.4.3
