@@ -4,16 +4,16 @@
 
 ### 1. 线上部署-前端
 
-- 修改前端api请求后端接口地址，修改.env.local或者.env.prod文件，下面是.env.local示例文件
+- 修改前端api请求后端接口地址，修改.env.test或者.env.prod文件，下面是.env.test示例文件
 
   ```javascript
-  NODE_ENV=dev
- 
-  VUE_APP_CURRENTMODE=serve
-     
-  VUE_APP_BASEURL=http://127.0.0.1:8000/
-     
-  VUE_APP_WSURL=ws://127.0.0.1:8000/server/terminal
+  NODE_ENV=test
+  
+  VUE_APP_CURRENTMODE=build
+  
+  VUE_APP_BASEURL=http://test.scajy.cn/
+
+  VUE_APP_WSURL=ws://test.scajy.cn/server/terminal
 
   ```
 
@@ -21,7 +21,7 @@
 
   ```
   npm install
-  npm run build
+  npm run test 或prod
   ```
 
   > 会自动生成dist目录，把dist目录下的所有文件拷贝到nginx对应目录处理
